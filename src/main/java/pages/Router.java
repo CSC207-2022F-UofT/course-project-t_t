@@ -25,8 +25,18 @@ public class Router {
         this.signUpPage = signUpPage;
     }
 
+    public HomePage getHomePage() {
+        return homePage;
+    }
+
+    public void setHomePage(HomePage homePage) {
+        this.homePage = homePage;
+    }
     private LoginPage loginPage;
     private SignInPage signInPage;
     private SignUpPage signUpPage;
+
+
+    private HomePage homePage;
 
 }

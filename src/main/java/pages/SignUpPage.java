@@ -1,8 +1,8 @@
 package pages;
 
 public class SignUpPage extends Page{
-    public SignUpPage(Router router) {
-        super(router, "Sign Up Page");
+    public SignUpPage(Router router, PageState pageState) {
+        super(router, pageState, "Sign Up Page");
     }
 
     @Override

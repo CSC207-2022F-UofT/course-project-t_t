@@ -1,21 +1,29 @@
 package pages;
 
+import entities.User;
+
 import java.util.*;
 
 public abstract class Page {
     protected Router router;
-    private String name;
+    protected PageState pageState;
 
-    public String getName() {
-        return this.name;
+    private final String pageName;
+    public String getPageName() {
+        return this.pageName;
     }
 
-    public Page(Router router, String name) {
+    public Page(Router router, PageState pageState, String pageName) {
         this.router = router;
-        this.name = name;
+        this.pageState = pageState;
+        this.pageName = pageName;
     }
 
     public abstract Page run();
+
+    protected boolean checkLoggedIn(){
+        return this.pageState.getCurrentUser() == null;
+    }
 
     protected <T> T promptInput(Map<String, T> options) {
 

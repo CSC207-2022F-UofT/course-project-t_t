@@ -8,7 +8,7 @@ public class Database {
     public static ArrayList<User> getDatabase() {
 
         ArrayList<User> dummyDB = new ArrayList<>();
-        dummyDB.add(new User( "Kim"));
+        dummyDB.add(new User( "Kim", "cydfk123"));
         return dummyDB;
     }
 

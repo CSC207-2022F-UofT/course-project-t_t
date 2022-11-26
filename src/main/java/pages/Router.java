@@ -29,4 +29,12 @@ public class Router {
     private SignInPage signInPage;
     private SignUpPage signUpPage;
 
+    private HomePage homePage;
+
+    public HomePage getHomePage() {
+        return homePage;
+    }
+    public void setHomePage(HomePage homePage) {
+        this.homePage = homePage;
+    }
 }

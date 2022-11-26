@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class Timetable {
 
-    ArrayList<Section> sections;
+    ArrayList<Course> courses;
 
-    public Timetable(ArrayList<Section> sections) {
-        this.sections = sections;
+    public Timetable(ArrayList<Course> courses) {
+        this.courses = courses;
     }
 
-    public ArrayList<Section> getSections() { return this.sections; }
+    public ArrayList<Course> getCourses() { return this.courses; }
 
 }
 

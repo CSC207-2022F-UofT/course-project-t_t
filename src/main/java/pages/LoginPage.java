@@ -4,8 +4,8 @@ import java.util.Map;
 
 public class LoginPage extends Page{
 
-    public LoginPage(Router router) {
-        super(router, "Login Page");
+    public LoginPage(Router router, PageState pageState) {
+        super(router, pageState, "Login Page");
     }
     @Override
     public Page run() {

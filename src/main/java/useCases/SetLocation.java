@@ -30,7 +30,7 @@ public class SetLocation{
                 }
             }
         }
-        user.setLocation(null);
+        user.setLocation(new Location("Temporary placeholder"));
     }
 }
 

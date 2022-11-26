@@ -24,5 +24,6 @@ public class User {
 
     public User(String name) {
         this.name = name;
+        this.location = new Location("Temporary place holder");
     }
 }

@@ -9,7 +9,9 @@ public class setLocationTest {
     public static void main(String[] args){
         Interval interval1 = new Interval(1, 2);
         Interval interval2 = new Interval(4, 6);
-        Interval interval3 = new Interval(5, 10000);
+        Interval interval3 = new Interval(5, 100);
+
+        //
 
         Location location1 = new Location("room 1");
         Location location2 = new Location("room 2");

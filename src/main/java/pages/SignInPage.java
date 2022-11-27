@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SignInPage extends Page{
-    public SignIn signIn;
     public SignInPage(Router router, PageState pageState) {
         super(router, pageState, "Sign In Page");
     }
 
     @Override
     public Page run() {
+        SignIn signIn = new SignIn();
         System.out.println("This is a Sign In page.");
 
         Scanner in = new Scanner(System.in);
@@ -31,14 +31,12 @@ public class SignInPage extends Page{
 
             String password = in.next();
 
-            // change lines 36 & 41 according to the format of Database (i.e. change db.get(0))
-            // use usecases to check the correctness of the username & password in lines 36 & 41
-            if (!username.equals(db.get(0).getUsername())) {
+            if (!signIn.checkUsername(db, username)) {
                 System.out.println("User not found. Try again.");
                 continue;
             }
 
-            if (!password.equals(db.get(0).getPassword())) {
+            if (!signIn.checkPassword(db, username, password)) {
                 System.out.println("Password does not match. Try again.");
                 continue;
             }

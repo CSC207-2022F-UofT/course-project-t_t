@@ -3,9 +3,9 @@ import entities.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import useCases.SetLocation;
+import useCases.LocationSetter;
 
-public class setLocationTest {
+public class locationSetterTest {
     public static void main(String[] args){
         Interval interval1 = new Interval(1, 2);
         Interval interval2 = new Interval(4, 6);
@@ -31,7 +31,7 @@ public class setLocationTest {
         User user = new User("jon");
         user.setTimetable(timetable);
 
-        SetLocation.automaticSetLocation(user);
+        LocationSetter.automaticSetLocation(user);
 
         System.out.println(user.getLocation().getName());
     }

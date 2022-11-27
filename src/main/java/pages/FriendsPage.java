@@ -27,9 +27,11 @@ public class FriendsPage extends Page{
             case MANAGE_BLOCKED:
                 redirect = this.router.getManageBlockedPage();
                 System.out.println("Redirecting to Manage Blocked Friends...");
+                break;
             case MANAGE_FRIENDS:
                 redirect = this.router.getManageFriendsPage();
                 System.out.println("Redirecting to Manage Friends...");
+                break;
             case VIEW_FRIENDS:
                 redirect = this.router.getFriendsListPage();
                 System.out.println("Redirecting to Friends List...");

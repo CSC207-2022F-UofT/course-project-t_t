@@ -27,10 +27,11 @@ public class ManageFriendsPage extends Page{
             case ADD_FRIENDS:
                 redirect = this.router.getAddFriendsPage();
                 System.out.println("Redirecting to Add Friends...");
+                break;
             case REMOVE_FRIENDS:
                 redirect = this.router.getRemoveFriendsPage();
                 System.out.println("Redirecting to Remove Friends...");
-
+                break;
         }
         return redirect;
     }

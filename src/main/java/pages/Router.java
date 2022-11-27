@@ -1,6 +1,9 @@
 package pages;
 
 public class Router {
+    public Router() {
+    }
+
     public LoginPage getLoginPage() {
         return loginPage;
     }
@@ -32,6 +35,9 @@ public class Router {
     public TimetableViewerPage getTimetableViewerPage() {
         return timetableViewerPage;
     }
+    public void setTimetableViewerPage(TimetableViewerPage timetableViewerPage) {
+        this.timetableViewerPage = timetableViewerPage;
+    }
 
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
@@ -39,10 +45,7 @@ public class Router {
     private LoginPage loginPage;
     private SignInPage signInPage;
     private SignUpPage signUpPage;
-
-
     private HomePage homePage;
-
     private TimetableViewerPage timetableViewerPage;
 
 }

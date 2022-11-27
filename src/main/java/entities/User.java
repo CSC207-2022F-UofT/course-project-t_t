@@ -21,6 +21,7 @@ public class User {
 
 
     private Location location;
+    private Timetable timetable;
 
 
     // TODO: add getters & setters for <friends>, <blocked>, and <timetable>

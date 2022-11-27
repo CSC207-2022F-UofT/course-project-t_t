@@ -7,15 +7,15 @@ public class HomePage extends Page{
         super(router, pageState, "Home Page");
     }
 
+    private enum Option {
+        LOG_OUT,
+    }
     @Override
     public Page run() {
         assert this.checkLoggedIn();
 
-        System.out.printf("Welcome %s to the Home Page.", this.pageState.getCurrentUser().getName());
+        System.out.printf("Welcome %s to the Home Page.\n", this.pageState.getCurrentUser().getName());
 
-        enum Option {
-            LOG_OUT,
-        }
         Map<String, Option> options = Map.of(
                 "Log Out", Option.LOG_OUT
         );

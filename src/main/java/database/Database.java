@@ -5,7 +5,7 @@ import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
 public class Database {
-    private static ArrayList<User> db = new ArrayList<User>();
+    private static final ArrayList<User> db = new ArrayList<User>();
 
     public static ArrayList<User> getDatabase() {
         db.add(new User( "Kim", "cydfk123"));

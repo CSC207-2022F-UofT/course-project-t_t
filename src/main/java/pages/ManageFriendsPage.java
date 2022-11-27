@@ -1,5 +1,6 @@
 package pages;
 
+
 import java.util.Map;
 
 public class ManageFriendsPage extends Page{

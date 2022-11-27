@@ -29,6 +29,10 @@ public class Router {
         return homePage;
     }
 
+    public TimetableViewerPage getTimetableViewerPage() {
+        return timetableViewerPage;
+    }
+
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
     }
@@ -38,5 +42,7 @@ public class Router {
 
 
     private HomePage homePage;
+
+    private TimetableViewerPage timetableViewerPage;
 
 }

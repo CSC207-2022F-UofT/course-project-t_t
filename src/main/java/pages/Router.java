@@ -25,79 +25,18 @@ public class Router {
         this.signUpPage = signUpPage;
     }
 
-    private LoginPage loginPage;
-    private SignInPage signInPage;
-    private HomePage homePage;
-
-    private SignUpPage signUpPage;
-    private FriendsListPage friendsListPage;
-    private ManageBlockedPage manageBlockedPage;
-    private ManageFriendsPage manageFriendsPage;
-
-    private RemoveFriendsPage removeFriendsPage;
-    private AddFriendsPage addFriendsPage;
-    private FriendsPage friendsPage;
-
     public HomePage getHomePage() {
         return homePage;
     }
+
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
     }
+    private LoginPage loginPage;
+    private SignInPage signInPage;
+    private SignUpPage signUpPage;
 
-    public FriendsListPage getFriendsListPage() {
-        return friendsListPage;
-    }
 
-    public void setFriendsListPage(FriendsListPage friendsListPage) {
-        this.friendsListPage = friendsListPage;
-    }
+    private HomePage homePage;
 
-    public ManageBlockedPage getManageBlockedPage() {
-        return manageBlockedPage;
-    }
-
-    public void setManageBlockedPage(ManageBlockedPage manageBlockedPage) {
-        this.manageBlockedPage = manageBlockedPage;
-    }
-
-    public ManageFriendsPage getManageFriendsPage() {
-        return manageFriendsPage;
-    }
-
-    public void setManageFriendsPage(ManageFriendsPage manageFriendsPage) {
-        this.manageFriendsPage = manageFriendsPage;
-    }
-
-    public Page getAddFriendsPage() {
-        return addFriendsPage;
-    }
-
-    public void setAddFriendsPage(AddFriendsPage addFriendsPage) {
-        this.addFriendsPage = addFriendsPage;
-    }
-
-    public Page getRemoveFriendsPage() {
-        return removeFriendsPage;
-    }
-
-    public void setRemoveFriendsPage(RemoveFriendsPage removeFriendsPage) {
-        this.removeFriendsPage = removeFriendsPage;
-    }
-
-    public Page getFriendsPage() {
-        return friendsPage;
-    }
-
-    public void setFriendsPage(FriendsPage friendsPage) {
-        this.friendsPage = friendsPage;
-    }
-
-    public Page getBlockFriendsPage() {
-        return blockFriendsPage;
-    }
-
-    public Page getUnblockFriendsPage() {
-        return unblockFriendsPage;
-    }
 }

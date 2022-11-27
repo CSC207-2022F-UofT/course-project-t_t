@@ -4,15 +4,16 @@ import java.util.Map;
 
 public class LoginPage extends Page{
 
-    public LoginPage(Router router) {
-        super(router, "Login Page");
+    public LoginPage(Router router, PageState pageState) {
+        super(router, pageState, "Login Page");
+    }
+
+    private enum Option {
+        SIGN_IN,
+        SIGN_UP
     }
     @Override
     public Page run() {
-        enum Option {
-            SIGN_IN,
-            SIGN_UP
-        }
         Map<String, Option> options = Map.of(
                 "Sign In", Option.SIGN_IN,
                 "Sign Up", Option.SIGN_UP

@@ -8,11 +8,11 @@ public class ManageFriendsPage extends Page{
         super(router, pageState, "Manage Friends Page");
     }
 
-    enum Option {
+    private enum Option {
         ADD_FRIENDS,
         REMOVE_FRIENDS
     }
-    
+
     @Override
     public Page run() {
 

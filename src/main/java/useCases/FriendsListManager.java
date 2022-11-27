@@ -61,10 +61,19 @@ public class FriendsListManager {
     public static User getFriend(User student1, String username) {
         ArrayList<User> friends = student1.getFriends();
         for (User friend : friends) {
-            if (Objects.equals(friend.getName(), username)) {
+            if (Objects.equals(friend.getUsername(), username)) {
                 return friend;
             }
         }
         return student1;
+    }
+
+    public boolean checkUsername(ArrayList<User> db1, String username1) {
+        for (int i = 0; i < db1.size(); i++) {
+            if (username1.equals(db1.get(i).getUsername())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

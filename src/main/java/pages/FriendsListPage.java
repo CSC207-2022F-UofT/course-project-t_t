@@ -18,7 +18,7 @@ public class FriendsListPage extends Page{
         ArrayList<User> fl = FriendsList.getFriends(curr_user);
 
         for (User user : fl) {
-            String curr = user.getName();
+            String curr = user.getUsername();
             System.out.println(curr);
         }
 

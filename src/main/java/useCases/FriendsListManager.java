@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class FriendsListManager {
-    public void addFriends(User student1, User student2) {
+    public static void addFriends(User student1, User student2) {
         if (!student1.getFriends().contains(student2)) {
             ArrayList<User> friends = student1.getFriends();
             friends.add(student2);
@@ -14,7 +14,7 @@ public class FriendsListManager {
         }
     }
 
-    public void removeFriends(User student1, User student2) {
+    public static void removeFriends(User student1, User student2) {
         if (student1.getFriends().contains(student2)) {
             ArrayList<User> friends = student1.getFriends();
             friends.remove(student2);

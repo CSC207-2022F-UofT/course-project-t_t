@@ -10,7 +10,7 @@ public class FriendsList extends User{
         super(name);
     }
 
-    public ArrayList<User> getFriends(User studentValue) {
+    public static ArrayList<User> getFriends(User studentValue) {
         return studentValue.friends;
     }
 

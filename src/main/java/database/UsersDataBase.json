@@ -1,0 +1,27 @@
+[
+	{
+		"username": "user one",
+		"password": "useronepassword",
+		"email": "userone@gmail.com",
+		"friendslist": ["user two"],
+		"blockedList": [" user three"],
+		"timetable": {"CSC207 LEC5201": [[0, 2],[5,7]], 'CSC236 LEC5202': [[10, 12],[15, 17]]},
+
+	},
+	{
+		"username": "user two",
+		"password": "usertwopassword",
+		"email": "usertwo@gmail.com",
+		"friendslist": ["user one"],
+		"blockedList": ["user three"],
+		"timetable": {'CSC207 LEC5203': [[0, 2],[7, 9]], 'CSC236 LEC5204': [[9, 11],[15, 17]]}
+	},
+	{
+		"username": "user three",
+		"password": "userthreepassword",
+		"email": "userthree@gmail.com",
+		"friendslist": [],
+		"blockedList": ["user one", "user two"],
+		"timetable": {'ABC123 LEC0000': [[0, 2],[7, 9]], 'XYZ890 LEC1111': [[9, 11],[15, 17]]}
+	}
+]

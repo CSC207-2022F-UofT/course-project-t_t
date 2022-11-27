@@ -3,6 +3,10 @@
 
 ./idea/*
 
+.idea/.gitignore
+.idea/misc.xml
+.idea/vcs.xml
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml

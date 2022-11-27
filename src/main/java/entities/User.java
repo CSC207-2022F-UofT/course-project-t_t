@@ -1,34 +1,36 @@
 package entities;
 
 import entities.Timetable;
-import entities.User;
+import entities.Location;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 public class User {
 
-    private String name;
+    private String username;
     private String password;
     private String email;
     private Timetable timetable;
     private ArrayList<User> friendsList;
     private ArrayList<User> blockedList;
+    private Location location;
 
-    public User(String name, String password, String email,
+    public User(String username, String password, String email,
                 Timetable timetable, ArrayList<User> friendsList, ArrayList<User> blockedList) {
-        this.name = name;
+        this.username = username;
         this.password = password;
         this.email = email;
         this.timetable = timetable;
         this.friendsList = friendsList;
         this.blockedList = blockedList;
+        this.location = new Location("temp");
     }
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -62,4 +64,12 @@ public class User {
     public void setBlockedList(ArrayList<User> blockedList) {
         this.blockedList = blockedList;
     }
+
+    public Location getLocation(){return this.location;}
+
+    public Timetable getTimetable() {return timetable;}
+
+    public void setTimetable(Timetable timetable) {this.timetable = timetable;}
+
+    public void setLocation(Location location) {this.location = location;}
 }

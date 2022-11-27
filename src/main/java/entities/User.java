@@ -1,14 +1,16 @@
 package entities;
 
 public class User {
-    public String getName() {
-        return name;
+    String username;
+    String password;
+
+    public String getUsername() {
+        return username;
+    }
+    public String getPassword() {
+        return password;
     }
 
-
-    public void setName(String name) {
-        this.name = name;
-    }
     public void setTimetable(Timetable timetable) {this.timetable = timetable;}
 
     public void setLocation(Location location) {this.location = location;}
@@ -17,13 +19,22 @@ public class User {
 
     public Timetable getTimetable() {return timetable;}
 
-    private String name;
-    private Timetable timetable;
 
     private Location location;
 
-    public User(String name) {
-        this.name = name;
-        this.location = new Location("Temporary place holder");
+
+    // TODO: add getters & setters for <friends>, <blocked>, and <timetable>
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.location = new Location("temp");
     }
 }

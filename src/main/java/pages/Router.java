@@ -36,6 +36,7 @@ public class Router {
 
     private RemoveFriendsPage removeFriendsPage;
     private AddFriendsPage addFriendsPage;
+    private FriendsPage friendsPage;
 
     public HomePage getHomePage() {
         return homePage;
@@ -82,5 +83,13 @@ public class Router {
 
     public void setRemoveFriendsPage(RemoveFriendsPage removeFriendsPage) {
         this.removeFriendsPage = removeFriendsPage;
+    }
+
+    public Page getFriendsPage() {
+        return friendsPage;
+    }
+
+    public void setFriendsPage(FriendsPage friendsPage) {
+        this.friendsPage = friendsPage;
     }
 }

@@ -15,14 +15,19 @@ public class HomePage extends Page{
 
         enum Option {
             LOG_OUT,
+            FRIENDS_LIST
         }
         Map<String, Option> options = Map.of(
-                "Log Out", Option.LOG_OUT
+                "Log Out", Option.LOG_OUT,
+                "Friends List", Option.FRIENDS_LIST
         );
         Option selection = promptInput(options);
 
         Page redirect = null;
         switch (selection) {
+            case FRIENDS_LIST:
+                redirect = this.router.getFriendsPage();
+                System.out.println("Redirecting to Friends page...");
             case LOG_OUT:
                 redirect = this.router.getLoginPage();
                 System.out.println("Logging out...");

@@ -12,6 +12,11 @@ public class Client {
         SignInPage signInPage = new SignInPage(router, pageState);
         SignUpPage signUpPage = new SignUpPage(router, pageState);
         HomePage homePage = new HomePage(router, pageState);
+        FriendsPage friendsPage = new FriendsPage(router, pageState);
+        FriendsListPage friendsListPage = new FriendsListPage(router, pageState);
+        AddFriendsPage addFriendsPage = new AddFriendsPage(router, pageState);
+
+
 
 
         router.setLoginPage(loginPage);

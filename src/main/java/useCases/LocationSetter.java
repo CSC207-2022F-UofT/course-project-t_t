@@ -21,8 +21,8 @@ public class LocationSetter {
         for(int i = 0; i < courses.size(); i++){
             ArrayList<Lecture> lectures = courses.get(i).getLectures();
             for(int j = 0; j < lectures.size(); j++){
-                int start = lectures.get(j).getInterval().start();
-                int end = lectures.get(j).getInterval().end();
+                int start = lectures.get(j).getInterval().getStart();
+                int end = lectures.get(j).getInterval().getEnd();
                 if(start <= now_m && now_m < end){
                     user.setLocation(lectures.get(j).getLocation());
                     return;

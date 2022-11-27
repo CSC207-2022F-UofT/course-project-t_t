@@ -38,7 +38,7 @@ public class UnblockFriendsPage extends Page {
             User curr_friend = FriendsListManager.getFriend(curr_user, friend);
             FriendsListManager.unblockFriends(curr_user, curr_friend);
 
-            return router.getFriendsListPage();
+            return router.getBlockFriendsPage();
         }
     }
 }

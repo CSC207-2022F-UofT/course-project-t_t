@@ -42,22 +42,22 @@ public class FriendsListManager {
         }
     }
 
-    public void starFriends(User student1, User student2) {
-        if (student1.getFriends().contains(student2)) {
-            ArrayList<User> starred = student1.getFriends();
-            starred.add(0, student2);
-            student1.setFriends(starred);
-        }
-    }
-
-    public void unstarFriends(User student1, User student2) {
-        if (student1.getFriends().contains(student2)) {
-            ArrayList<User> starred = student1.getFriends();
-            starred.remove(student2);
-            starred.add(student2);
-            student1.setFriends(starred);
-        }
-    }
+//    public void starFriends(User student1, User student2) {
+//        if (student1.getFriends().contains(student2)) {
+//            ArrayList<User> starred = student1.getFriends();
+//            starred.add(0, student2);
+//            student1.setFriends(starred);
+//        }
+//    }
+//
+//    public void unstarFriends(User student1, User student2) {
+//        if (student1.getFriends().contains(student2)) {
+//            ArrayList<User> starred = student1.getFriends();
+//            starred.remove(student2);
+//            starred.add(student2);
+//            student1.setFriends(starred);
+//        }
+//    }
 
     public static User getFriend(User student1, String username) {
         ArrayList<User> friends = student1.getFriends();

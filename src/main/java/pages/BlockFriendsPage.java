@@ -35,7 +35,7 @@ public class BlockFriendsPage extends Page{
             User curr_friend = db.get(0);
             FriendsListManager.blockFriends(curr_user, curr_friend);
 
-            return router.getFriendsListPage();
+            return router.getBlockFriendsPage();
         }
     }
 }

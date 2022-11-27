@@ -6,8 +6,8 @@ public class FriendsList extends User{
     ArrayList<User> friends;
     ArrayList<User> blocked;
 
-    public FriendsList(String name) {
-        super(name);
+    public FriendsList(String username, String password) {
+        super(username, password);
     }
 
     public static ArrayList<User> getFriends(User studentValue) {

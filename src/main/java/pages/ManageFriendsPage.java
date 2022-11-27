@@ -7,12 +7,15 @@ public class ManageFriendsPage extends Page{
     public ManageFriendsPage(Router router, PageState pageState) {
         super(router, pageState, "Manage Friends Page");
     }
+
+    enum Option {
+        ADD_FRIENDS,
+        REMOVE_FRIENDS
+    }
+    
     @Override
     public Page run() {
-        enum Option {
-            ADD_FRIENDS,
-            REMOVE_FRIENDS
-        }
+
         Map<String, Option> options = Map.of(
                 "Add Friends", Option.ADD_FRIENDS,
                 "Remove Friends", Option.REMOVE_FRIENDS
@@ -28,7 +31,7 @@ public class ManageFriendsPage extends Page{
                 redirect = this.router.getRemoveFriendsPage();
                 System.out.println("Redirecting to Remove Friends...");
 
-        };
+        }
         return redirect;
     }
 }

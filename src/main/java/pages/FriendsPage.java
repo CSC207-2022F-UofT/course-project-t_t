@@ -6,13 +6,15 @@ public class FriendsPage extends Page{
     public FriendsPage(Router router, PageState pageState) {
         super(router, pageState, "Friends Page");
     }
+
+    private enum Option {
+        MANAGE_FRIENDS,
+        MANAGE_BLOCKED,
+        VIEW_FRIENDS
+    }
     @Override
     public Page run() {
-        enum Option {
-            MANAGE_FRIENDS,
-            MANAGE_BLOCKED,
-            VIEW_FRIENDS
-        }
+
         Map<String, Option> options = Map.of(
                 "Manage Friends", Option.MANAGE_FRIENDS,
                 "Manage Blocked Friends", Option.MANAGE_BLOCKED,
@@ -32,7 +34,7 @@ public class FriendsPage extends Page{
                 redirect = this.router.getFriendsListPage();
                 System.out.println("Redirecting to Friends List...");
                 break;
-        };
+        }
         return redirect;
     }
 }

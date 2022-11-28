@@ -28,9 +28,7 @@ public class User {
 
     // TODO: add getters & setters for <friends>, <blocked>, and <timetable>
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    public void setUsername(String username) { this.username = username; }
     public void setPassword(String password) {
         this.password = password;
     }

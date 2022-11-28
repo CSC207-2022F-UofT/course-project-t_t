@@ -10,7 +10,8 @@ public class FriendsPage extends Page{
     private enum Option {
         MANAGE_FRIENDS,
         MANAGE_BLOCKED,
-        VIEW_FRIENDS
+        VIEW_FRIENDS,
+        BACK_HOME
     }
     @Override
     public Page run() {
@@ -18,12 +19,17 @@ public class FriendsPage extends Page{
         Map<String, Option> options = Map.of(
                 "Manage Friends", Option.MANAGE_FRIENDS,
                 "Manage Blocked Friends", Option.MANAGE_BLOCKED,
-                "View Friends", Option.VIEW_FRIENDS
+                "View Friends", Option.VIEW_FRIENDS,
+                "Back to Home Page", Option.BACK_HOME
         );
         Option selection = promptInput(options);
 
         Page redirect = null;
         switch (selection) {
+            case BACK_HOME:
+                redirect = this.router.getHomePage();
+                System.out.println("Redirecting to Home Page...");
+                break;
             case MANAGE_BLOCKED:
                 redirect = this.router.getManageBlockedPage();
                 System.out.println("Redirecting to Manage Blocked Friends...");

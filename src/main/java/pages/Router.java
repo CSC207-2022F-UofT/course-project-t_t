@@ -104,19 +104,13 @@ public class Router {
 
     public void setFriendsPage(FriendsPage friendsPage) {
         this.friendsPage = friendsPage;
+    }
 
-    private ManageBlockedPage manageBlockedPage;
+
     private BlockFriendsPage blockFriendsPage;
     private UnblockFriendsPage unblockFriendsPage;
     private BlockedListPage blockedListPage;
 
-    public ManageBlockedPage getManageBlockedPage() {
-        return manageBlockedPage;
-    }
-
-    public void setManageBlockedPage(ManageBlockedPage manageBlockedPage) {
-        this.manageBlockedPage = manageBlockedPage;
-    }
 
     public BlockFriendsPage getBlockFriendsPage() {
         return blockFriendsPage;
@@ -133,12 +127,11 @@ public class Router {
         this.unblockFriendsPage = unblockFriendsPage;
     }
 
-    public BlockedListPage getFriendsListPage() {
+    public BlockedListPage getBlockedListPage() {
         return blockedListPage;
     }
 
-    public void setFriendsListPage(BlockedListPage blockedListPage) {
+    public void setBlockedListPage(BlockedListPage blockedListPage) {
         this.blockedListPage = blockedListPage;
-
     }
 }

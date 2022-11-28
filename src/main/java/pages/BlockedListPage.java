@@ -15,7 +15,7 @@ public class BlockedListPage extends Page{
 
         User curr_user = this.pageState.getCurrentUser();
 
-        ArrayList<User> fl = FriendsList.getFriends(curr_user);
+        ArrayList<User> fl = curr_user.getFriends();
 
         for (User user : fl) {
             String curr = user.getUsername();

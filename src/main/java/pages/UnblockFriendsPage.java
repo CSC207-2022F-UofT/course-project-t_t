@@ -22,7 +22,7 @@ public class UnblockFriendsPage extends Page {
         ArrayList<User> db = Database.getDatabase();
 
         User curr_user = this.pageState.getCurrentUser();
-        ArrayList<User> fl = FriendsList.getFriends(curr_user);
+        ArrayList<User> fl = curr_user.getFriends();
 
         while (true) {
             System.out.println("Enter your friend's username:");

@@ -8,14 +8,14 @@ import useCases.FriendsListManager;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UnblockFriendsPage extends Page {
-    public UnblockFriendsPage(Router router, PageState pageState) {
-        super(router, pageState, "Unblock Friends Page");
+public class RemoveFriendsPage extends Page {
+    public RemoveFriendsPage(Router router, PageState pageState) {
+        super(router, pageState, "Remove Friends Page");
     }
 
     @Override
     public Page run() {
-        System.out.println("This is the Unblock Friends page.");
+        System.out.println("This is a Remove Friends page.");
 
         Scanner in = new Scanner(System.in);
 
@@ -34,11 +34,12 @@ public class UnblockFriendsPage extends Page {
                 continue;
             }
 
-            System.out.printf("Unblocking %s.\n", friend);
+            System.out.printf("Removing %s.\n", friend);
             User curr_friend = FriendsListManager.getFriend(curr_user, friend);
-            FriendsListManager.unblockFriends(curr_user, curr_friend);
+            FriendsListManager.removeFriends(curr_user, curr_friend);
 
-            return router.getBlockFriendsPage();
+            return router.getFriendsListPage();
         }
     }
 }
+

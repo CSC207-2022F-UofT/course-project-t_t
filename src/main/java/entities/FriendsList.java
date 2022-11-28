@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+
 import entities.User;
 
 public class FriendsList{

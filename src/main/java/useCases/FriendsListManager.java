@@ -18,6 +18,7 @@ public class FriendsListManager {
                 friends.add(student2);
                 student1.setFriends(friends);
             }
+
         }
     }
 
@@ -29,7 +30,9 @@ public class FriendsListManager {
         }
     }
 
+
     public void blockFriends(User student1, User student2) {
+
         if (student1.getFriends().contains(student2)) {
             removeFriends(student1, student2);
         }
@@ -41,6 +44,7 @@ public class FriendsListManager {
     }
 
     public void unblockFriends(User student1, User student2) {
+
         if (student1.getBlocked().contains(student2)) {
             ArrayList<User> blocked = student1.getBlocked();
             blocked.remove(student2);
@@ -68,7 +72,9 @@ public class FriendsListManager {
     public static User getFriend(User student1, String username) {
         ArrayList<User> friends = student1.getFriends();
         for (User friend : friends) {
+
             if (Objects.equals(friend.getUsername(), username)) {
+
                 return friend;
             }
         }
@@ -82,5 +88,17 @@ public class FriendsListManager {
             }
         }
         return false;
+
+    public ArrayList<String> sortFriendList(User student1) {
+        ArrayList<User> friends = student1.getFriends();
+        ArrayList<String> friendNames = new ArrayList<>();
+        for (User friend : friends) {
+            for (int i = 0; i < friends.size(); i++) {
+                friendNames.add(friend.getName());
+            }
+        }
+        Collections.sort(friendNames);
+        return friendNames;
+
     }
 }

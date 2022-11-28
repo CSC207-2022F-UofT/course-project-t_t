@@ -104,5 +104,41 @@ public class Router {
 
     public void setFriendsPage(FriendsPage friendsPage) {
         this.friendsPage = friendsPage;
+
+    private ManageBlockedPage manageBlockedPage;
+    private BlockFriendsPage blockFriendsPage;
+    private UnblockFriendsPage unblockFriendsPage;
+    private BlockedListPage blockedListPage;
+
+    public ManageBlockedPage getManageBlockedPage() {
+        return manageBlockedPage;
+    }
+
+    public void setManageBlockedPage(ManageBlockedPage manageBlockedPage) {
+        this.manageBlockedPage = manageBlockedPage;
+    }
+
+    public BlockFriendsPage getBlockFriendsPage() {
+        return blockFriendsPage;
+    }
+    public void setBlockFriendsPage(BlockFriendsPage blockFriendsPage) {
+        this.blockFriendsPage = blockFriendsPage;
+    }
+
+    public UnblockFriendsPage getUnblockFriendsPage() {
+        return unblockFriendsPage;
+    }
+
+    public void setUnblockFriendsPage(UnblockFriendsPage unblockFriendsPage) {
+        this.unblockFriendsPage = unblockFriendsPage;
+    }
+
+    public BlockedListPage getFriendsListPage() {
+        return blockedListPage;
+    }
+
+    public void setFriendsListPage(BlockedListPage blockedListPage) {
+        this.blockedListPage = blockedListPage;
+
     }
 }

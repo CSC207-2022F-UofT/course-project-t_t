@@ -3,7 +3,7 @@
 		"username": "user one",
 		"password": "useronepassword",
 		"email": "userone@gmail.com",
-		"friendslist": ["user two"],
+		"friendsList": ["user two"],
 		"blockedList": [" user three"],
 		"location": "Bahen",
 		"timetable": [
@@ -55,7 +55,7 @@
 		"username": "user two",
 		"password": "usertwopassword",
 		"email": "usertwo@gmail.com",
-		"friendslist": ["user one"],
+		"friendsList": ["user one"],
 		"blockedList": ["user three"],
 		"location": "Robarts",
 		"timetable": [
@@ -107,7 +107,7 @@
 		"username": "user three",
 		"password": "userthreepassword",
 		"email": "userthree@gmail.com",
-		"friendslist": [],
+		"friendsList": [],
 		"blockedList": ["user one", "user two"],
 		"Location": "Athletic Center",
 		"timetable": [

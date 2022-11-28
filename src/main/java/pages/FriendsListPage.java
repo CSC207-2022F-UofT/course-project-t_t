@@ -22,6 +22,6 @@ public class FriendsListPage extends Page{
             System.out.println(curr);
         }
 
-        return router.getManageFriendsPage();
+        return router.getFriendsPage();
     }
 }

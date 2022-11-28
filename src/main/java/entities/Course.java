@@ -12,6 +12,14 @@ public class Course {
         this.lectures = lectures;
     }
 
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public String getSectionCode() {
+        return sectionCode;
+    }
+
     public ArrayList<Lecture> getLectures(){
         return this.lectures;
     }

@@ -1,6 +1,9 @@
 package pages;
 
 public class Router {
+    public Router() {
+    }
+
     public LoginPage getLoginPage() {
         return loginPage;
     }
@@ -56,6 +59,22 @@ public class Router {
     public ManageBlockedPage getManageBlockedPage() {
         return manageBlockedPage;
     }
+
+    public TimetableViewerPage getTimetableViewerPage() {
+        return timetableViewerPage;
+    }
+    public void setTimetableViewerPage(TimetableViewerPage timetableViewerPage) {
+        this.timetableViewerPage = timetableViewerPage;
+    }
+
+    public void setHomePage(HomePage homePage) {
+        this.homePage = homePage;
+    }
+    private LoginPage loginPage;
+    private SignInPage signInPage;
+    private SignUpPage signUpPage;
+    private HomePage homePage;
+    private TimetableViewerPage timetableViewerPage;
 
     public void setManageBlockedPage(ManageBlockedPage manageBlockedPage) {
         this.manageBlockedPage = manageBlockedPage;

@@ -9,7 +9,6 @@ public class HomePage extends Page{
 
     private enum Option {
         LOG_OUT,
-        FRIENDS,
         TIMETABLE_VIEWER,
     }
     @Override
@@ -20,17 +19,12 @@ public class HomePage extends Page{
 
         Map<String, Option> options = Map.of(
                 "Log Out", Option.LOG_OUT,
-                "Friends", Option.FRIENDS,
                 "Timetable Viewer", Option.TIMETABLE_VIEWER
         );
         Option selection = promptInput(options);
 
         Page redirect = null;
         switch (selection) {
-            case FRIENDS:
-                redirect = this.router.getFriendsPage();
-                System.out.println("Redirecting to Friends page...");
-                break;
             case LOG_OUT:
                 redirect = this.router.getLoginPage();
                 System.out.println("Logging out...");

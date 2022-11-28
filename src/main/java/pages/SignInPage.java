@@ -30,8 +30,6 @@ public class SignInPage extends Page{
             System.out.println("Enter your password:");
 
             String password = in.next();
-            ArrayList<User> friends = new ArrayList<>();
-            ArrayList<User> blocked = new ArrayList<>();
 
             if (!signIn.checkUsername(db, username)) {
                 System.out.println("User not found. Try again.");
@@ -44,7 +42,7 @@ public class SignInPage extends Page{
             }
 
             System.out.printf("Signing in as %s.\n", username);
-            this.pageState.setCurrentUser(new User(username, password, friends, blocked));
+            this.pageState.setCurrentUser(new User(username, password));
 
             return router.getHomePage();
         }

@@ -6,6 +6,7 @@ import useCases.FriendsListManager;
 import useCases.SignIn;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class AddFriendsPage extends Page{
@@ -35,6 +36,13 @@ public class AddFriendsPage extends Page{
 
             System.out.printf("Adding %s.\n", friend);
             User curr_friend = Database.getUser(friend);
+
+//            for (User user : db) {
+//                if (Objects.equals(user.getUsername(), friend)) {
+//                    User curr_friend = user;
+//                    FriendsListManager.addFriends(curr_user, curr_friend);
+//                }
+//            }
             FriendsListManager.addFriends(curr_user, curr_friend);
 
             return router.getFriendsListPage();

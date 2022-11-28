@@ -30,13 +30,15 @@ public class SignUpPage extends Page{
             System.out.println("Enter your new password:");
 
             String password = in.next();
+            ArrayList<User> friends = new ArrayList<>();
+            ArrayList<User> blocked = new ArrayList<>();
 
             if (!signUp.checkNewUsername(db, username)) {
                 System.out.println("Existing username. Try another username.");
                 continue;
             }
 
-            Database.addUser(username, password);
+            Database.addUser(username, password, friends, blocked);
 
             System.out.printf("New account created for %s. \n", username);
 

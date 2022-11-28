@@ -35,25 +35,29 @@ public class User {
         this.password = password;
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
         this.username = username;
         this.password = password;
         this.location = new Location("temp");
+        this.friendsList = new FriendsList(friends, blocked);
     }
 
-    protected ArrayList<User> friends;
-    protected ArrayList<User> blocked;
+//    protected ArrayList<User> friends;
+    private FriendsList friendsList;
+//    protected ArrayList<User> blocked;
 
     public ArrayList<User> getFriends() {
-        return friends;
+//        System.out.println(friendsList.friends);
+//        # --> Source of Error (friends has not been initialized)
+        return this.friendsList.friends;
     }
     public ArrayList<User> getBlocked() {
-        return blocked;
+        return this.friendsList.blocked;
     }
     public void setFriends(ArrayList<User> friends) {
-        this.friends = friends;
+        this.friendsList.friends = friends;
     }
     public void setBlocked(ArrayList<User> blocked) {
-        this.blocked = blocked;
+        this.friendsList.blocked = blocked;
     }
 }

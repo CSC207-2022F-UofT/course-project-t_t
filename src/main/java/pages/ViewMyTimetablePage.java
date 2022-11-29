@@ -3,6 +3,7 @@ package pages;
 import entities.Timetable;
 import presenter.TimetableViewer;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class ViewMyTimetablePage extends Page{
@@ -33,7 +34,20 @@ public class ViewMyTimetablePage extends Page{
         // show visualization
         // prompt user to continue
 
-        System.out.println(visualization);
+        String[][] schedule = new String[5][22];
+
+        String[] days = {"Mon", "Tue", "Wed", "Thu", "Fri"};
+
+        JTable table = new JTable(schedule, days);
+
+        JFrame frame = new JFrame("Table demo");
+
+        frame.add(new JScrollPane(table));
+
+        frame.setSize(500, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.setVisible(true);
 
         return this.router.getHomePage();
     }

@@ -44,9 +44,6 @@ public class Router {
     public HomePage getHomePage() {
         return homePage;
     }
-    public void setHomePage(HomePage homePage) {
-        this.homePage = homePage;
-    }
 
     public FriendsListPage getFriendsListPage() {
         return friendsListPage;
@@ -60,21 +57,17 @@ public class Router {
         return manageBlockedPage;
     }
 
-    public TimetableViewerPage getTimetableViewerPage() {
-        return timetableViewerPage;
+    public ViewMyTimetablePage getTimetableViewerPage() {
+        return viewMyTimetablePage;
     }
-    public void setTimetableViewerPage(TimetableViewerPage timetableViewerPage) {
-        this.timetableViewerPage = timetableViewerPage;
+    public void setTimetableViewerPage(ViewMyTimetablePage viewMyTimetablePage) {
+        this.viewMyTimetablePage = viewMyTimetablePage;
     }
 
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
     }
-    private LoginPage loginPage;
-    private SignInPage signInPage;
-    private SignUpPage signUpPage;
-    private HomePage homePage;
-    private TimetableViewerPage timetableViewerPage;
+    private ViewMyTimetablePage viewMyTimetablePage;
 
     public void setManageBlockedPage(ManageBlockedPage manageBlockedPage) {
         this.manageBlockedPage = manageBlockedPage;

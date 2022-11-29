@@ -1,24 +1,21 @@
 package entities;
 
-import java.util.ArrayList;
 public class User {
 
     private String username;
     private String password;
     private String email;
     private Timetable timetable;
-    private ArrayList<User> friendsList;
-    private ArrayList<User> blockedList;
+    private FriendsList friendsList;
     private Location location;
 
     public User(String username, String password, String email, Location location,
-                Timetable timetable, ArrayList<User> friendsList, ArrayList<User> blockedList) {
+                Timetable timetable, FriendsList friendsList) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.timetable = timetable;
         this.friendsList = friendsList;
-        this.blockedList = blockedList;
         this.location = location;
     }
     public String getUsername() {
@@ -45,20 +42,12 @@ public class User {
         this.email = email;
     }
 
-    public ArrayList<User> getFriendsList() {
+    public FriendsList getFriendsList() {
         return friendsList;
     }
 
-    public void setFriendsList(ArrayList<User> friends) {
+    public void setFriendsList(FriendsList friends) {
         this.friendsList = friends;
-    }
-
-    public ArrayList<User> getBlockedList() {
-        return blockedList;
-    }
-
-    public void setBlockedList(ArrayList<User> blockedList) {
-        this.blockedList = blockedList;
     }
 
     public Location getLocation(){return this.location;}

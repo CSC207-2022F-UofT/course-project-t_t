@@ -11,7 +11,7 @@ public class User {
     private ArrayList<User> blockedList;
     private Location location;
 
-    public User(String username, String password, String email,
+    public User(String username, String password, String email, Location location,
                 Timetable timetable, ArrayList<User> friendsList, ArrayList<User> blockedList) {
         this.username = username;
         this.password = password;
@@ -19,7 +19,7 @@ public class User {
         this.timetable = timetable;
         this.friendsList = friendsList;
         this.blockedList = blockedList;
-        this.location = new Location("temp");
+        this.location = location;
     }
     public String getUsername() {
         return username;

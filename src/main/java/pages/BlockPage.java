@@ -7,14 +7,15 @@ import useCases.FriendsListManager;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class BlockFriendsPage extends Page{
-    public BlockFriendsPage(Router router, PageState pageState) {
-        super(router, pageState, "Block Friends Page");
+public class BlockPage extends Page{
+    public BlockPage(Router router, PageState pageState) {
+        super(router, pageState, "Block Page");
     }
 
     @Override
     public Page run() {
-        System.out.println("This is the Block Friends page.");
+        FriendsListManager friendsListManager = new FriendsListManager();
+        System.out.println("This is the Block User page.");
 
         Scanner in = new Scanner(System.in);
 
@@ -22,20 +23,20 @@ public class BlockFriendsPage extends Page{
         User curr_user = this.pageState.getCurrentUser();
 
         while (true) {
-            System.out.println("Enter your friend's username:");
+            System.out.println("Enter username of user to block:");
 
             String friend = in.next();
 
-            if (!friend.equals(db.get(0).getName())) {
+            if (!friendsListManager.checkUsername(db, friend)) {
                 System.out.println("User not found. Try again.");
                 continue;
             }
 
             System.out.printf("Blocking %s.\n", friend);
-            User curr_friend = db.get(0);
+            User curr_friend = Database.getUser(friend);
             FriendsListManager.blockFriends(curr_user, curr_friend);
 
-            return router.getBlockFriendsPage();
+            return router.getManageBlockedPage();
         }
     }
 }

@@ -11,7 +11,6 @@ public class FriendsListManager {
 //    static FriendsListChecker friendsListChecker = new FriendsListChecker();
     static ArrayList<User> db = Database.getDatabase();
     public static void addFriends(User student1, User student2) {
-
         if (!student1.getFriends().contains(student2)) {
             if (Database.getDatabase().contains(student2)) {
                 ArrayList<User> friends = student1.getFriends();
@@ -32,7 +31,6 @@ public class FriendsListManager {
 
 
     public static void blockFriends(User student1, User student2) {
-
         if (student1.getFriends().contains(student2)) {
             removeFriends(student1, student2);
         }
@@ -44,7 +42,6 @@ public class FriendsListManager {
     }
 
     public static void unblockFriends(User student1, User student2) {
-
         if (student1.getBlocked().contains(student2)) {
             ArrayList<User> blocked = student1.getBlocked();
             blocked.remove(student2);
@@ -56,10 +53,18 @@ public class FriendsListManager {
     public static User getFriend(User student1, String username) {
         ArrayList<User> friends = student1.getFriends();
         for (User friend : friends) {
-
             if (Objects.equals(friend.getUsername(), username)) {
-
                 return friend;
+            }
+        }
+        return student1;
+    }
+
+    public static User getBlocked(User student1, String username) {
+        ArrayList<User> blocked = student1.getBlocked();
+        for (User user : blocked) {
+            if (Objects.equals(user.getUsername(), username)) {
+                return user;
             }
         }
         return student1;

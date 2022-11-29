@@ -13,6 +13,7 @@ public class FriendsPage extends Page{
         VIEW_FRIENDS,
         VIEW_BLOCKED,
         BACK_HOME,
+
     }
     @Override
     public Page run() {

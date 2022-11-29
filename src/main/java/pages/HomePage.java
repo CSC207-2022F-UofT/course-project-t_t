@@ -9,7 +9,8 @@ public class HomePage extends Page{
 
     private enum Option {
         LOG_OUT,
-        TIMETABLE_VIEWER,
+        FRIENDS,
+        VIEW_MY_TIMETABLE,
     }
     @Override
     public Page run() {
@@ -19,21 +20,26 @@ public class HomePage extends Page{
 
         Map<String, Option> options = Map.of(
                 "Log Out", Option.LOG_OUT,
-                "Timetable Viewer", Option.TIMETABLE_VIEWER
+                "Friends", Option.FRIENDS,
+                "View My Timetable", Option.VIEW_MY_TIMETABLE
         );
         Option selection = promptInput(options);
 
         Page redirect = null;
         switch (selection) {
+            case FRIENDS:
+                redirect = this.router.getFriendsPage();
+                System.out.println("Redirecting to Friends page...");
+                break;
             case LOG_OUT:
                 redirect = this.router.getLoginPage();
                 System.out.println("Logging out...");
                 this.pageState.setCurrentUser(null);
                 break;
             // add 'user' to set it as a current user
-            case TIMETABLE_VIEWER:
+            case VIEW_MY_TIMETABLE:
                 redirect = this.router.getTimetableViewerPage();
-                System.out.println("Loading timetable...");
+                System.out.println("Loading my timetable...");
                 this.pageState.setCurrentUser(null);
                 break;
         };

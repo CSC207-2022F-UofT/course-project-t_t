@@ -5,10 +5,14 @@ import presenter.TimetableViewer;
 
 import java.util.ArrayList;
 
-public class TimetableViewerPage extends Page{
+public class ViewMyTimetablePage extends Page{
     public Timetable getTimetable() {
         return timetable;
     }
+    // if student1 and student2 both added each other to their friend lists,
+    // then student1 can view student2's timetable and student2 can view student1's timetable
+    // else if only student1 added student2 to its friend list,
+    // then student1 cannot view student2's timetable
 
     public void setTimetable(Timetable timetable) {
         this.timetable = timetable;
@@ -17,7 +21,7 @@ public class TimetableViewerPage extends Page{
     private Timetable timetable;
     private TimetableViewer timetableViewer;
 
-    public TimetableViewerPage(Router router, PageState pageState) {
+    public ViewMyTimetablePage(Router router, PageState pageState) {
         super(router, pageState, "Timetable Viewer");
         this.timetableViewer = new TimetableViewer();
     }

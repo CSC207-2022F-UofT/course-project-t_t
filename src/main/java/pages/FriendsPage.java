@@ -11,7 +11,9 @@ public class FriendsPage extends Page{
         MANAGE_FRIENDS,
         MANAGE_BLOCKED,
         VIEW_FRIENDS,
-        BACK_HOME
+        VIEW_BLOCKED,
+        BACK_HOME,
+
     }
     @Override
     public Page run() {
@@ -20,6 +22,7 @@ public class FriendsPage extends Page{
                 "Manage Friends", Option.MANAGE_FRIENDS,
                 "Manage Blocked Friends", Option.MANAGE_BLOCKED,
                 "View Friends", Option.VIEW_FRIENDS,
+                "View Blocked Users", Option.VIEW_BLOCKED,
                 "Back to Home Page", Option.BACK_HOME
         );
         Option selection = promptInput(options);
@@ -29,6 +32,10 @@ public class FriendsPage extends Page{
             case BACK_HOME:
                 redirect = this.router.getHomePage();
                 System.out.println("Redirecting to Home Page...");
+                break;
+            case VIEW_BLOCKED:
+                redirect = this.router.getBlockedListPage();
+                System.out.println("Redirecting to Blocked User List...");
                 break;
             case MANAGE_BLOCKED:
                 redirect = this.router.getManageBlockedPage();

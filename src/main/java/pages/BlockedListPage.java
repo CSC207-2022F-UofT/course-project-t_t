@@ -15,13 +15,13 @@ public class BlockedListPage extends Page{
 
         User curr_user = this.pageState.getCurrentUser();
 
-        ArrayList<User> fl = curr_user.getFriends();
+        ArrayList<User> bl = curr_user.getBlocked();
 
-        for (User user : fl) {
+        for (User user : bl) {
             String curr = user.getUsername();
             System.out.println(curr);
         }
 
-        return router.getManageBlockedPage();
+        return router.getFriendsPage();
     }
 }

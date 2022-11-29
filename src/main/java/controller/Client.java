@@ -19,6 +19,12 @@ public class Client {
         AddFriendsPage addFriendsPage = new AddFriendsPage(router, pageState);
         RemoveFriendsPage removeFriendsPage = new RemoveFriendsPage(router, pageState);
 
+        BlockedListPage blockedListPage = new BlockedListPage(router, pageState);
+        ManageBlockedPage manageBlockedPage = new ManageBlockedPage(router, pageState);
+        BlockPage blockPage = new BlockPage(router, pageState);
+        UnblockPage unblockPage = new UnblockPage(router, pageState);
+
+
 
         router.setLoginPage(loginPage);
         router.setSignInPage(signInPage);
@@ -30,6 +36,12 @@ public class Client {
         router.setManageFriendsPage(manageFriendsPage);
         router.setAddFriendsPage(addFriendsPage);
         router.setRemoveFriendsPage(removeFriendsPage);
+
+        router.setBlockedListPage(blockedListPage);
+        router.setManageBlockedPage(manageBlockedPage);
+        router.setBlockPage(blockPage);
+        router.setUnblockPage(unblockPage);
+        ;
 
         Page current = loginPage;
         while (current != null) {

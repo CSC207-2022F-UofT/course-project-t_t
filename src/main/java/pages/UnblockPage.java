@@ -1,21 +1,21 @@
 package pages;
 
 import database.Database;
-import entities.FriendsList;
 import entities.User;
 import useCases.FriendsListManager;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UnblockFriendsPage extends Page {
-    public UnblockFriendsPage(Router router, PageState pageState) {
+public class UnblockPage extends Page {
+    public UnblockPage(Router router, PageState pageState) {
         super(router, pageState, "Unblock Friends Page");
     }
 
     @Override
     public Page run() {
-        System.out.println("This is the Unblock Friends page.");
+//        FriendsListManager friendsListManager = new FriendsListManager();
+        System.out.println("This is the Unblock User page.");
 
         Scanner in = new Scanner(System.in);
 
@@ -25,20 +25,22 @@ public class UnblockFriendsPage extends Page {
         ArrayList<User> fl = curr_user.getFriends();
 
         while (true) {
-            System.out.println("Enter your friend's username:");
+            System.out.println("Enter username of user to unblock:");
 
             String friend = in.next();
 
-            if (FriendsListManager.getFriend(curr_user, friend) == curr_user) {
+            if (FriendsListManager.getBlocked(curr_user, friend) == curr_user) {
                 System.out.println("User not found. Try again.");
                 continue;
             }
 
-            System.out.printf("Unblocking %s.\n", friend);
-            User curr_friend = FriendsListManager.getFriend(curr_user, friend);
+//            System.out.printf("Unblocking %s.\n", friend);
+//            User curr_friend = FriendsListManager.getFriend(curr_user, friend);
+            System.out.printf("Unlocking %s.\n", friend);
+            User curr_friend = FriendsListManager.getBlocked(curr_user, friend);
             FriendsListManager.unblockFriends(curr_user, curr_friend);
 
-            return router.getBlockFriendsPage();
+            return router.getBlockedListPage();
         }
     }
 }

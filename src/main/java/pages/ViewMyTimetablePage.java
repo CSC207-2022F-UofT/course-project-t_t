@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class ViewMyTimetablePage extends Page{
-    // User curr_user = this.pageState.getCurrentUser();
     public ViewMyTimetablePage(Router router, PageState pageState) {
         super(router, pageState, "View My Timetable Page");
     }
@@ -30,15 +29,10 @@ public class ViewMyTimetablePage extends Page{
     private Timetable timetable;
     private TimetableViewer timetableViewer;
 
-//    public ViewMyTimetablePage(Router router, PageState pageState) {
-//        super(router, pageState, "Timetable Viewer");
-//        this.timetableViewer = new TimetableViewer();
-//    }
-
     @Override
     public Page run() {
-
         System.out.println("This is my timetable:");
+        // using timetableViewer.visualizeTimetable, print the timetable below
         System.out.println("CSC207, CSC236 ...");
 
         Map<String, Option> options = Map.of(
@@ -55,25 +49,5 @@ public class ViewMyTimetablePage extends Page{
                 break;
         }
         return redirect;
-
-
-//        System.out.println("This is my timetable: ");
-//        ArrayList<String> visualization = this.timetableViewer.visualizeTimetable(this.timetable);
-//        ArrayList<String> visualization1 = new ArrayList<String>();
-//
-//        for (int i = 0; i < 5; i++) {
-//            visualization1.add(Integer.toString(i));
-//        }
-//
-//        for (String vs : visualization1) {
-//            System.out.println(vs);
-//        }
-//
-//        // show visualization
-//        // prompt user to continue
-//
-//        System.out.println(visualization);
-//
-//        return router.getHomePage();
     }
 }

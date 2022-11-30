@@ -4,7 +4,7 @@
 		"password": "useronepassword",
 		"email": "userone@gmail.com",
 		"friendsList": ["user two"],
-		"blockedList": [" user three"],
+		"blockedList": ["user three"],
 		"location": "Bahen",
 		"timetable": [
 			{

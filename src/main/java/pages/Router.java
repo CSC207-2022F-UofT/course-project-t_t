@@ -57,10 +57,10 @@ public class Router {
         return manageBlockedPage;
     }
 
-    public ViewMyTimetablePage getTimetableViewerPage() {
+    public ViewMyTimetablePage getViewMyTimetablePage() {
         return viewMyTimetablePage;
     }
-    public void setTimetableViewerPage(ViewMyTimetablePage viewMyTimetablePage) {
+    public void setViewMyTimetablePage(ViewMyTimetablePage viewMyTimetablePage) {
         this.viewMyTimetablePage = viewMyTimetablePage;
     }
 

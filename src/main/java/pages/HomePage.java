@@ -38,9 +38,9 @@ public class HomePage extends Page{
                 break;
             // add 'user' to set it as a current user
             case VIEW_MY_TIMETABLE:
-                redirect = this.router.getTimetableViewerPage();
+                redirect = this.router.getViewMyTimetablePage();
                 System.out.println("Loading my timetable...");
-                this.pageState.setCurrentUser(null);
+                // this.pageState.setCurrentUser(null);
                 break;
         };
         return redirect;

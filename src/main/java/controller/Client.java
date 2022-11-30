@@ -18,6 +18,7 @@ public class Client {
         ManageFriendsPage manageFriendsPage = new ManageFriendsPage(router, pageState);
         AddFriendsPage addFriendsPage = new AddFriendsPage(router, pageState);
         RemoveFriendsPage removeFriendsPage = new RemoveFriendsPage(router, pageState);
+        ViewMyTimetablePage viewMyTimetablePage = new ViewMyTimetablePage(router, pageState);
 
 
         router.setLoginPage(loginPage);
@@ -30,6 +31,7 @@ public class Client {
         router.setManageFriendsPage(manageFriendsPage);
         router.setAddFriendsPage(addFriendsPage);
         router.setRemoveFriendsPage(removeFriendsPage);
+        router.setViewMyTimetablePage(viewMyTimetablePage);
 
         Page current = loginPage;
         while (current != null) {

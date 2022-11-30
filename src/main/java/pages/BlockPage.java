@@ -3,21 +3,19 @@ package pages;
 import database.Database;
 import entities.User;
 import useCases.FriendsListManager;
-import useCases.SignIn;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
-public class AddFriendsPage extends Page{
-    public AddFriendsPage(Router router, PageState pageState) {
-        super(router, pageState, "Add Friends Page");
+public class BlockPage extends Page{
+    public BlockPage(Router router, PageState pageState) {
+        super(router, pageState, "Block Page");
     }
 
     @Override
     public Page run() {
         FriendsListManager friendsListManager = new FriendsListManager();
-        System.out.println("This is a Add Friends page.");
+        System.out.println("This is the Block User page.");
 
         Scanner in = new Scanner(System.in);
 
@@ -25,7 +23,7 @@ public class AddFriendsPage extends Page{
         User curr_user = this.pageState.getCurrentUser();
 
         while (true) {
-            System.out.println("Enter your friend's username:");
+            System.out.println("Enter username of user to block:");
 
             String friend = in.next();
 
@@ -34,13 +32,11 @@ public class AddFriendsPage extends Page{
                 continue;
             }
 
-            System.out.printf("Adding %s.\n", friend);
+            System.out.printf("Blocking %s.\n", friend);
             User curr_friend = Database.getUser(friend);
+            FriendsListManager.blockFriends(curr_user, curr_friend);
 
-            FriendsListManager.addFriends(curr_user, curr_friend);
-
-            return router.getManageFriendsPage();
+            return router.getManageBlockedPage();
         }
     }
 }
-

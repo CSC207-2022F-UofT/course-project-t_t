@@ -1,17 +1,12 @@
 package pages;
 
 import entities.Timetable;
-import entities.User;
 import presenter.TimetableViewer;
 
+import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class ViewMyTimetablePage extends Page{
-    // User curr_user = this.pageState.getCurrentUser();
-    public ViewMyTimetablePage(Router router, PageState pageState) {
-        super(router, pageState, "View My Timetable Page");
-    }
     public Timetable getTimetable() {
         return timetable;
     }
@@ -19,61 +14,41 @@ public class ViewMyTimetablePage extends Page{
     // then student1 can view student2's timetable and student2 can view student1's timetable
     // else if only student1 added student2 to its friend list,
     // then student1 cannot view student2's timetable
+
     public void setTimetable(Timetable timetable) {
         this.timetable = timetable;
-    }
-
-    private enum Option {
-        RETURN_TO_HOME_PAGE
     }
 
     private Timetable timetable;
     private TimetableViewer timetableViewer;
 
-//    public ViewMyTimetablePage(Router router, PageState pageState) {
-//        super(router, pageState, "Timetable Viewer");
-//        this.timetableViewer = new TimetableViewer();
-//    }
+    public ViewMyTimetablePage(Router router, PageState pageState) {
+        super(router, pageState, "Timetable Viewer");
+        this.timetableViewer = new TimetableViewer();
+    }
 
     @Override
     public Page run() {
+        ArrayList<String> visualization = this.timetableViewer.visualizeTimetable(this.timetable);
 
-        System.out.println("This is my timetable:");
-        System.out.println("CSC207, CSC236 ...");
+        // show visualization
+        // prompt user to continue
 
-        Map<String, Option> options = Map.of(
-                "Return to Home Page", Option.RETURN_TO_HOME_PAGE
-        );
-        Option selection = promptInput(options);
+        String[][] schedule = new String[5][22];
 
-        Page redirect = null;
+        String[] days = {"Mon", "Tue", "Wed", "Thu", "Fri"};
 
-        switch (selection) {
-            case RETURN_TO_HOME_PAGE:
-                redirect = this.router.getHomePage();
-                System.out.println("Redirecting to Home Page...");
-                break;
-        }
-        return redirect;
+        JTable table = new JTable(schedule, days);
 
+        JFrame frame = new JFrame("Table demo");
 
-//        System.out.println("This is my timetable: ");
-//        ArrayList<String> visualization = this.timetableViewer.visualizeTimetable(this.timetable);
-//        ArrayList<String> visualization1 = new ArrayList<String>();
-//
-//        for (int i = 0; i < 5; i++) {
-//            visualization1.add(Integer.toString(i));
-//        }
-//
-//        for (String vs : visualization1) {
-//            System.out.println(vs);
-//        }
-//
-//        // show visualization
-//        // prompt user to continue
-//
-//        System.out.println(visualization);
-//
-//        return router.getHomePage();
+        frame.add(new JScrollPane(table));
+
+        frame.setSize(500, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.setVisible(true);
+
+        return this.router.getHomePage();
     }
 }

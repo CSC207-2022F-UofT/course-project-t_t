@@ -40,6 +40,7 @@ public class Router {
     private RemoveFriendsPage removeFriendsPage;
     private AddFriendsPage addFriendsPage;
     private FriendsPage friendsPage;
+    private ViewMyTimetablePage viewMyTimetablePage;
 
     public HomePage getHomePage() {
         return homePage;
@@ -67,7 +68,7 @@ public class Router {
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
     }
-    private ViewMyTimetablePage viewMyTimetablePage;
+
 
     public void setManageBlockedPage(ManageBlockedPage manageBlockedPage) {
         this.manageBlockedPage = manageBlockedPage;

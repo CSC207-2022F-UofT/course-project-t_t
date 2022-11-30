@@ -47,18 +47,6 @@ public class Router {
         return homePage;
     }
 
-    public FriendsListPage getFriendsListPage() {
-        return friendsListPage;
-    }
-
-    public void setFriendsListPage(FriendsListPage friendsListPage) {
-        this.friendsListPage = friendsListPage;
-    }
-
-    public ManageBlockedPage getManageBlockedPage() {
-        return manageBlockedPage;
-    }
-
     public ViewMyTimetablePage getViewMyTimetablePage() {
         return viewMyTimetablePage;
 

@@ -32,6 +32,7 @@ public class FriendsPage extends Page{
             case BACK_HOME:
                 redirect = this.router.getHomePage();
                 System.out.println("Redirecting to Home Page...");
+                break;
             case VIEW_BLOCKED:
                 redirect = this.router.getBlockedListPage();
                 System.out.println("Redirecting to Blocked User List...");

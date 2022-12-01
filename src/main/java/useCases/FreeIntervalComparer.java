@@ -27,17 +27,13 @@ public class FreeIntervalComparer {
         ArrayList<Interval> free = new ArrayList<>();
 
         for (int d : diff) {
-            prev = curr;
             int ad = Math.abs(d);
+            prev = curr;
             curr += d / ad;
-            if ((prev > 0) != (curr > 0))
-                if (buff >= 0) {
-                    free.add(new Interval(buff, ad));
-                    buff = -1;
-                }
-                else {
-                    buff = ad;
-                }
+            if ((prev > 0) && (curr == 0))
+                free.add(new Interval(buff, ad));
+            else if ((prev == 0) && (curr > 0))
+                buff = ad;
         }
         free.add(new Interval(buff, Integer.MAX_VALUE));
 

@@ -37,8 +37,7 @@ public class TimetablePage extends Page{
                 redirect = this.router.getCompareCoursesPage();
                 break;
             case FIND_FREE:
-                redirect = null;
-                System.out.println("PAGE NOT IMPLEMENTED");
+                redirect = this.router.getFreeIntervalPage();
                 break;
             case TIMETABLE_VIEWER:
                 redirect = this.router.getTimetableViewerPage();

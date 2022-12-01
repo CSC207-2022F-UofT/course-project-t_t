@@ -43,6 +43,7 @@ public class Router {
     private FriendsPage friendsPage;
     private TimetablePage timetablePage;
     private CompareCoursesPage compareCoursesPage;
+    private FreeIntervalPage freeIntervalPage;
 
     public HomePage getHomePage() {
         return homePage;
@@ -118,5 +119,13 @@ public class Router {
 
     public void setCompareCoursesPage(CompareCoursesPage compareCoursesPage) {
         this.compareCoursesPage = compareCoursesPage;
+    }
+
+    public FreeIntervalPage getFreeIntervalPage() {
+        return freeIntervalPage;
+    }
+
+    public void setFreeIntervalPage(FreeIntervalPage freeIntervalPage) {
+        this.freeIntervalPage = freeIntervalPage;
     }
 }

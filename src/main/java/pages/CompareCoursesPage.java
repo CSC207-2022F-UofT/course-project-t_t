@@ -1,5 +1,6 @@
 package pages;
 
+import database.Database;
 import entities.*;
 import useCases.CourseComparer;
 
@@ -14,46 +15,9 @@ public class CompareCoursesPage extends Page{
     public Page run() {
         assert super.checkLoggedIn();
 
-
-        ArrayList<Lecture> dummyLectures1 = new ArrayList<>();
-
-        dummyLectures1.add(
-                new Lecture(new Interval(1, 2), new Location("BA 2222"))
-        );
-        dummyLectures1.add(
-                new Lecture(new Interval(4, 5), new Location("BA 2222"))
-        );
-
-        ArrayList<Lecture> dummyLectures2 = new ArrayList<>();
-
-        dummyLectures2.add(
-                new Lecture(new Interval(3, 5), new Location("BA 2222"))
-        );
-        dummyLectures2.add(
-                new Lecture(new Interval(4, 5), new Location("BA 2222"))
-        );
-
-
-        ArrayList<Course> dummyCourses1 = new ArrayList<>();
-
-        dummyCourses1.add(
-                new Course("KIM101", "LEC 0101", dummyLectures1)
-        );
-        dummyCourses1.add(
-                new Course("JJJ265", "LEC 0101", dummyLectures1)
-        );
-
-        ArrayList<Course> dummyCourses2 = new ArrayList<>();
-
-        dummyCourses2.add(
-                new Course("KIM101", "LEC 0101", dummyLectures2)
-        );
-        dummyCourses2.add(
-                new Course("JJJ265", "LEC 0101", dummyLectures1)
-        );
-
-        Timetable dummyTimetable1 = new Timetable(dummyCourses1);
-        Timetable dummyTimetable2 = new Timetable(dummyCourses2);
+        ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
+        Timetable dummyTimetable1 = dummyTimetables.get(0);
+        Timetable dummyTimetable2 = dummyTimetables.get(1);
 
         ArrayList<Course> sharedCourses = CourseComparer.findCommonCourses(dummyTimetable1, dummyTimetable2);
 

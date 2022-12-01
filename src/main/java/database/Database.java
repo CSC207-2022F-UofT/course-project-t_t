@@ -1,6 +1,8 @@
 package database;
 
+import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsonable;
 import com.github.cliftonlabs.json_simple.Jsoner;
 import com.github.dozermapper.core.DozerBeanMapper;
 import com.github.dozermapper.core.DozerBeanMapperBuilder;
@@ -21,26 +23,42 @@ import java.nio.file.Files;
 import java.io.*;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Database{
 
-//    public static void main(String[] args) {
-//        Database db = new Database();
-//        db.getDatabase();
-//    }
+    public static void main(String[] args) {
+        getDatabase();
+    }
 
     private static final ArrayList<User> db = new ArrayList<User>();
 
-    public void getDatabase() {
+    public static ArrayList<User> getDatabase() {
         try {
-            Reader reader = Files.newBufferedReader(Paths.get("UsersDataBase.json"));
-            JsonObject jsonObject = (JsonObject) Jsoner.deserialize(reader);
+            String filename = "C:\\Users\\Clare\\Documents\\UofT\\Year 3 Sem 1\\CSC207\\New Project\\course-project-t_t\\src\\main\\java\\database\\UsersDataBase.json";
+            // creates reader
+            Reader reader = Files.newBufferedReader(Paths.get(filename));
+
+            // read JSON from the file
+            JsonArray objects = Jsoner.deserializeMany(reader);
+
+            // create a Dozer mapper
             Mapper mapper = DozerBeanMapperBuilder.buildDefault();
-            User user = mapper.map(jsonObject, User.class);
-            System.out.println(user);
-            reader.close();
+
+            // convert JsonArray to ArrayList<User>
+            JsonArray jsonArrayList = (JsonArray) objects.get(0);
+            List<User> userList = jsonArrayList.stream()
+                    .map(obj -> mapper.map(obj, User.class)).toList();
+            ArrayList<User> userArrayList = new ArrayList<User>(userList);
+            for (User u : userArrayList) {
+                System.out.println(u);
+            }
+            return db;
         } catch (Exception e) {
+            System.out.println("Exception Caught!");
             e.printStackTrace();
         }
+        return db;
     }
 }

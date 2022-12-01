@@ -14,7 +14,9 @@ public class User implements Jsonable {
     private FriendsList friendsList;
     private Location location;
     private Timetable timetable;
+    public User() {
 
+    }
     public User(String username, String password, String email, Location location,
                 Timetable timetable, FriendsList friendsList) {
         this.username = username;

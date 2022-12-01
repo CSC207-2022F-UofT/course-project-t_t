@@ -41,6 +41,8 @@ public class Router {
     private BlockPage blockPage;
     private UnblockPage unblockPage;
     private FriendsPage friendsPage;
+    private TimetablePage timetablePage;
+    private CompareCoursesPage compareCoursesPage;
 
     public HomePage getHomePage() {
         return homePage;
@@ -102,4 +104,19 @@ public class Router {
         this.friendsPage = friendsPage;
     }
 
+    public TimetablePage getTimetablePage() {
+        return timetablePage;
+    }
+
+    public void setTimetablePage(TimetablePage timetablePage) {
+        this.timetablePage = timetablePage;
+    }
+
+    public CompareCoursesPage getCompareCoursesPage() {
+        return compareCoursesPage;
+    }
+
+    public void setCompareCoursesPage(CompareCoursesPage compareCoursesPage) {
+        this.compareCoursesPage = compareCoursesPage;
+    }
 }

@@ -13,5 +13,15 @@ public class Timetable {
 
     public ArrayList<Course> getCourses() { return this.courses; }
 
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+
+        for (Course course : courses) {
+            str.append(course.toString()).append("\n");
+        }
+        return str.toString();
+    }
+
 }
 

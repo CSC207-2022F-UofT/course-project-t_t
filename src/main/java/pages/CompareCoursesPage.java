@@ -6,14 +6,10 @@ import useCases.CourseComparer;
 
 import java.util.ArrayList;
 
-public class CompareCoursesPage extends Page{
-    public CompareCoursesPage(PageState pageState) {
-        super(pageState, "Compare Courses");
-    }
-
+public class CompareCoursesPage extends PageAction{
     @Override
-    public void run() {
-        assert super.checkLoggedIn();
+    public void run(PageCache pageCache) {
+        assert pageCache.checkLoggedIn();
 
         ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
         Timetable dummyTimetable1 = dummyTimetables.get(0);

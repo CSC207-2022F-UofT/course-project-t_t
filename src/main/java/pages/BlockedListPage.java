@@ -1,18 +1,14 @@
 package pages;
 
 import entities.User;
-import entities.FriendsList;
 
 import java.util.ArrayList;
 
-public class BlockedListPage extends Page{
-    public BlockedListPage(PageState pageState) {
-        super(pageState, "Blocked List");
-    }
+public class BlockedListPage extends PageAction {
     @Override
-    public void run() {
+    public void run(PageCache pageCache) {
 
-        User curr_user = this.pageState.getCurrentUser();
+        User curr_user = pageCache.getCurrentUser();
 
         ArrayList<User> bl = curr_user.getBlocked();
 

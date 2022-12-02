@@ -2,7 +2,7 @@ package pages;
 
 import entities.User;
 
-public class PageState {
+public class PageCache {
     private User currentUser = null;
 
     public User getCurrentUser() {
@@ -11,6 +11,10 @@ public class PageState {
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
+    }
+
+    protected boolean checkLoggedIn(){
+        return this.getCurrentUser() == null;
     }
 
 }

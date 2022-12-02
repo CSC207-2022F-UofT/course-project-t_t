@@ -1,18 +1,14 @@
 package pages;
 
 import entities.User;
-import entities.FriendsList;
 
 import java.util.ArrayList;
 
-public class FriendsListPage extends Page{
-    public FriendsListPage(PageState pageState) {
-        super(pageState, "Friends List");
-    }
+public class FriendsListPage extends PageAction{
     @Override
-    public void run() {
+    public void run(PageCache pageCache) {
 
-        User curr_user = this.pageState.getCurrentUser();
+        User curr_user = pageCache.getCurrentUser();
 
         ArrayList<User> fl = curr_user.getFriends();
 

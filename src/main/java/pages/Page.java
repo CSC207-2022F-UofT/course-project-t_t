@@ -1,32 +1,29 @@
 package pages;
 
-import entities.User;
-
 import java.util.*;
 
 public class Page {
     protected Page[] routes;
-    protected PageState pageState;
+    protected PageCache pageCache;
 
     private final String pageName;
     public String getPageName() {
         return this.pageName;
     }
+    private final PageAction pageAction;
 
-    public Page(PageState pageState, String pageName) {
-        this.pageState = pageState;
+    public Page(PageCache pageCache, String pageName, PageAction pageAction) {
+        this.pageCache = pageCache;
         this.pageName = pageName;
+        this.pageAction = pageAction;
     }
 
     public void setRoutes(Page[] routes) {
         this.routes = routes;
     }
 
-    public void run(){};
+    public void run(){this.pageAction.run(this.pageCache);};
 
-    protected boolean checkLoggedIn(){
-        return this.pageState.getCurrentUser() == null;
-    }
 
     public Page getRedirect(){
         if (this.routes.length == 0)

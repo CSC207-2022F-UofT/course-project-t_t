@@ -1,37 +1,32 @@
 package controller;
 
-import entities.User;
 import pages.*;
-import useCases.FreeIntervalComparer;
-
-import java.util.ArrayList;
 
 public class Client {
     public static void main(String[] args) {
 
-        PageState pageState = new PageState();
+        PageCache pageCache = new PageCache();
+        PageFactory pf = new PageFactory(pageCache);
 
+        Page logoutPage = pf.buildPage("Log out");
+        Page signInPage = pf.buildPage(new SignInPage(), "Sign in");
+        Page signUpPage = pf.buildPage(new SignUpPage(), "Sign up");
+        Page homePage = pf.buildPage("Home");
 
-        Page logoutPage = new Page(pageState, "Log out");
-        Page signInPage = new SignInPage(pageState);
-        Page signUpPage = new SignUpPage(pageState);
-        Page homePage = new Page(pageState, "Home");
+        Page friendsPage = pf.buildPage("Friends");
+        Page friendsListPage = pf.buildPage(new FriendsListPage(), "Friends list");
+        Page manageFriendsPage = pf.buildPage("Manage friends");
+        Page addFriendsPage = pf.buildPage(new AddFriendsPage(), "Add friends");
+        Page removeFriendsPage = pf.buildPage(new RemoveFriendsPage(), "Remove friends");
 
-        Page friendsPage = new Page(pageState, "Friends");
-        Page friendsListPage = new FriendsListPage(pageState);
-        Page manageFriendsPage = new Page(pageState, "Manage Friends");
-        Page addFriendsPage = new AddFriendsPage(pageState);
-        Page removeFriendsPage = new RemoveFriendsPage(pageState);
+        Page blockedListPage = pf.buildPage(new BlockedListPage(), "Blocked list");
+        Page manageBlockedPage = pf.buildPage("Manage blocked");
+        Page blockPage = pf.buildPage(new BlockPage(), "Block user");
+        Page unblockPage = pf.buildPage(new UnblockPage(), "Unblock user");
 
-        Page blockedListPage = new BlockedListPage(pageState);
-        Page manageBlockedPage = new Page(pageState, "Manage Blocked");
-        Page blockPage = new BlockPage(pageState);
-        Page unblockPage = new UnblockPage(pageState);
-
-        Page timetablePage = new Page(pageState, "Timetable");
-        Page compareCoursesPage = new CompareCoursesPage(pageState);
-        Page freeIntervalPage = new FreeIntervalPage(pageState);
-
+        Page timetablePage = pf.buildPage("Timetable");
+        Page compareCoursesPage = pf.buildPage(new CompareCoursesPage(), "Find common courses");
+        Page freeIntervalPage = pf.buildPage(new FreeIntervalPage(), "Find common free intervals");
 
 
         logoutPage.setRoutes(new Page[]{signInPage, signUpPage});

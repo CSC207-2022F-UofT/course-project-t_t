@@ -7,13 +7,10 @@ import useCases.SignUp;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SignUpPage extends Page{
-    public SignUpPage(PageState pageState) {
-        super(pageState, "Sign Up");
-    }
+public class SignUpPage extends PageAction{
 
     @Override
-    public void run() {
+    public void run(PageCache pageCache) {
         SignUp signUp = new SignUp();
 
         Scanner in = new Scanner(System.in);

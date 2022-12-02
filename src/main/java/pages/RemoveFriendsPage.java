@@ -1,26 +1,22 @@
 package pages;
 
 import database.Database;
-import entities.FriendsList;
 import entities.User;
 import useCases.FriendsListManager;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RemoveFriendsPage extends Page {
-    public RemoveFriendsPage(PageState pageState) {
-        super(pageState, "Remove Friends");
-    }
+public class RemoveFriendsPage extends PageAction {
 
     @Override
-    public void run() {
+    public void run(PageCache pageCache) {
 
         Scanner in = new Scanner(System.in);
 
         ArrayList<User> db = Database.getDatabase();
 
-        User curr_user = this.pageState.getCurrentUser();
+        User curr_user = pageCache.getCurrentUser();
         ArrayList<User> fl = curr_user.getFriends();
 
         while (true) {

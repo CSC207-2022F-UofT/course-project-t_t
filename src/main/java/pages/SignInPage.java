@@ -7,13 +7,9 @@ import useCases.SignIn;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SignInPage extends Page{
-    public SignInPage(PageState pageState) {
-        super(pageState, "Sign In");
-    }
-
+public class SignInPage extends PageAction {
     @Override
-    public void run() {
+    public void run(PageCache pageCache) {
         SignIn signIn = new SignIn();
 
         Scanner in = new Scanner(System.in);
@@ -43,7 +39,7 @@ public class SignInPage extends Page{
             }
 
             System.out.printf("Signing in as %s.\n", username);
-            this.pageState.setCurrentUser(new User(username, password, friends, blocked));
+            pageCache.setCurrentUser(new User(username, password, friends, blocked));
             break;
         }
     }

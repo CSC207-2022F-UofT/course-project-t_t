@@ -7,14 +7,10 @@ import useCases.FreeIntervalComparer;
 
 import java.util.ArrayList;
 
-public class FreeIntervalPage extends Page{
-
-    public FreeIntervalPage(PageState pageState) {
-        super(pageState, "Free Interval");
-    }
+public class FreeIntervalPage extends PageAction{
 
     @Override
-    public void run() {
+    public void run(PageCache pageCache) {
         ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
 
         ArrayList<Interval> freeIntervals = FreeIntervalComparer.findFreeIntervals(dummyTimetables);

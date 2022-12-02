@@ -47,6 +47,9 @@ public class SignUpPage extends Page{
                 continue;
             }
 
+            // Database.getDatabase().add(new User(username, password, friends, blocked));
+            // db.add(new User(username, password, friends, blocked));
+            // Database.setDatabase(db);
             Database.addUser(username, password, friends, blocked);
 
             System.out.printf("New account created for %s. \n", username);

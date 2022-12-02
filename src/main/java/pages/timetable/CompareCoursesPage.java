@@ -1,15 +1,17 @@
-package pages;
+package pages.timetable;
 
 import database.Database;
 import entities.*;
+import pages.PageAction;
+import pages.PageSession;
 import useCases.CourseComparer;
 
 import java.util.ArrayList;
 
-public class CompareCoursesPage extends PageAction{
+public class CompareCoursesPage extends PageAction {
     @Override
-    public void run(PageCache pageCache) {
-        assert pageCache.checkLoggedIn();
+    public void run(PageSession pageSession) {
+        assert pageSession.checkLoggedIn();
 
         ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
         Timetable dummyTimetable1 = dummyTimetables.get(0);

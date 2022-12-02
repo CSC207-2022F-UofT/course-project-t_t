@@ -1,7 +1,9 @@
-package pages;
+package pages.user;
 
 import database.Database;
 import entities.User;
+import pages.PageAction;
+import pages.PageSession;
 import useCases.SignIn;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.Scanner;
 
 public class SignInPage extends PageAction {
     @Override
-    public void run(PageCache pageCache) {
+    public void run(PageSession pageSession) {
         SignIn signIn = new SignIn();
 
         Scanner in = new Scanner(System.in);
@@ -39,7 +41,7 @@ public class SignInPage extends PageAction {
             }
 
             System.out.printf("Signing in as %s.\n", username);
-            pageCache.setCurrentUser(new User(username, password, friends, blocked));
+            pageSession.setCurrentUser(new User(username, password, friends, blocked));
             break;
         }
     }

@@ -1,23 +1,22 @@
 package pages;
 
 public class PageFactory {
-    private PageCache pageCache;
+    private final PageSession pageSession;
 
-    public PageFactory(PageCache pageCache) {
-        this.pageCache = pageCache;
+    public PageFactory(PageSession pageSession) {
+        this.pageSession = pageSession;
     }
 
     public Page buildPage(PageAction pageAction, String pageName){
-        return new Page(pageCache, pageName, pageAction);
+        return new Page(pageSession, pageName, pageAction);
     }
 
     public Page buildPage(String pageName){
-        PageAction EmptyAction = new EmptyAction();
-        return new Page(pageCache, pageName, EmptyAction);
+        return new Page(pageSession, pageName, new EmptyAction());
     }
 
-    class EmptyAction extends PageAction{
+    static class EmptyAction extends PageAction{
         @Override
-        public void run(PageCache pageCache) {}
+        public void run(PageSession pageSession) {}
     }
 }

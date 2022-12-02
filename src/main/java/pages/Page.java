@@ -3,8 +3,8 @@ package pages;
 import java.util.*;
 
 public class Page {
-    protected Page[] routes;
-    protected PageCache pageCache;
+    private Page[] routes;
+    private final PageSession pageSession;
 
     private final String pageName;
     public String getPageName() {
@@ -12,8 +12,8 @@ public class Page {
     }
     private final PageAction pageAction;
 
-    public Page(PageCache pageCache, String pageName, PageAction pageAction) {
-        this.pageCache = pageCache;
+    public Page(PageSession pageSession, String pageName, PageAction pageAction) {
+        this.pageSession = pageSession;
         this.pageName = pageName;
         this.pageAction = pageAction;
     }
@@ -22,7 +22,7 @@ public class Page {
         this.routes = routes;
     }
 
-    public void run(){this.pageAction.run(this.pageCache);};
+    public void run(){this.pageAction.run(this.pageSession);};
 
 
     public Page getRedirect(){

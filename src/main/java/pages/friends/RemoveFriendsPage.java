@@ -1,7 +1,9 @@
-package pages;
+package pages.friends;
 
 import database.Database;
 import entities.User;
+import pages.PageAction;
+import pages.PageSession;
 import useCases.FriendsListManager;
 
 import java.util.ArrayList;
@@ -10,13 +12,13 @@ import java.util.Scanner;
 public class RemoveFriendsPage extends PageAction {
 
     @Override
-    public void run(PageCache pageCache) {
+    public void run(PageSession pageSession) {
 
         Scanner in = new Scanner(System.in);
 
         ArrayList<User> db = Database.getDatabase();
 
-        User curr_user = pageCache.getCurrentUser();
+        User curr_user = pageSession.getCurrentUser();
         ArrayList<User> fl = curr_user.getFriends();
 
         while (true) {

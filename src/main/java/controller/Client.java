@@ -1,12 +1,50 @@
 package controller;
 
 import pages.*;
+import pages.block.BlockPage;
+import pages.block.BlockedListPage;
+import pages.block.UnblockPage;
+import pages.friends.AddFriendsPage;
+import pages.friends.FriendsListPage;
+import pages.friends.RemoveFriendsPage;
+import pages.timetable.CompareCoursesPage;
+import pages.timetable.FreeIntervalPage;
+import pages.user.SignInPage;
+import pages.user.SignUpPage;
 
 public class Client {
     public static void main(String[] args) {
+        Page current = generatePages();
+        System.out.println(
+                """
+                        ██╗░░░██╗████████╗██╗███╗░░░███╗███████╗
+                        ██║░░░██║╚══██╔══╝██║████╗░████║██╔════╝
+                        ██║░░░██║░░░██║░░░██║██╔████╔██║█████╗░░
+                        ██║░░░██║░░░██║░░░██║██║╚██╔╝██║██╔══╝░░
+                        ╚██████╔╝░░░██║░░░██║██║░╚═╝░██║███████╗
+                        ░╚═════╝░░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝╚══════╝
 
-        PageCache pageCache = new PageCache();
-        PageFactory pf = new PageFactory(pageCache);
+                        ████████╗░█████╗░██████╗░██╗░░░░░███████╗
+                        ╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░██╔════╝
+                        ░░░██║░░░███████║██████╦╝██║░░░░░█████╗░░
+                        ░░░██║░░░██╔══██║██╔══██╗██║░░░░░██╔══╝░░
+                        ░░░██║░░░██║░░██║██████╦╝███████╗███████╗
+                        ░░░╚═╝░░░╚═╝░░╚═╝╚═════╝░╚══════╝╚══════╝""");
+
+        while (current != null) {
+            System.out.println("\n---------------------------------");
+            System.out.printf("Current Page: %s\n", current.getPageName());
+            System.out.println("---------------------------------");
+
+            current.run();
+            current = current.getRedirect();
+        }
+        System.out.println("Exiting...");
+    }
+
+    private static Page generatePages() {
+        PageSession pageSession = new PageSession();
+        PageFactory pf = new PageFactory(pageSession);
 
         Page logoutPage = pf.buildPage("Log out");
         Page signInPage = pf.buildPage(new SignInPage(), "Sign in");
@@ -49,17 +87,6 @@ public class Client {
         compareCoursesPage.setRoutes(new Page[]{timetablePage});
         freeIntervalPage.setRoutes(new Page[]{timetablePage});
 
-
-        Page current = logoutPage;
-        while (current != null) {
-            System.out.println("\n---------------------------------");
-            System.out.printf("Current Page: %s\n", current.getPageName());
-            System.out.println("---------------------------------");
-
-            current.run();
-            current = current.getRedirect();
-            System.out.println("Redirecting...");
-        }
-        System.out.println("Exiting...");
+        return logoutPage;
     }
 }

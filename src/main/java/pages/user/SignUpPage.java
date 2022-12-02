@@ -1,16 +1,18 @@
-package pages;
+package pages.user;
 
 import database.Database;
 import entities.User;
+import pages.PageAction;
+import pages.PageSession;
 import useCases.SignUp;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SignUpPage extends PageAction{
+public class SignUpPage extends PageAction {
 
     @Override
-    public void run(PageCache pageCache) {
+    public void run(PageSession pageSession) {
         SignUp signUp = new SignUp();
 
         Scanner in = new Scanner(System.in);

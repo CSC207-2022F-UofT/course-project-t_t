@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.io.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,17 +51,32 @@ public class Database{
             // convert list to ArrayList
             for (User u : userArrayList) {
                 System.out.println(u.getUsername());
+                System.out.println(u.getPassword());
+                System.out.println(u.getEmail());
+                System.out.println(u.getLocation());
+                System.out.println(u.getFriendsList().getFriends());
             }
             db = userArrayList;
             return db;
         } catch (Exception e) {
-            System.out.println("Exception Caught!");
+            System.out.println("Exception on getting database!");
             e.printStackTrace();
         }
         return db;
     }
 
     public static void setDataBase(ArrayList<User> users) {
+        try {
+            // create writer
+            String path = "src/main/java/database/UsersDataBase.json";
+            BufferedWriter writer = Files.newBufferedWriter(Paths.get(path));
 
+            // create users list
+            List<User> userList = new ArrayList<User>();
+            for ()
+        } catch (Exception e) {
+            System.out.println("Exception on setting database!");
+            e.printStackTrace();
+        }
     }
 }

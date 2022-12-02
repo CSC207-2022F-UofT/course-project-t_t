@@ -23,7 +23,7 @@ public class User implements Jsonable {
         this.password = password;
         this.email = email;
         this.timetable = timetable;
-        this.friendsList = friendsList;
+        this.friendsList = new FriendsList(friendsList.getFriends(), friendsList.getBlocked());
         this.location = new Location(location);
     }
     public String getUsername() {

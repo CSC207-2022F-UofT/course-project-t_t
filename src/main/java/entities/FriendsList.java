@@ -8,6 +8,14 @@ public class FriendsList{
     ArrayList<User> friends;
     ArrayList<User> blocked;
 
+    public FriendsList() {
+
+    }
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
     public FriendsList(ArrayList<User> friends, ArrayList<User> blocked) {
         this.friends = friends;
         this.blocked = blocked;

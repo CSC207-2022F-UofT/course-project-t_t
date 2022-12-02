@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Timetable {
 
+    public Timetable() {}
+
     ArrayList<Course> courses;
 
     public Timetable(ArrayList<Course> courses) {

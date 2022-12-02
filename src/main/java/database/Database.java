@@ -12,11 +12,6 @@ import entities.Timetable;
 import entities.Location;
 import entities.FriendsList;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Iterator;
-
 import java.nio.file.Paths;
 import java.nio.file.Files;
 
@@ -32,11 +27,11 @@ public class Database{
         getDatabase();
     }
 
-    private static final ArrayList<User> db = new ArrayList<User>();
+    private static ArrayList<User> db = new ArrayList<User>();
 
     public static ArrayList<User> getDatabase() {
         try {
-            String filename = "C:\\Users\\Clare\\Documents\\UofT\\Year 3 Sem 1\\CSC207\\New Project\\course-project-t_t\\src\\main\\java\\database\\UsersDataBase.json";
+            String filename = "src/main/java/database/UsersDataBase.json";
             // creates reader
             Reader reader = Files.newBufferedReader(Paths.get(filename));
 
@@ -50,15 +45,22 @@ public class Database{
             JsonArray jsonArrayList = (JsonArray) objects.get(0);
             List<User> userList = jsonArrayList.stream()
                     .map(obj -> mapper.map(obj, User.class)).toList();
-            ArrayList<User> userArrayList = new ArrayList<User>(userList);
+            ArrayList<User> userArrayList = new ArrayList<>(userList);
+
+            // convert list to ArrayList
             for (User u : userArrayList) {
-                System.out.println(u);
+                System.out.println(u.getUsername());
             }
+            db = userArrayList;
             return db;
         } catch (Exception e) {
             System.out.println("Exception Caught!");
             e.printStackTrace();
         }
         return db;
+    }
+
+    public static void setDataBase(ArrayList<User> users) {
+
     }
 }

@@ -17,14 +17,14 @@ public class User implements Jsonable {
     public User() {
 
     }
-    public User(String username, String password, String email, Location location,
+    public User(String username, String password, String email, String location,
                 Timetable timetable, FriendsList friendsList) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.timetable = timetable;
         this.friendsList = friendsList;
-        this.location = location;
+        this.location = new Location(location);
     }
     public String getUsername() {
         return username;
@@ -58,13 +58,13 @@ public class User implements Jsonable {
         this.friendsList = friends;
     }
 
-    public Location getLocation(){return this.location;}
+    public String getLocation(){return this.location.getName();}
 
     public Timetable getTimetable() {return timetable;}
 
     public void setTimetable(Timetable timetable) {this.timetable = timetable;}
 
-    public void setLocation(Location location) {this.location = location;}
+    public void setLocation(String location) {this.location = new Location(location);}
 
     @Override
     public String toJson() {
@@ -83,7 +83,7 @@ public class User implements Jsonable {
         try {
             writable.write(this.toJson());
         } catch (Exception ignored) {
-
+            System.out.println("Oh no!");
         }
     }
 }

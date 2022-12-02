@@ -10,14 +10,13 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class AddFriendsPage extends Page{
-    public AddFriendsPage(Router router, PageState pageState) {
-        super(router, pageState, "Add Friends Page");
+    public AddFriendsPage(PageState pageState) {
+        super(pageState, "Add Friends");
     }
 
     @Override
-    public Page run() {
+    public void run() {
         FriendsListManager friendsListManager = new FriendsListManager();
-        System.out.println("This is a Add Friends page.");
 
         Scanner in = new Scanner(System.in);
 
@@ -38,8 +37,7 @@ public class AddFriendsPage extends Page{
             User curr_friend = Database.getUser(friend);
 
             FriendsListManager.addFriends(curr_user, curr_friend);
-
-            return router.getManageFriendsPage();
+            break;
         }
     }
 }

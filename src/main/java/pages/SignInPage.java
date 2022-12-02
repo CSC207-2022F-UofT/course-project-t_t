@@ -8,14 +8,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SignInPage extends Page{
-    public SignInPage(Router router, PageState pageState) {
-        super(router, pageState, "Sign In Page");
+    public SignInPage(PageState pageState) {
+        super(pageState, "Sign In");
     }
 
     @Override
-    public Page run() {
+    public void run() {
         SignIn signIn = new SignIn();
-        System.out.println("This is a Sign In page.");
 
         Scanner in = new Scanner(System.in);
 
@@ -45,8 +44,7 @@ public class SignInPage extends Page{
 
             System.out.printf("Signing in as %s.\n", username);
             this.pageState.setCurrentUser(new User(username, password, friends, blocked));
-
-            return router.getHomePage();
+            break;
         }
     }
 }

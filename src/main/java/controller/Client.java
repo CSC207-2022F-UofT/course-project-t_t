@@ -9,56 +9,61 @@ import java.util.ArrayList;
 public class Client {
     public static void main(String[] args) {
 
-        Router router = new Router();
         PageState pageState = new PageState();
 
-        LoginPage loginPage = new LoginPage(router, pageState);
-        SignInPage signInPage = new SignInPage(router, pageState);
-        SignUpPage signUpPage = new SignUpPage(router, pageState);
-        HomePage homePage = new HomePage(router, pageState);
 
-        FriendsPage friendsPage = new FriendsPage(router, pageState);
-        FriendsListPage friendsListPage = new FriendsListPage(router, pageState);
-        ManageFriendsPage manageFriendsPage = new ManageFriendsPage(router, pageState);
-        AddFriendsPage addFriendsPage = new AddFriendsPage(router, pageState);
-        RemoveFriendsPage removeFriendsPage = new RemoveFriendsPage(router, pageState);
+        Page logoutPage = new Page(pageState, "Log out");
+        Page signInPage = new SignInPage(pageState);
+        Page signUpPage = new SignUpPage(pageState);
+        Page homePage = new Page(pageState, "Home");
 
-        BlockedListPage blockedListPage = new BlockedListPage(router, pageState);
-        ManageBlockedPage manageBlockedPage = new ManageBlockedPage(router, pageState);
-        BlockPage blockPage = new BlockPage(router, pageState);
-        UnblockPage unblockPage = new UnblockPage(router, pageState);
+        Page friendsPage = new Page(pageState, "Friends");
+        Page friendsListPage = new FriendsListPage(pageState);
+        Page manageFriendsPage = new Page(pageState, "Manage Friends");
+        Page addFriendsPage = new AddFriendsPage(pageState);
+        Page removeFriendsPage = new RemoveFriendsPage(pageState);
 
-        TimetablePage timetablePage = new TimetablePage(router, pageState);
-        CompareCoursesPage compareCoursesPage = new CompareCoursesPage(router, pageState);
-        FreeIntervalPage freeIntervalPage = new FreeIntervalPage(router, pageState);
-        TimetableViewerPage timetableViewerPage = new TimetableViewerPage(router, pageState);
+        Page blockedListPage = new BlockedListPage(pageState);
+        Page manageBlockedPage = new Page(pageState, "Manage Blocked");
+        Page blockPage = new BlockPage(pageState);
+        Page unblockPage = new UnblockPage(pageState);
 
-        router.setLoginPage(loginPage);
-        router.setSignInPage(signInPage);
-        router.setSignUpPage(signUpPage);
-        router.setHomePage(homePage);
+        Page timetablePage = new Page(pageState, "Timetable");
+        Page compareCoursesPage = new CompareCoursesPage(pageState);
+        Page freeIntervalPage = new FreeIntervalPage(pageState);
 
-        router.setFriendsPage(friendsPage);
-        router.setFriendsListPage(friendsListPage);
-        router.setManageFriendsPage(manageFriendsPage);
-        router.setAddFriendsPage(addFriendsPage);
-        router.setRemoveFriendsPage(removeFriendsPage);
 
-        router.setBlockedListPage(blockedListPage);
-        router.setManageBlockedPage(manageBlockedPage);
-        router.setBlockPage(blockPage);
-        router.setUnblockPage(unblockPage);
 
-        router.setTimetablePage(timetablePage);
-        router.setTimetablePage(timetablePage);
-        router.setCompareCoursesPage(compareCoursesPage);
-        router.setFreeIntervalPage(freeIntervalPage);
-        router.setTimetableViewerPage(timetableViewerPage);
+        logoutPage.setRoutes(new Page[]{signInPage, signUpPage});
+        signUpPage.setRoutes(new Page[]{signInPage});
+        signInPage.setRoutes(new Page[]{homePage});
+        homePage.setRoutes(new Page[]{logoutPage, friendsPage, timetablePage});
 
-        Page current = loginPage;
+        friendsPage.setRoutes(new Page[]{homePage, blockedListPage, manageBlockedPage, manageFriendsPage, friendsListPage});
+        friendsListPage.setRoutes(new Page[]{friendsPage});
+        manageFriendsPage.setRoutes(new Page[]{friendsPage, addFriendsPage, removeFriendsPage});
+        addFriendsPage.setRoutes(new Page[]{manageFriendsPage});
+        removeFriendsPage.setRoutes(new Page[]{manageFriendsPage});
+
+        blockedListPage.setRoutes(new Page[]{friendsPage});
+        manageBlockedPage.setRoutes(new Page[]{friendsPage, blockPage, unblockPage});
+        blockPage.setRoutes(new Page[]{manageBlockedPage});
+        unblockPage.setRoutes(new Page[]{manageBlockedPage});
+
+        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage});
+        compareCoursesPage.setRoutes(new Page[]{timetablePage});
+        freeIntervalPage.setRoutes(new Page[]{timetablePage});
+
+
+        Page current = logoutPage;
         while (current != null) {
+            System.out.println("\n---------------------------------");
             System.out.printf("Current Page: %s\n", current.getPageName());
-            current = current.run();
+            System.out.println("---------------------------------");
+
+            current.run();
+            current = current.getRedirect();
+            System.out.println("Redirecting...");
         }
         System.out.println("Exiting...");
     }

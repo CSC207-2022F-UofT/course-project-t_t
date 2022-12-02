@@ -6,12 +6,11 @@ import entities.FriendsList;
 import java.util.ArrayList;
 
 public class FriendsListPage extends Page{
-    public FriendsListPage(Router router, PageState pageState) {
-        super(router, pageState, "Friends List Page");
+    public FriendsListPage(PageState pageState) {
+        super(pageState, "Friends List");
     }
     @Override
-    public Page run() {
-        System.out.println("This is a Friends List page.");
+    public void run() {
 
         User curr_user = this.pageState.getCurrentUser();
 
@@ -21,7 +20,5 @@ public class FriendsListPage extends Page{
             String curr = user.getUsername();
             System.out.println(curr);
         }
-
-        return router.getFriendsPage();
     }
 }

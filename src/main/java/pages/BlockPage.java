@@ -8,14 +8,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BlockPage extends Page{
-    public BlockPage(Router router, PageState pageState) {
-        super(router, pageState, "Block Page");
+    public BlockPage(PageState pageState) {
+        super(pageState, "Block User");
     }
 
     @Override
-    public Page run() {
+    public void run() {
         FriendsListManager friendsListManager = new FriendsListManager();
-        System.out.println("This is the Block User page.");
 
         Scanner in = new Scanner(System.in);
 
@@ -35,8 +34,7 @@ public class BlockPage extends Page{
             System.out.printf("Blocking %s.\n", friend);
             User curr_friend = Database.getUser(friend);
             FriendsListManager.blockFriends(curr_user, curr_friend);
-
-            return router.getManageBlockedPage();
+            break;
         }
     }
 }

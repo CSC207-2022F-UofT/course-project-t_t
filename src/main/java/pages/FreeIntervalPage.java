@@ -9,12 +9,12 @@ import java.util.ArrayList;
 
 public class FreeIntervalPage extends Page{
 
-    public FreeIntervalPage(Router router, PageState pageState) {
-        super(router, pageState, "Free interval page");
+    public FreeIntervalPage(PageState pageState) {
+        super(pageState, "Free Interval");
     }
 
     @Override
-    public Page run() {
+    public void run() {
         ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
 
         ArrayList<Interval> freeIntervals = FreeIntervalComparer.findFreeIntervals(dummyTimetables);
@@ -24,8 +24,5 @@ public class FreeIntervalPage extends Page{
 
         System.out.println("Free intervals:");
         System.out.println(freeIntervals);
-
-
-        return router.getTimetablePage();
     }
 }

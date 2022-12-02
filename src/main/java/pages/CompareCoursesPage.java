@@ -7,12 +7,12 @@ import useCases.CourseComparer;
 import java.util.ArrayList;
 
 public class CompareCoursesPage extends Page{
-    public CompareCoursesPage(Router router, PageState pageState) {
-        super(router, pageState, "Compare Courses Page");
+    public CompareCoursesPage(PageState pageState) {
+        super(pageState, "Compare Courses");
     }
 
     @Override
-    public Page run() {
+    public void run() {
         assert super.checkLoggedIn();
 
         ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
@@ -27,7 +27,5 @@ public class CompareCoursesPage extends Page{
         System.out.println(dummyTimetable2.toString());
         System.out.println("Shared courses:");
         System.out.println(sharedCourses);
-
-        return router.getTimetablePage();
     }
 }

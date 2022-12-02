@@ -6,12 +6,11 @@ import entities.FriendsList;
 import java.util.ArrayList;
 
 public class BlockedListPage extends Page{
-    public BlockedListPage(Router router, PageState pageState) {
-        super(router, pageState, "Blocked List Page");
+    public BlockedListPage(PageState pageState) {
+        super(pageState, "Blocked List");
     }
     @Override
-    public Page run() {
-        System.out.println("This is a Blocked List page.");
+    public void run() {
 
         User curr_user = this.pageState.getCurrentUser();
 
@@ -21,7 +20,5 @@ public class BlockedListPage extends Page{
             String curr = user.getUsername();
             System.out.println(curr);
         }
-
-        return router.getFriendsPage();
     }
 }

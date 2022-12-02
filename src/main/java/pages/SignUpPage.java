@@ -8,14 +8,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SignUpPage extends Page{
-    public SignUpPage(Router router, PageState pageState) {
-        super(router, pageState, "Sign Up Page");
+    public SignUpPage(PageState pageState) {
+        super(pageState, "Sign Up");
     }
 
     @Override
-    public Page run() {
+    public void run() {
         SignUp signUp = new SignUp();
-        System.out.println("This is a Sign Up page.");
 
         Scanner in = new Scanner(System.in);
 
@@ -53,8 +52,7 @@ public class SignUpPage extends Page{
             Database.addUser(username, password, friends, blocked);
 
             System.out.printf("New account created for %s. \n", username);
-
-            return router.getSignInPage();
+            break;
         }
     }
 }

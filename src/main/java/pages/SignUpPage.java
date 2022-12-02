@@ -38,6 +38,18 @@ public class SignUpPage extends Page{
                 continue;
             }
 
+            System.out.println("Re-enter your password:");
+
+            String password2 = in.next();
+
+            if (!password.equals(password2)) {
+                System.out.println("This does not match the entered password. Try again.");
+                continue;
+            }
+
+            // Database.getDatabase().add(new User(username, password, friends, blocked));
+            // db.add(new User(username, password, friends, blocked));
+            // Database.setDatabase(db);
             Database.addUser(username, password, friends, blocked);
 
             System.out.printf("New account created for %s. \n", username);

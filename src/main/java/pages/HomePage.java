@@ -11,7 +11,6 @@ public class HomePage extends Page{
         LOG_OUT,
         FRIENDS,
         TIMETABLE,
-
     }
     @Override
     public Page run() {
@@ -22,7 +21,6 @@ public class HomePage extends Page{
         Map<String, Option> options = Map.of(
                 "Log Out", Option.LOG_OUT,
                 "Friends", Option.FRIENDS,
-
                 "Timetable", Option.TIMETABLE
         );
         Option selection = promptInput(options);

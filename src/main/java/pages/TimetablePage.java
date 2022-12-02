@@ -27,6 +27,7 @@ public class TimetablePage extends Page{
         Option selection = promptInput(options);
 
         Page redirect = null;
+
         switch (selection) {
             case HOME:
                 redirect = this.router.getHomePage();
@@ -39,8 +40,5 @@ public class TimetablePage extends Page{
                 break;
         };
         return redirect;
-
-
-
     }
 }

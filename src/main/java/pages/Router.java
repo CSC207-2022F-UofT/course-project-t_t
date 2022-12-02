@@ -55,6 +55,13 @@ public class Router {
     }
     public void setViewMyTimetablePage(ViewMyTimetablePage viewMyTimetablePage) {
         this.viewMyTimetablePage = viewMyTimetablePage;
+
+    public TimetablePage getTimetablePage() {
+        return timetablePage;
+
+    }
+    public void setTimetablePage(TimetablePage timetablePage) {
+        this.timetablePage = timetablePage;
     }
 
     public void setHomePage(HomePage homePage) {

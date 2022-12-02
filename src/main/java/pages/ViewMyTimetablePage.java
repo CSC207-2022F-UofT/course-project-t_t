@@ -28,46 +28,26 @@ public class ViewMyTimetablePage extends Page{
     @Override
     public Page run() {
 
-        System.out.println("This is my timetable:");
+        String[][] schedule = new String[12][8]; // setting up a 2d array
+        String[] days = {"Time", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
 
-        String[][] schedule = new String[23][6];
+        int start = 9;
+        int end = 10;
 
-        String[] days = {"Time", "Mon", "Tue", "Wed", "Thu", "Fri"};
+        for (int i = 0; i < 12; i++) {
+            schedule[i][0] = start + "-" + end;
 
-        schedule[0][0] = "9:00-9:30";
-        schedule[1][0] = "9:30-10:00";
-        schedule[2][0] = "10:00-10:30";
-        schedule[3][0] = "10:30-11:00";
-        schedule[4][0] = "11:00-11:30";
-        schedule[5][0] = "11:30-12:00";
-        schedule[6][0] = "12:00-12:30";
-        schedule[7][0] = "12:30-13:00";
-        schedule[8][0] = "13:30-14:00";
-        schedule[9][0] = "14:00-14:30";
-        schedule[10][0] = "14:30-15:00";
-        schedule[11][0] = "15:00-15:30";
-        schedule[12][0] = "15:30-16:00";
-        schedule[13][0] = "16:00-16:30";
-        schedule[14][0] = "16:30-17:00";
-        schedule[15][0] = "17:00-17:30";
-        schedule[16][0] = "17:30-18:00";
-        schedule[17][0] = "18:00-18:30";
-        schedule[18][0] = "18:30-19:00";
-        schedule[19][0] = "19:00-19:30";
-        schedule[20][0] = "19:30-20:00";
-        schedule[21][0] = "20:00-20:30";
-        schedule[22][0] = "20:30-21:00";
+            start += 1;
+            end += 1;
+        }
 
-        JTable table = new JTable(schedule, days);
-
-        JFrame frame = new JFrame("UTimetable");
-
+        JTable table = new JTable(schedule, days); // visualizing into JTable
+        JFrame frame = new JFrame("My Timetable Viewer");
         frame.add(new JScrollPane(table));
-
-        frame.setSize(500, 500);
+        frame.setSize(800, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         frame.setVisible(true);
+
 
         Map<String, Option> options = Map.of(
                 "Return to Home Page", Option.RETURN_TO_HOME_PAGE

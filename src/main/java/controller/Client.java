@@ -33,7 +33,6 @@ public class Client {
         FreeIntervalPage freeIntervalPage = new FreeIntervalPage(router, pageState);
         TimetableViewerPage timetableViewerPage = new TimetableViewerPage(router, pageState);
 
-
         router.setLoginPage(loginPage);
         router.setSignInPage(signInPage);
         router.setSignUpPage(signUpPage);

@@ -51,6 +51,7 @@ public class Router {
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
     }
+    private ViewMyTimetablePage viewMyTimetablePage;
 
     public TimetableViewerPage getTimetableViewerPage() {
         return timetableViewerPage;

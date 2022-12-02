@@ -53,7 +53,7 @@ public class FreeIntervalPage extends Page{
                     schedule[hour][day] = "███████";
                 }
             }
-            else if (2880 <= startInd & startInd < 4320) { // tuesday
+            else if (2880 <= startInd && startInd < 4320) { // tuesday
                 int day = 2;
                 int hour = (startInd - 2880) / 60;
                 if (hour > 12) {
@@ -64,7 +64,7 @@ public class FreeIntervalPage extends Page{
                     schedule[hour][day] = "███████";
                 }
             }
-            else if (4320 <= startInd & startInd < 5760) { // wednesday
+            else if (4320 <= startInd && startInd < 5760) { // wednesday
                 int day = 3;
                 int hour = (startInd - 4320) / 60;
                 if (hour > 12) {
@@ -75,7 +75,7 @@ public class FreeIntervalPage extends Page{
                     schedule[hour][day] = "███████";
                 }
             }
-            else if (5760 <= startInd & startInd < 7200) { //thursday
+            else if (5760 <= startInd && startInd < 7200) { //thursday
                 int day = 4;
                 int hour = (startInd - 5760) / 60;
                 if (hour > 12) {
@@ -87,7 +87,7 @@ public class FreeIntervalPage extends Page{
                     schedule[hour][day] = "███████";
                 }
             }
-            else if (7200 <= startInd & startInd < 8640) { //friday
+            else if (7200 <= startInd && startInd < 8640) { //friday
                 int day = 5;
                 int hour = (startInd - 7200) / 60;
 
@@ -100,7 +100,7 @@ public class FreeIntervalPage extends Page{
                     schedule[hour][day] = "███████";
                 }
             }
-            else if (8640 <= startInd & startInd < 10080) { // saturday
+            else if (8640 <= startInd && startInd < 10080) { // saturday
                 int day = 6;
                 int hour = (startInd - 8640) / 60;
                 if (hour > 12) {
@@ -111,7 +111,7 @@ public class FreeIntervalPage extends Page{
                     schedule[hour][day] = "███████";
                 }
             }
-            else if (0 <= startInd & startInd < 1440) { // sunday
+            else if (0 <= startInd && startInd < 1440) { // sunday
                 int day = 7;
                 int hour = (startInd) / 60;
 
@@ -127,7 +127,7 @@ public class FreeIntervalPage extends Page{
         JTable table = new JTable(schedule, days); // visualizing into JTable
         JFrame frame = new JFrame("Free Interval Finder");
         frame.add(new JScrollPane(table));
-        frame.setSize(1000, 600);
+        frame.setSize(1000, 1000);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 

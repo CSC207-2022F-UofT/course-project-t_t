@@ -41,18 +41,18 @@ public class Router {
     private BlockPage blockPage;
     private UnblockPage unblockPage;
     private FriendsPage friendsPage;
-    private ViewMyTimetablePage viewMyTimetablePage;
+    private TimetablePage timetablePage;
 
     public HomePage getHomePage() {
         return homePage;
     }
 
-    public ViewMyTimetablePage getViewMyTimetablePage() {
-        return viewMyTimetablePage;
+    public TimetablePage getTimetablePage() {
+        return timetablePage;
 
     }
-    public void setViewMyTimetablePage(ViewMyTimetablePage viewMyTimetablePage) {
-        this.viewMyTimetablePage = viewMyTimetablePage;
+    public void setTimetablePage(TimetablePage timetablePage) {
+        this.timetablePage = timetablePage;
     }
 
     public void setHomePage(HomePage homePage) {

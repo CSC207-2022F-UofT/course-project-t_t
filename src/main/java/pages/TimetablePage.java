@@ -1,14 +1,12 @@
 package pages;
 
 import entities.Timetable;
-import entities.User;
 import presenter.TimetableViewer;
 
-import java.util.ArrayList;
 import java.util.Map;
 
-public class ViewMyTimetablePage extends Page{
-    public ViewMyTimetablePage(Router router, PageState pageState) {
+public class TimetablePage extends Page{
+    public TimetablePage(Router router, PageState pageState) {
         super(router, pageState, "View My Timetable Page");
     }
     public Timetable getTimetable() {

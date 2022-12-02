@@ -39,6 +39,109 @@ public class FreeIntervalPage extends Page{
             end += 1;
         }
 
+        int startInd = freeIntervals.get(0).getStart();
+        int endInd = freeIntervals.get(0).getEnd();
+        int hour = (startInd - 1440) / 60;
+
+        for (Interval inter: freeIntervals) { // selecting the index j
+            if (1440 <= startInd & startInd < 2880) { // monday
+                int day = 1;
+
+                if (hour > 12) {
+                    int pmHour = hour - 12;
+
+                    schedule[pmHour][day] = "Free";
+                }
+
+                else {
+                    schedule[hour][day] = "Free";
+                }
+            }
+            else if (2880 <= startInd & startInd < 4320) { // tuesday
+                int day = 2;
+
+                if (hour > 12) {
+                    int pmHour = hour - 12;
+
+                    schedule[pmHour][day] = "Free";
+                }
+
+                else {
+                    schedule[hour][day] = "Free";
+                }
+            }
+            else if (4320 <= startInd & startInd < 5760) { // wednesday
+                int day = 3;
+
+                if (hour > 12) {
+                    int pmHour = hour - 12;
+
+                    schedule[pmHour][day] = "Free";
+                }
+
+                else {
+                    schedule[hour][day] = "Free";
+                }
+            }
+
+            else if (5760 <= startInd & startInd < 7200) { //thursday
+                int day = 4;
+
+                if (hour > 12) {
+                    int pmHour = hour - 12;
+
+                    schedule[pmHour][day] = "Free";
+                }
+
+                else {
+                    schedule[hour][day] = "Free";
+                }
+            }
+
+            else if (7200 <= startInd & startInd < 8640) { //friday
+                int day = 5;
+
+                if (hour > 12) {
+                    int pmHour = hour - 12;
+
+                    schedule[pmHour][day] = "Free";
+                }
+
+                else {
+                    schedule[hour][day] = "Free";
+                }
+            }
+
+            else if (8640 <= startInd & startInd < 10080) { // saturday
+                int day = 6;
+
+                if (hour > 12) {
+                    int pmHour = hour - 12;
+
+                    schedule[pmHour][day] = "Free";
+                }
+
+                else {
+                    schedule[hour][day] = "Free";
+                }
+            }
+
+            else if (10080 <= startInd & startInd < 11520) { // sunday
+                int day = 7;
+
+                if (hour > 12) {
+                    int pmHour = hour - 12;
+
+                    schedule[pmHour][day] = "Free";
+                }
+
+                else {
+                    schedule[hour][day] = "Free";
+                }
+            }
+
+        }
+
         JTable table = new JTable(schedule, days); // visualizing into JTable
         JFrame frame = new JFrame("Free Interval Finder");
         frame.add(new JScrollPane(table));

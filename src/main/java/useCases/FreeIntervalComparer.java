@@ -31,9 +31,9 @@ public class FreeIntervalComparer {
             prev = curr;
             curr += d / ad;
             if ((prev > 0) && (curr == 0))
-                free.add(new Interval(buff, ad));
-            else if ((prev == 0) && (curr > 0))
                 buff = ad;
+            else if ((prev == 0) && (curr > 0))
+                free.add(new Interval(buff, ad));
         }
         free.add(new Interval(buff, Integer.MAX_VALUE));
 

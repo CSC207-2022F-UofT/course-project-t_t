@@ -13,7 +13,8 @@ public class TimetablePage extends Page{
     private enum Option {
         HOME,
         FIND_COURSES,
-        FIND_FREE
+        FIND_FREE,
+        TIMETABLE_VIEWER,
     }
 
     @Override
@@ -22,12 +23,12 @@ public class TimetablePage extends Page{
         Map<String, Option> options = Map.of(
                 "Back to home", Option.HOME,
                 "Find common courses", Option.FIND_COURSES,
-                "Find common free intervals", Option.FIND_FREE
+                "Find common free intervals", Option.FIND_FREE,
+                "Timetable Viewer", Option.TIMETABLE_VIEWER
         );
         Option selection = promptInput(options);
 
         Page redirect = null;
-
         switch (selection) {
             case HOME:
                 redirect = this.router.getHomePage();
@@ -38,7 +39,14 @@ public class TimetablePage extends Page{
             case FIND_FREE:
                 redirect = this.router.getFreeIntervalPage();
                 break;
+            case TIMETABLE_VIEWER:
+                redirect = this.router.getTimetableViewerPage();
+                System.out.println("Loading timetable...");
+                break;
         };
         return redirect;
+
+
+
     }
 }

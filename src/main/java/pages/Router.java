@@ -69,7 +69,6 @@ public class Router {
     }
     private ViewMyTimetablePage viewMyTimetablePage;
 
-
     public FriendsListPage getFriendsListPage() {
         return friendsListPage;
     }
@@ -84,7 +83,9 @@ public class Router {
     public void setManageFriendsPage(ManageFriendsPage manageFriendsPage) {
         this.manageFriendsPage = manageFriendsPage;
     }
-    public ManageBlockedPage getManageBlockedPage() { return manageBlockedPage; }
+    public ManageBlockedPage getManageBlockedPage() {
+        return manageBlockedPage;
+    }
     public void setManageBlockedPage(ManageBlockedPage manageBlockedPage) {
         this.manageBlockedPage = manageBlockedPage;
     }

@@ -47,10 +47,10 @@ public class FreeIntervalPage extends Page{
                 int hour = (startInd - 1440) / 60;
                 if (hour > 12) {
                     int pmHour = hour - 12;
-                    schedule[pmHour][day] = "Free";
+                    schedule[pmHour][day] = "███████";
                 }
                 else {
-                    schedule[hour][day] = "Free";
+                    schedule[hour][day] = "███████";
                 }
             }
             else if (2880 <= startInd & startInd < 4320) { // tuesday
@@ -58,10 +58,10 @@ public class FreeIntervalPage extends Page{
                 int hour = (startInd - 2880) / 60;
                 if (hour > 12) {
                     int pmHour = hour - 12;
-                    schedule[pmHour][day] = "Free";
+                    schedule[pmHour][day] = "███████";
                 }
                 else {
-                    schedule[hour][day] = "Free";
+                    schedule[hour][day] = "███████";
                 }
             }
             else if (4320 <= startInd & startInd < 5760) { // wednesday
@@ -69,10 +69,10 @@ public class FreeIntervalPage extends Page{
                 int hour = (startInd - 4320) / 60;
                 if (hour > 12) {
                     int pmHour = hour - 12;
-                    schedule[pmHour][day] = "Free";
+                    schedule[pmHour][day] = "███████";
                 }
                 else {
-                    schedule[hour][day] = "Free";
+                    schedule[hour][day] = "███████";
                 }
             }
             else if (5760 <= startInd & startInd < 7200) { //thursday
@@ -81,10 +81,10 @@ public class FreeIntervalPage extends Page{
                 if (hour > 12) {
                     int pmHour = hour - 12;
 
-                    schedule[pmHour][day] = "Free";
+                    schedule[pmHour][day] = "███████";
                 }
                 else {
-                    schedule[hour][day] = "Free";
+                    schedule[hour][day] = "███████";
                 }
             }
             else if (7200 <= startInd & startInd < 8640) { //friday
@@ -94,10 +94,10 @@ public class FreeIntervalPage extends Page{
                 if (hour > 12) {
                     int pmHour = hour - 12;
 
-                    schedule[pmHour][day] = "Free";
+                    schedule[pmHour][day] = "███████";
                 }
                 else {
-                    schedule[hour][day] = "Free";
+                    schedule[hour][day] = "███████";
                 }
             }
             else if (8640 <= startInd & startInd < 10080) { // saturday
@@ -105,10 +105,10 @@ public class FreeIntervalPage extends Page{
                 int hour = (startInd - 8640) / 60;
                 if (hour > 12) {
                     int pmHour = hour - 12;
-                    schedule[pmHour][day] = "Free";
+                    schedule[pmHour][day] = "███████";
                 }
                 else {
-                    schedule[hour][day] = "Free";
+                    schedule[hour][day] = "███████";
                 }
             }
             else if (0 <= startInd & startInd < 1440) { // sunday
@@ -117,17 +117,17 @@ public class FreeIntervalPage extends Page{
 
                 if (hour > 12) {
                     int pmHour = hour - 12;
-                    schedule[pmHour][day] = "Free";
+                    schedule[pmHour][day] = "███████";
                 }
                 else {
-                    schedule[hour][day] = "Free";
+                    schedule[hour][day] = "███████";
                 }
             }
         }
         JTable table = new JTable(schedule, days); // visualizing into JTable
         JFrame frame = new JFrame("Free Interval Finder");
         frame.add(new JScrollPane(table));
-        frame.setSize(1000, 1000);
+        frame.setSize(1000, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 

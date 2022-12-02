@@ -22,6 +22,7 @@ public class Client {
         ManageFriendsPage manageFriendsPage = new ManageFriendsPage(router, pageState);
         AddFriendsPage addFriendsPage = new AddFriendsPage(router, pageState);
         RemoveFriendsPage removeFriendsPage = new RemoveFriendsPage(router, pageState);
+        ViewMyTimetablePage viewMyTimetablePage = new ViewMyTimetablePage(router, pageState);
 
         BlockedListPage blockedListPage = new BlockedListPage(router, pageState);
         ManageBlockedPage manageBlockedPage = new ManageBlockedPage(router, pageState);
@@ -43,6 +44,7 @@ public class Client {
         router.setManageFriendsPage(manageFriendsPage);
         router.setAddFriendsPage(addFriendsPage);
         router.setRemoveFriendsPage(removeFriendsPage);
+        router.setViewMyTimetablePage(viewMyTimetablePage);
 
         router.setBlockedListPage(blockedListPage);
         router.setManageBlockedPage(manageBlockedPage);

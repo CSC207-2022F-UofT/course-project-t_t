@@ -15,4 +15,9 @@ public class Lecture {
     public Location getLocation(){
         return this.location;
     }
+
+    @Override
+    public String toString() {
+        return String.format("{%s, %s}", interval, location);
+    }
 }

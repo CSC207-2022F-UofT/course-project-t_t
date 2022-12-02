@@ -1,6 +1,10 @@
 package controller;
 
+import entities.User;
 import pages.*;
+import useCases.FreeIntervalComparer;
+
+import java.util.ArrayList;
 
 public class Client {
     public static void main(String[] args) {
@@ -25,6 +29,9 @@ public class Client {
         BlockPage blockPage = new BlockPage(router, pageState);
         UnblockPage unblockPage = new UnblockPage(router, pageState);
 
+        TimetablePage timetablePage = new TimetablePage(router, pageState);
+        CompareCoursesPage compareCoursesPage = new CompareCoursesPage(router, pageState);
+        FreeIntervalPage freeIntervalPage = new FreeIntervalPage(router, pageState);
 
 
         router.setLoginPage(loginPage);
@@ -43,7 +50,10 @@ public class Client {
         router.setManageBlockedPage(manageBlockedPage);
         router.setBlockPage(blockPage);
         router.setUnblockPage(unblockPage);
-        ;
+
+        router.setTimetablePage(timetablePage);
+        router.setCompareCoursesPage(compareCoursesPage);
+        router.setFreeIntervalPage(freeIntervalPage);
 
         Page current = loginPage;
         while (current != null) {

@@ -4,6 +4,8 @@ public class Interval{
     int start;
     int end;
     public Interval(int start, int end){
+        assert start < end;
+
         this.start = start;
         this.end = end;
     }
@@ -21,5 +23,10 @@ public class Interval{
 
     public void setEnd(int end){
         this.end = end;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("[%s, %s)", this.start, this.end);
     }
 }

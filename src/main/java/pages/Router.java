@@ -42,23 +42,23 @@ public class Router {
     private UnblockPage unblockPage;
     private FriendsPage friendsPage;
     private TimetablePage timetablePage;
+    private CompareCoursesPage compareCoursesPage;
+    private FreeIntervalPage freeIntervalPage;
 
     public HomePage getHomePage() {
         return homePage;
     }
-
-    public TimetablePage getTimetablePage() {
-        return timetablePage;
-
-    }
-    public void setTimetablePage(TimetablePage timetablePage) {
-        this.timetablePage = timetablePage;
-    }
-
     public void setHomePage(HomePage homePage) {
         this.homePage = homePage;
     }
 
+    public TimetableViewerPage getTimetableViewerPage() {
+        return timetableViewerPage;
+    }
+    public void setTimetableViewerPage(TimetableViewerPage timetableViewerPage) {
+        this.timetableViewerPage = timetableViewerPage;
+    }
+    private TimetableViewerPage timetableViewerPage;
 
     public FriendsListPage getFriendsListPage() {
         return friendsListPage;
@@ -105,4 +105,27 @@ public class Router {
         this.friendsPage = friendsPage;
     }
 
+    public TimetablePage getTimetablePage() {
+        return timetablePage;
+    }
+
+    public void setTimetablePage(TimetablePage timetablePage) {
+        this.timetablePage = timetablePage;
+    }
+
+    public CompareCoursesPage getCompareCoursesPage() {
+        return compareCoursesPage;
+    }
+
+    public void setCompareCoursesPage(CompareCoursesPage compareCoursesPage) {
+        this.compareCoursesPage = compareCoursesPage;
+    }
+
+    public FreeIntervalPage getFreeIntervalPage() {
+        return freeIntervalPage;
+    }
+
+    public void setFreeIntervalPage(FreeIntervalPage freeIntervalPage) {
+        this.freeIntervalPage = freeIntervalPage;
+    }
 }

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 public class Timetable implements Jsonable {
 
+    public Timetable() {}
+
     ArrayList<Course> courses;
 
     public Timetable(ArrayList<Course> courses) {

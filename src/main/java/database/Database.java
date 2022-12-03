@@ -19,6 +19,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
 
+
 import java.nio.file.Paths;
 import java.nio.file.Files;
 
@@ -52,13 +53,14 @@ public class Database{
         ArrayList<User> temp =  getDatabase();
     }
 
-    private static final ArrayList<User> db = new ArrayList<User>();
+    private static ArrayList<User> db = new ArrayList<User>();
 
     public static ArrayList<User> getDatabase() {
         try {
-            File directory = new File("./" + "src\\main\\java\\database\\UsersDataBase.json");
+            String filename = "src/main/java/database/UsersDataBase.json";
+
             // creates reader
-            Reader reader = Files.newBufferedReader(Paths.get(directory.getAbsolutePath()));
+            Reader reader = Files.newBufferedReader(Paths.get(filename));
 
             // read JSON from the file
             JsonArray objects = Jsoner.deserializeMany(reader);
@@ -70,10 +72,13 @@ public class Database{
             JsonArray jsonArrayList = (JsonArray) objects.get(0);
             List<User> userList = jsonArrayList.stream()
                     .map(obj -> mapper.map(obj, User.class)).toList();
-            ArrayList<User> userArrayList = new ArrayList<User>(userList);
+            ArrayList<User> userArrayList = new ArrayList<>(userList);
+
+            // convert list to ArrayList
             for (User u : userArrayList) {
-                System.out.println(u);
+                System.out.println(u.getUsername());
             }
+            db = userArrayList;
             return db;
         } catch (Exception e) {
             System.out.println("Exception Caught!");

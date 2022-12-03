@@ -11,9 +11,11 @@ import entities.User;
 import entities.Timetable;
 import entities.Location;
 import entities.FriendsList;
+import entities.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -27,18 +29,36 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Database{
-
     public static void main(String[] args) {
-        getDatabase();
+//        Location jonlocation = new Location("jonhouse");
+//        ArrayList<User> empty = new ArrayList<>();
+//        FriendsList jonfl = new FriendsList(empty, empty);
+//        Interval interval = new Interval(0, 1);
+//        Lecture lecture = new Lecture(interval, jonlocation);
+//        ArrayList<Lecture> lectures = new ArrayList<Lecture>();
+//        lectures.add(lecture);
+//        Course course = new Course("csc207", "100", lectures);
+//        ArrayList<Course> courses = new ArrayList<Course>();
+//        courses.add(course);
+//        Timetable timetable = new Timetable(courses);
+//
+//
+//        User user1 = new User("jon", "jonpassword", "jonemail", jonlocation, timetable, jonfl);
+//        ArrayList<User> users = new ArrayList<User>();
+//        users.add(user1);
+//
+//        setDatabase(users);
+
+        ArrayList<User> temp =  getDatabase();
     }
 
     private static final ArrayList<User> db = new ArrayList<User>();
 
     public static ArrayList<User> getDatabase() {
         try {
-            String filename = "C:\\Users\\Clare\\Documents\\UofT\\Year 3 Sem 1\\CSC207\\New Project\\course-project-t_t\\src\\main\\java\\database\\UsersDataBase.json";
+            File directory = new File("./" + "src\\main\\java\\database\\UsersDataBase.json");
             // creates reader
-            Reader reader = Files.newBufferedReader(Paths.get(filename));
+            Reader reader = Files.newBufferedReader(Paths.get(directory.getAbsolutePath()));
 
             // read JSON from the file
             JsonArray objects = Jsoner.deserializeMany(reader);
@@ -60,5 +80,21 @@ public class Database{
             e.printStackTrace();
         }
         return db;
+    }
+
+
+    public static void setDatabase(ArrayList<User> users){
+        File directory = new File("./" + "src\\main\\java\\database\\UsersDataBase.json");
+        JsonArray jsonArray = new JsonArray(users);
+
+        try {
+                FileWriter writer = new FileWriter(directory.getAbsolutePath(), true);
+                writer.write(jsonArray.toJson());
+                writer.flush();
+                writer.close();
+            }
+            catch(Exception ex) {
+                ex.printStackTrace();
+            }
     }
 }

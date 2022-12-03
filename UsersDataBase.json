@@ -1,0 +1,31 @@
+{
+	"password":"jonpassword",
+	"friendsList":{
+		"blockedList":[
+			
+		],
+		"friendList":[
+			
+		]
+	},
+	"location":"jonhouse",
+	"email":"jonemail",
+	"username":"jon",
+	"timetable":{
+		"courses":[
+			{
+				"lectures":[
+					{
+						"location":{
+							"location":"jonhouse"
+						},
+						"interval":{
+							"start":0,
+							"end":1
+						}
+					}
+				]
+			}
+		]
+	}
+}

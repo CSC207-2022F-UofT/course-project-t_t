@@ -73,7 +73,7 @@ public class User implements Jsonable {
         json.put("password", this.password);
         json.put("email", this.email);
         json.put("friendsList", this.friendsList);
-        json.put("location", this.location);
+        json.put("location", this.location.name);
         json.put("timetable", this.timetable);
         return json.toJson();
     }

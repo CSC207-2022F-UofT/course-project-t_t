@@ -1,6 +1,12 @@
 package entities;
 
-public class Interval{
+import com.github.cliftonlabs.json_simple.JsonObject;
+import com.github.cliftonlabs.json_simple.Jsonable;
+
+import java.io.IOException;
+import java.io.Writer;
+
+public class Interval implements Jsonable {
     int start;
     int end;
     public Interval(int start, int end){
@@ -21,5 +27,22 @@ public class Interval{
 
     public void setEnd(int end){
         this.end = end;
+    }
+
+    @Override
+    public String toJson() {
+        JsonObject json = new JsonObject();
+        json.put("start", this.start);
+        json.put("end", this.end);
+        return json.toJson();
+    }
+
+    @Override
+    public void toJson(Writer writable) throws IOException {
+        try {
+            writable.write(this.toJson());
+        } catch (Exception ignored) {
+
+        }
     }
 }

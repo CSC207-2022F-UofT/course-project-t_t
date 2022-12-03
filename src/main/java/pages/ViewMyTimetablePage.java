@@ -41,6 +41,9 @@ public class ViewMyTimetablePage extends Page{
             end += 1;
         }
 
+        System.out.println("Is this the right one");
+        // this is not the one
+
         JTable table = new JTable(schedule, days); // visualizing into JTable
         JFrame frame = new JFrame("My Timetable Viewer");
         frame.add(new JScrollPane(table));

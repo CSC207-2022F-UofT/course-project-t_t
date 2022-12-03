@@ -17,7 +17,6 @@ public class FriendsListManager {
                 friends.add(student2);
                 student1.setFriends(friends);
             }
-
         }
     }
 

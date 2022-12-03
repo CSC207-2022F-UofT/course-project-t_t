@@ -51,14 +51,12 @@ public class CompareCoursesPage extends Page {
         System.out.println(sharedCourses);
 
         String[][] mySchedule = new String[24][8]; // setting up a 2d array
-        String[] days = {"Time", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+        String[] days = {"Time", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
         int start = 0;
         int end = 1;
 
         // my (your) timetable
-
-
         for (int i = 0; i < 24; i++) {
             mySchedule[i][0] = start + "-" + end;
 
@@ -68,20 +66,16 @@ public class CompareCoursesPage extends Page {
 
         for (Course myCourse : dummyTimetable1.getCourses()) {
             ArrayList<Lecture> myLectures = myCourse.getLectures();
+            String courseName = myCourse.getCourseCode();
 
             for (Lecture lecture : myLectures) {
                 int startTime = lecture.getInterval().getStart();
                 int endTime = lecture.getInterval().getEnd();
 
-
                 while (startTime < endTime) {
-
                     int startIndex = (startTime / 60) - (24 * dayHelper(startTime));
-                    String courseName = myCourse.getCourseCode();
                     mySchedule[startIndex][dayHelper(startTime) + 1] = courseName;
-
                     startTime += 60;
-
                 }
             }
         }
@@ -97,25 +91,28 @@ public class CompareCoursesPage extends Page {
             String[][] comparedSchedule = new String[24][8]; // setting up a 2d array
             String[] comparedDays = {"Time", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
-            for (int i = 0; i < 24; i++) {
-                comparedSchedule[i][0] = start + "-" + end;
+        int start2 = 0;
+        int end2 = 1;
 
-                start += 1;
-                end += 1;
+            for (int i = 0; i < 24; i++) {
+                comparedSchedule[i][0] = start2 + "-" + end2;
+
+                start2 += 1;
+                end2 += 1;
             }
 
             for (Course comparedCourse : dummyTimetable1.getCourses()) {
                 ArrayList<Lecture> comparedLectures = comparedCourse.getLectures();
+                String courseName = comparedCourse.getCourseCode();
 
                 for (Lecture lecture : comparedLectures) {
                     int startTime = lecture.getInterval().getStart();
                     int endTime = lecture.getInterval().getEnd();
 
-
                     while (startTime < endTime) {
 
                         int startIndex = (startTime / 60) - (24 * dayHelper(startTime));
-                        String courseName = comparedCourse.getCourseCode();
+
                         comparedSchedule[startIndex][dayHelper(startTime) + 1] = courseName;
 
                         startTime += 60;
@@ -131,34 +128,34 @@ public class CompareCoursesPage extends Page {
             comparedFrame.setVisible(true);
 
 
-            // shared timetable
+        // shared timetable
 
         String[][] sharedSchedule = new String[24][8]; // setting up a 2d array
         String[] sharedDays = {"Time", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
-        for (int i = 0; i < 24; i++) {
-            sharedSchedule[i][0] = start + "-" + end;
+        int start3 = 0;
+        int end3 = 1;
 
-            start += 1;
-            end += 1;
+        for (int i = 0; i < 24; i++) {
+            sharedSchedule[i][0] = start3 + "-" + end3;
+
+            start3 += 1;
+            end3 += 1;
         }
 
-        for (Course sharedCourse : dummyTimetable1.getCourses()) {
+        for (Course sharedCourse : sharedCourses) {
             ArrayList<Lecture> sharedLectures = sharedCourse.getLectures();
+            String courseName = sharedCourse.getCourseCode();
 
             for (Lecture lecture : sharedLectures) {
+
                 int startTime = lecture.getInterval().getStart();
                 int endTime = lecture.getInterval().getEnd();
 
-
                 while (startTime < endTime) {
-
                     int startIndex = (startTime / 60) - (24 * dayHelper(startTime));
-                    String courseName = sharedCourse.getCourseCode();
                     sharedSchedule[startIndex][dayHelper(startTime) + 1] = courseName;
-
                     startTime += 60;
-
                 }
             }
         }

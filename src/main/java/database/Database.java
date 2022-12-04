@@ -40,6 +40,7 @@ public class Database {
         JSONParser parser = new JSONParser();
         ArrayList<User> returnUsers = new ArrayList<>();
         try (Reader reader = new FileReader("src/main/java/database/UsersDataBase.json")) {
+
             JSONArray listOfUsers = (JSONArray) parser.parse(reader);
             for (Object o: listOfUsers) {
                 JSONObject user = (JSONObject) o;
@@ -95,15 +96,73 @@ public class Database {
                 Timetable timetable = new Timetable(courses);
                 User newUser = new User(username, password, email, friends, blocked, location, timetable);
                 returnUsers.add(newUser);
+                }
 
-                // add friends and blocked
-                for (Object m: listOfUsers) {
-                    JSONObject userObject = (JSONObject) m;
-                    ArrayList<User> listOfFriends = new ArrayList<>();
-                    ArrayList<User> listOfBlocked = new ArrayList<>();
 
+
+            // add friends
+            for (Object m: listOfUsers) {
+                User currUser = new User();
+                User targetUser = new User();
+
+                JSONObject friendsListObject = (JSONObject) m;
+
+                JSONObject friendsList = (JSONObject) friendsListObject.get("friendsList");
+
+                // find current User
+                for (User curr: returnUsers) {
+                    if (curr.getUsername() == friendsListObject.get("username")) {
+                        currUser = curr;
+                    }
+                }
+
+                // add friends
+                JSONArray friendsArray = (JSONArray) friendsList.get("friendsList");
+                for (Object value : friendsArray) {
+                    String targetUserName = (String) value;
+
+                    // find User class of target
+                    for (User us : returnUsers) {
+                        if (Objects.equals(us.getUsername(), targetUserName)) {
+                            targetUser = us;
+                        }
+                    }
+                    currUser.addFriend(targetUser);
                 }
             }
+
+            // add blocked
+            for (Object m: listOfUsers) {
+                User currUser = new User();
+                User targetUser = new User();
+
+                JSONObject blockedListObject = (JSONObject) m;
+
+                JSONObject friendsList = (JSONObject) blockedListObject.get("friendsList");
+
+                // find current User
+                for (User curr: returnUsers) {
+                    if (curr.getUsername() == blockedListObject.get("username")) {
+                        currUser = curr;
+                    }
+                }
+
+                // add blocked users
+                JSONArray blockedArray = (JSONArray) friendsList.get("blockedList");
+                for (Object value : blockedArray) {
+                    String targetUserName = (String) value;
+
+                    // find User class of target
+                    for (User us : returnUsers) {
+                        if (Objects.equals(us.getUsername(), targetUserName)) {
+                            targetUser = us;
+                        }
+                    }
+                    currUser.addBlocked(targetUser);
+                }
+            }
+
+
 
             for (User u : returnUsers) {
                 System.out.println("users: " + u.getUsername());
@@ -111,7 +170,15 @@ public class Database {
                 System.out.println("email: " + u.getEmail());
                 System.out.println("location: " + u.getLocation());
                 System.out.println("friends: " + u.getFriends());
+                System.out.println("friends: ");
+                for (User xx : u.getFriends()) {
+                    System.out.println(xx.getUsername());
+                }
                 System.out.println("blocked: " + u.getBlocked());
+                System.out.println("Blocked: ");
+                for (User yy : u.getBlocked()) {
+                    System.out.println(yy.getUsername());
+                }
                 System.out.println("timetable: " + u.getTimetable());
                 System.out.println("\n");
 

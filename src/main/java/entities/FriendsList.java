@@ -22,4 +22,7 @@ public class FriendsList{
         return this.blocked;
     }
 
+    public void addFriend(User u) {
+        this.friends.add(u);
+    }
 }

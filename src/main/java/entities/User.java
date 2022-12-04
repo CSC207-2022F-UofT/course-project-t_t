@@ -12,6 +12,8 @@ public class User {
     private Timetable timetable;
     private FriendsList friendsList;
 
+    public User(){}
+
     public User(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
         this.username = username;
         this.password = password;
@@ -73,5 +75,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void addFriend(User u) {
+        this.friendsList.friends.add(u);
+    }
+
+    public void addBlocked(User u) {
+        this.friendsList.blocked.add(u);
     }
 }

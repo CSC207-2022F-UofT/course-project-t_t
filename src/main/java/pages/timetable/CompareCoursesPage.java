@@ -16,20 +16,16 @@ public class CompareCoursesPage extends PageAction {
     @Override
     public void run(PageSession pageSession) {
         assert pageSession.checkLoggedIn();
-
         User currentUser = pageSession.getCurrentUser();
         Timetable myTimetable = currentUser.getTimetable();
-
         FriendsListManager friendsListManager = new FriendsListManager();
-
         Scanner in = new Scanner(System.in);
-
         User curr_user = pageSession.getCurrentUser();
         ArrayList<User> db = Database.getDatabase();
         ArrayList<User> fl = curr_user.getFriends();
-
         Timetable tt;
         ArrayList<Course> sharedCourses;
+
         while (true) {
             System.out.println("Enter your friend's username:");
 

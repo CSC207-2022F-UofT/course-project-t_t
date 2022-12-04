@@ -22,7 +22,7 @@ public class FriendsListManagerTest {
 
     @Test(timeout = 50)
     public void testAddFriends(){
-        User ashley = new User("Ashley", "1111", new ArrayList<>(), new ArrayList<>());
+        User ashley = new User("Ashley", "1111");
         User Kim = Database.getUser("Kim");
         FriendsListManager.addFriends(ashley, Kim);
         fl.getFriends().add(Kim);                           // Adding user who exists in db
@@ -31,13 +31,13 @@ public class FriendsListManagerTest {
 
         fl.getFriends().remove(Kim);
         ashley.getFriends().remove(Kim);
-        User tina = new User("Tina", "0000", new ArrayList<>(), new ArrayList<>());
+        User tina = new User("Tina", "0000");
         FriendsListManager.addFriends(ashley, tina);        // Adding user not in db
         assertEquals(fl.getFriends(), ashley.getFriends()); // fl should be empty
     }
     @Test(timeout = 50)
     public void testRemoveFriends(){
-        User narae = new User("Narae", "1234", new ArrayList<>(), new ArrayList<>());
+        User narae = new User("Narae", "1234");
         User Kim = Database.getUser("Kim");
         FriendsListManager.addFriends(narae, Kim);
         FriendsListManager.removeFriends(narae, Kim); // Removing user who exists in fl
@@ -46,7 +46,7 @@ public class FriendsListManagerTest {
 
     @Test(timeout = 50)
     public void testBlockFriends(){
-        User jeff = new User("Jeff", "0101", new ArrayList<>(), new ArrayList<>());
+        User jeff = new User("Jeff", "0101");
         User Kim = Database.getUser("Kim");
         FriendsListManager.addFriends(jeff, Kim); // Add user from db
         FriendsListManager.blockFriends(jeff, Kim); // Add user from fl to bl and remove from fl
@@ -57,7 +57,7 @@ public class FriendsListManagerTest {
 
     @Test(timeout = 50)
     public void testUnblockFriends(){
-        User jeff = new User("Jeff", "0101", new ArrayList<>(), new ArrayList<>());
+        User jeff = new User("Jeff", "0101");
         User Kim = Database.getUser("Kim");
         FriendsListManager.addFriends(jeff, Kim); // Add user from db
         FriendsListManager.blockFriends(jeff, Kim); // Block friend in fl

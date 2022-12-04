@@ -25,12 +25,6 @@ public class InverterTest {
         Integer number = 5000;
         assertEquals(3, freeSlotInverter.dayHelper(number));
     }
-
-    @Test(timeout=50)
-    public void testFindDayMax() {
-        Integer number = 20000;
-        assertEquals(6, freeSlotInverter.dayHelper(6));
-    }
 }
 
 

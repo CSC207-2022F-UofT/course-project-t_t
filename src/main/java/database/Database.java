@@ -19,29 +19,35 @@ import org.json.simple.parser.ParseException;
 public class Database {
 
     public static void main(String[] args) {
-        JSONParser parser = new JSONParser();
-        try (Reader reader = new FileReader("src/main/java/database/UsersDataBase.json")) {
-
-            JSONObject jsonObject = (JSONObject) ((JSONArray) parser.parse(reader)).get(0);
-            System.out.println(jsonObject);
-            JSONObject f1 = (JSONObject) jsonObject.get("friendsList");
-            JSONArray f2 = (JSONArray) f1.get("friendsList");
-            System.out.println(f2.get(0));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-
-
+        getDatabase();
     }
     private static final ArrayList<User> db = new ArrayList<User>();
 
     public static ArrayList<User> getDatabase() {
-        db.add(new User( "Kim", "cydfk123", new ArrayList<>(), new ArrayList<>()));
-        db.add(new User("Soomi", "choi7439", new ArrayList<>(), new ArrayList<>()));
+        JSONParser parser = new JSONParser();
+        ArrayList<User> returnUsers = new ArrayList<>();
+        try (Reader reader = new FileReader("src/main/java/database/UsersDataBase.json")) {
+            JSONArray listOfUsers = (JSONArray) parser.parse(reader);
+            for (Object o: listOfUsers) {
+                JSONObject user = (JSONObject) o;
+                String username = (String) user.get("username");
+                String password = (String) user.get("password");
+                String email = (String) user.get("email");
+                JSONObject friendsList = (JSONObject) user.get("friendsList");
+                JSONObject location = (JSONObject) user.get("location");
+                JSONArray timetable = (JSONArray) user.get("timetable");
+                User newUser = new User();
+
+            }
+
+
+
+//            JSONObject f1 = (JSONObject) user.get("friendsList");
+//            JSONArray f2 = (JSONArray) f1.get("friendsList");
+            return db;
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
         return db;
     }
 

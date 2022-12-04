@@ -8,7 +8,9 @@
 			"friendsList": ["user two"],
 			"blockedList": ["user three"]
 		},
-		"location": "Bahen",
+		"location": {
+			"name": "Bahen"
+		},
 		"timetable": [
 			{
 				"courseCode": "CSC207",
@@ -62,7 +64,9 @@
 			"friendsList": ["user one"],
 			"blockedList": ["user three"]
 		},
-		"location": "Robarts",
+		"location": {
+			"name": "Robarts"
+		},
 		"timetable": [
 			{
 				"courseCode": "CSC207",
@@ -116,7 +120,9 @@
 			"friendsList": [],
 			"blockedList": ["user one", "user two"]
 		},
-		"location": "Athletic Center",
+		"location": {
+			"name": "Bahen"
+		},
 		"timetable": [
 			{
 				"courseCode": "ABC123",

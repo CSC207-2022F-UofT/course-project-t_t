@@ -5,6 +5,7 @@ import entities.Interval;
 import entities.Timetable;
 import useCases.FreeIntervalComparer;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class FreeIntervalPage extends Page{

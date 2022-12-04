@@ -1,10 +1,33 @@
 package entities;
 
+import useCases.FreeIntervalComparer;
+
 import java.util.ArrayList;
 
 public class User {
-    String username;
-    String password;
+    private String username;
+    private String password;
+    private String email;
+    private Location location;
+    private Timetable timetable;
+    private FriendsList friendsList;
+
+    public User(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
+        this.username = username;
+        this.password = password;
+        this.friendsList = new FriendsList(friends, blocked);
+    }
+
+    public User(String username, String password, String email, ArrayList<User> friends,
+                ArrayList<User> blocked, Location location, Timetable timetable) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.friendsList = new FriendsList(friends, blocked);
+        this.location = location;
+        this.timetable = timetable;
+    }
+
 
     public String getUsername() {
         return username;
@@ -22,31 +45,16 @@ public class User {
     public Timetable getTimetable() {return timetable;}
 
 
-    private Location location;
-    private Timetable timetable;
-
-
-    // TODO: add getters & setters for <friends>, <blocked>, and <timetable>
 
     public void setUsername(String username) { this.username = username; }
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public User(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
-        this.username = username;
-        this.password = password;
-        this.location = new Location("temp");
-        this.friendsList = new FriendsList(friends, blocked);
-    }
 
-//    protected ArrayList<User> friends;
-    private FriendsList friendsList;
-//    protected ArrayList<User> blocked;
+
 
     public ArrayList<User> getFriends() {
-//        System.out.println(friendsList.friends);
-//        # --> Source of Error (friends has not been initialized)
         return this.friendsList.friends;
     }
     public ArrayList<User> getBlocked() {
@@ -58,33 +66,12 @@ public class User {
     public void setBlocked(ArrayList<User> blocked) {
         this.friendsList.blocked = blocked;
     }
-    public String getName() {
-        return name;
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
-    private String name;
-
-    public User(String name) {
-        this.name = name;
-    }
-
-    protected ArrayList<User> friends;
-    protected ArrayList<User> blocked;
-
-//    public ArrayList<User> getFriends() {
-//        return friends;
-//    }
-//    public ArrayList<User> getBlocked() {
-//        return blocked;
-//    }
-//    public void setFriends(ArrayList<User> friends) {
-//        this.friends = friends;
-//    }
-//    public void setBlocked(ArrayList<User> blocked) {
-//        this.blocked = blocked;
-//    }
 }

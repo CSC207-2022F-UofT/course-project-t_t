@@ -1,11 +1,9 @@
 package database;
 import entities.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 //import java.text.ParseException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Objects;
@@ -16,6 +14,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+
+import com.google.gson.*;
 public class Database {
 
     public static void main(String[] args) {
@@ -23,6 +23,19 @@ public class Database {
     }
     private static final ArrayList<User> db = new ArrayList<User>();
 
+    public static void setDatabase(ArrayList<User> users){
+        File directory = new File("./" + "src\\main\\java\\database\\UsersDataBase.json");
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            FileWriter writer = new FileWriter(directory.getAbsolutePath());
+            writer.write(gson.toJson(users));
+            writer.flush();
+            writer.close();
+        }
+        catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     public static ArrayList<User> getDatabase() {
         JSONParser parser = new JSONParser();
         ArrayList<User> returnUsers = new ArrayList<>();
@@ -30,20 +43,80 @@ public class Database {
             JSONArray listOfUsers = (JSONArray) parser.parse(reader);
             for (Object o: listOfUsers) {
                 JSONObject user = (JSONObject) o;
+
+                // string information
                 String username = (String) user.get("username");
                 String password = (String) user.get("password");
                 String email = (String) user.get("email");
-                JSONObject friendsList = (JSONObject) user.get("friendsList");
-                JSONObject location = (JSONObject) user.get("location");
-                JSONArray timetable = (JSONArray) user.get("timetable");
-                User newUser = new User();
+
+                // empty friendsList
+                ArrayList<User> friends = new ArrayList<>();
+                ArrayList<User> blocked = new ArrayList<>();
+
+                // location Object
+                JSONObject locationObject = (JSONObject) user.get("location");
+                String locationName = (String) locationObject.get("name");
+                Location location = new Location(locationName);
+
+                // timetable Object
+                ArrayList<Course> courses = new ArrayList<>();
+                JSONArray timetableArray = (JSONArray) user.get("timetable");
+                for (Object course : timetableArray) {
+                    JSONObject courseObject = (JSONObject) course;
+
+                    // courseCode
+                    String courseCode = (String) courseObject.get("courseCode");
+                    // sectionCode
+                    String sectionCode = (String) courseObject.get("section");
+                    // lecture
+                    ArrayList<Lecture> lectures = new ArrayList<>();
+                    JSONArray lectureArray = (JSONArray) courseObject.get("lectures");
+                    for (Object lectureObject: lectureArray) {
+                        JSONObject lecture = (JSONObject) lectureObject;
+
+                        // location
+                        String locationString = (String) lecture.get("location");
+                        Location locationOfLecture = new Location(locationString);
+
+                        // interval
+                        JSONObject intervalObject = (JSONObject) lecture.get("interval");
+                        Long start = (Long) intervalObject.get("start");
+                        int s = start.intValue();
+                        Long end = (Long) intervalObject.get("end");
+                        int e = end.intValue();
+                        Interval interval = new Interval(s, e);
+
+                        Lecture newLecture = new Lecture(interval, locationOfLecture);
+                        lectures.add(newLecture);
+                    }
+                    Course newCourse = new Course(courseCode, sectionCode, lectures);
+                    courses.add(newCourse);
+                }
+                Timetable timetable = new Timetable(courses);
+                User newUser = new User(username, password, email, friends, blocked, location, timetable);
+                returnUsers.add(newUser);
+
+                // add friends and blocked
+                for (Object m: listOfUsers) {
+                    JSONObject userObject = (JSONObject) m;
+                    ArrayList<User> listOfFriends = new ArrayList<>();
+                    ArrayList<User> listOfBlocked = new ArrayList<>();
+
+                }
+            }
+
+            for (User u : returnUsers) {
+                System.out.println("users: " + u.getUsername());
+                System.out.println("password: " + u.getPassword());
+                System.out.println("email: " + u.getEmail());
+                System.out.println("location: " + u.getLocation());
+                System.out.println("friends: " + u.getFriends());
+                System.out.println("blocked: " + u.getBlocked());
+                System.out.println("timetable: " + u.getTimetable());
+                System.out.println("\n");
 
             }
 
-
-
-//            JSONObject f1 = (JSONObject) user.get("friendsList");
-//            JSONArray f2 = (JSONArray) f1.get("friendsList");
             return db;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -51,10 +124,13 @@ public class Database {
         return db;
     }
 
+//    public static void addUser(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
+//        db.add(new User(username, password, friends, blocked));
+//    }
+
     public static void addUser(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
         db.add(new User(username, password, friends, blocked));
     }
-
     public static User getUser(String username) {
         System.out.println(username);
         for (User user : db) {

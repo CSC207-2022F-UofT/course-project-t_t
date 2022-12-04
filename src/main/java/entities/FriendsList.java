@@ -8,6 +8,12 @@ import com.github.cliftonlabs.json_simple.JsonObject;
 import com.github.cliftonlabs.json_simple.Jsonable;
 import entities.User;
 
+<<<<<<< HEAD
+=======
+public class FriendsList implements Jsonable{
+    ArrayList<User> friends;
+    ArrayList<User> blocked;
+>>>>>>> c35187f2c0f0fbb44135af20b04aeb88d21173ab
 
 
 public class FriendsList implements Jsonable {
@@ -38,10 +44,13 @@ public class FriendsList implements Jsonable {
         return this.blocked;
     }
 
+<<<<<<< HEAD
     public void setBlocked(ArrayList<User> u) {
         this.blocked = u;
     }
 
+=======
+>>>>>>> c35187f2c0f0fbb44135af20b04aeb88d21173ab
     @Override
     public String toJson() {
         JsonObject json = new JsonObject();
@@ -51,8 +60,13 @@ public class FriendsList implements Jsonable {
 //        json.put("friendsList", this.friendsList);
 //        json.put("location", this.location);
 //        json.put("timetable", this.timetable);
+<<<<<<< HEAD
         json.put("friendList", this.friends);
         json.put("blockedList", this.blocked);
+=======
+            json.put("friendList", this.friends);
+            json.put("blockedList", this.blocked);
+>>>>>>> c35187f2c0f0fbb44135af20b04aeb88d21173ab
         return json.toJson();
     }
 
@@ -64,4 +78,9 @@ public class FriendsList implements Jsonable {
 
         }
     }
+<<<<<<< HEAD
 }
+=======
+
+}
+>>>>>>> c35187f2c0f0fbb44135af20b04aeb88d21173ab

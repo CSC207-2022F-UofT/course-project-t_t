@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.lang.runtime.ObjectMethods;
 import java.util.Iterator;
 
@@ -25,6 +26,10 @@ import java.lang.reflect.Type;
 //import com.github.dozermapper.core.Mapper;
 import org.json.JSONArray;
 import org.json.JSONObject;
+=======
+import java.util.Iterator;
+
+>>>>>>> c35187f2c0f0fbb44135af20b04aeb88d21173ab
 
 import java.nio.file.Paths;
 import java.nio.file.Files;
@@ -37,7 +42,26 @@ import org.json.simple.parser.*;
 
 public class Database{
     public static void main(String[] args) {
-        getDatabase();
+//        Location jonlocation = new Location("jonhouse");
+//        ArrayList<User> empty = new ArrayList<>();
+//        FriendsList jonfl = new FriendsList(empty, empty);
+//        Interval interval = new Interval(0, 1);
+//        Lecture lecture = new Lecture(interval, jonlocation);
+//        ArrayList<Lecture> lectures = new ArrayList<Lecture>();
+//        lectures.add(lecture);
+//        Course course = new Course("csc207", "100", lectures);
+//        ArrayList<Course> courses = new ArrayList<Course>();
+//        courses.add(course);
+//        Timetable timetable = new Timetable(courses);
+//
+//
+//        User user1 = new User("jon", "jonpassword", "jonemail", jonlocation, timetable, jonfl);
+//        ArrayList<User> users = new ArrayList<User>();
+//        users.add(user1);
+//
+//        setDatabase(users);
+
+        ArrayList<User> temp =  getDatabase();
     }
 
     private static ArrayList<User> db = new ArrayList<>();
@@ -46,6 +70,12 @@ public class Database{
         JSONParser jsonParser = new JSONParser();
         try {
             String filename = "src/main/java/database/UsersDataBase.json";
+<<<<<<< HEAD
+=======
+
+            // creates reader
+            Reader reader = Files.newBufferedReader(Paths.get(filename));
+>>>>>>> c35187f2c0f0fbb44135af20b04aeb88d21173ab
 
             JSONObject jsonObject = (JSONObject) jsonParser.parse(new FileReader(filename));
 //
@@ -83,9 +113,13 @@ public class Database{
         return db;
     }
 
+<<<<<<< HEAD
     public static void setDataBase(ArrayList<User> users) {}
 
 
+=======
+
+>>>>>>> c35187f2c0f0fbb44135af20b04aeb88d21173ab
     public static void setDatabase(ArrayList<User> users){
         File directory = new File("./" + "src\\main\\java\\database\\UsersDataBase.json");
         JsonArray jsonArray = new JsonArray(users);

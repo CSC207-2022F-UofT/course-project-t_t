@@ -10,6 +10,7 @@ import pages.friends.FriendsTimetablePage;
 import pages.friends.RemoveFriendsPage;
 import pages.timetable.CompareCoursesPage;
 import pages.timetable.FreeIntervalPage;
+import pages.timetable.TimetableViewerPage;
 import pages.user.SignInPage;
 import pages.user.SignUpPage;
 
@@ -52,6 +53,7 @@ public class Client {
         Page timetablePage = pf.buildPage("Timetable");
         Page compareCoursesPage = pf.buildPage(new CompareCoursesPage(), "Find common courses");
         Page freeIntervalPage = pf.buildPage(new FreeIntervalPage(), "Find common free intervals");
+        Page timetableViewerPage = pf.buildPage(new TimetableViewerPage(), "View Timetable");
 
 
         logoutPage.setRoutes(new Page[]{signInPage, signUpPage});
@@ -71,9 +73,10 @@ public class Client {
         blockPage.setRoutes(new Page[]{manageBlockedPage});
         unblockPage.setRoutes(new Page[]{manageBlockedPage});
 
-        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage});
+        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage, timetableViewerPage});
         compareCoursesPage.setRoutes(new Page[]{timetablePage});
         freeIntervalPage.setRoutes(new Page[]{timetablePage});
+        timetableViewerPage.setRoutes(new Page[]{timetablePage});
 
         return logoutPage;
     }

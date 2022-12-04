@@ -18,7 +18,9 @@ public class Database {
     }
 
     public static User getUser(String username) {
+        System.out.println(username);
         for (User user : db) {
+            System.out.println(user);
             if (Objects.equals(user.getUsername(), username)) {
                 return user;
             }
@@ -39,7 +41,7 @@ public class Database {
         ArrayList<Lecture> dummyLectures2 = new ArrayList<>();
 
         dummyLectures2.add(
-                new Lecture(new Interval(5100, 5220), new Location("BA 2222"))
+                new Lecture(new Interval(2160, 2220), new Location("BA 2222"))
         );
         dummyLectures2.add(
                 new Lecture(new Interval(3720, 3840), new Location("BA 2222"))

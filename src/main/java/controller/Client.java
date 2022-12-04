@@ -57,7 +57,7 @@ public class Client {
         signInPage.setRoutes(new Page[]{homePage});
         homePage.setRoutes(new Page[]{logoutPage, friendsPage, timetablePage});
 
-        friendsPage.setRoutes(new Page[]{homePage, blockedListPage, manageBlockedPage, manageFriendsPage, friendsListPage});
+        friendsPage.setRoutes(new Page[]{homePage, manageFriendsPage, friendsListPage, manageBlockedPage, blockedListPage});
         friendsListPage.setRoutes(new Page[]{friendsPage});
         manageFriendsPage.setRoutes(new Page[]{friendsPage, addFriendsPage, removeFriendsPage});
         addFriendsPage.setRoutes(new Page[]{manageFriendsPage});

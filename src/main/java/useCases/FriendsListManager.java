@@ -11,13 +11,15 @@ public class FriendsListManager {
 //    static FriendsListChecker friendsListChecker = new FriendsListChecker();
     static ArrayList<User> db = Database.getDatabase();
     public static void addFriends(User student1, User student2) {
+        if (student1.getBlocked().contains(student2)) {
+            System.out.println("This user is blocked.");
+        }
         if (!student1.getFriends().contains(student2)) {
             if (Database.getDatabase().contains(student2)) {
                 ArrayList<User> friends = student1.getFriends();
                 friends.add(student2);
                 student1.setFriends(friends);
             }
-
         }
     }
 

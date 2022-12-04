@@ -5,6 +5,8 @@ import com.github.cliftonlabs.json_simple.Jsonable;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.sql.Array;
+import java.util.ArrayList;
 
 public class User implements Jsonable {
 
@@ -23,7 +25,7 @@ public class User implements Jsonable {
         this.password = password;
         this.email = email;
         this.timetable = timetable;
-        this.friendsList = new FriendsList(friendsList.getFriends(), friendsList.getBlocked());
+        this.friendsList = new FriendsList();
         this.location = new Location(location);
     }
     public String getUsername() {
@@ -65,6 +67,16 @@ public class User implements Jsonable {
     public void setTimetable(Timetable timetable) {this.timetable = timetable;}
 
     public void setLocation(String location) {this.location = new Location(location);}
+
+    public String toString() {
+        return "username: " + username + "\n" +
+                "password: " + password + "\n" +
+                "email: " + email + "\n" +
+                "friendsList: " + friendsList.getFriends() + "\n" +
+                "blockedList: " + friendsList.getBlocked() + "\n" +
+                "location: " + location.getName() + "\n" +
+                "timetable: " + timetable + "\n";
+    }
 
     @Override
     public String toJson() {

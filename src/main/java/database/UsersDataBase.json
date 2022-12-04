@@ -3,8 +3,10 @@
 		"username": "user one",
 		"password": "useronepassword",
 		"email": "userone@gmail.com",
-		"friendsList": ["user two"],
-		"blockedList": ["user three"],
+		"friendsList": {
+			"friendsList": ["user two"],
+			"blockedList": ["user three"]
+		},
 		"location": "Bahen",
 		"timetable": [
 			{
@@ -55,8 +57,10 @@
 		"username": "user two",
 		"password": "usertwopassword",
 		"email": "usertwo@gmail.com",
-		"friendsList": ["user one"],
-		"blockedList": ["user three"],
+		"friendsList": {
+			"friendsList": ["user one"],
+			"blockedList": ["user three"]
+		},
 		"location": "Robarts",
 		"timetable": [
 			{
@@ -107,9 +111,11 @@
 		"username": "user three",
 		"password": "userthreepassword",
 		"email": "userthree@gmail.com",
-		"friendsList": [],
-		"blockedList": ["user one", "user two"],
-		"Location": "Athletic Center",
+		"friendsList": {
+			"friendsList": [],
+			"blockedList": ["user one", "user two"]
+		},
+		"location": "Athletic Center",
 		"timetable": [
 			{
 				"courseCode": "ABC123",

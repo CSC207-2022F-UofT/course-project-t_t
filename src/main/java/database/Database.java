@@ -1,10 +1,42 @@
 package database;
 import entities.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+//import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Objects;
 
+//import org.json.simple.parser.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 public class Database {
+
+    public static void main(String[] args) {
+        JSONParser parser = new JSONParser();
+        try (Reader reader = new FileReader("src/main/java/database/UsersDataBase.json")) {
+
+            JSONObject jsonObject = (JSONObject) ((JSONArray) parser.parse(reader)).get(0);
+            System.out.println(jsonObject);
+            JSONObject f1 = (JSONObject) jsonObject.get("friendsList");
+            JSONArray f2 = (JSONArray) f1.get("friendsList");
+            System.out.println(f2.get(0));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
     private static final ArrayList<User> db = new ArrayList<User>();
 
     public static ArrayList<User> getDatabase() {

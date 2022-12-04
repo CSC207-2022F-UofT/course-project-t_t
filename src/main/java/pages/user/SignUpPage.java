@@ -1,21 +1,19 @@
-package pages;
+package pages.user;
 
 import database.Database;
 import entities.User;
+import pages.PageAction;
+import pages.PageSession;
 import useCases.SignUp;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class SignUpPage extends Page{
-    public SignUpPage(Router router, PageState pageState) {
-        super(router, pageState, "Sign Up Page");
-    }
+public class SignUpPage extends PageAction {
 
     @Override
-    public Page run() {
+    public void run(PageSession pageSession) {
         SignUp signUp = new SignUp();
-        System.out.println("This is a Sign Up page.");
 
         Scanner in = new Scanner(System.in);
 
@@ -53,8 +51,7 @@ public class SignUpPage extends Page{
             Database.addUser(username, password, friends, blocked);
 
             System.out.printf("New account created for %s. \n", username);
-
-            return router.getSignInPage();
+            break;
         }
     }
 }

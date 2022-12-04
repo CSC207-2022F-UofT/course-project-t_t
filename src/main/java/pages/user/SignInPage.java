@@ -41,7 +41,7 @@ public class SignInPage extends PageAction {
             }
 
             System.out.printf("Signing in as %s.\n", username);
-            pageSession.setCurrentUser(new User(username, password));
+            pageSession.setCurrentUser(new User(username, password, friends, blocked));
             break;
         }
     }

@@ -4,10 +4,9 @@ import database.Database;
 import entities.*;
 import pages.PageAction;
 import pages.PageSession;
-import presenter.compareVisualizer;
+import presenter.CompareVisualizer;
 import useCases.CourseComparer;
 
-import javax.swing.*;
 import java.util.ArrayList;
 
 public class CompareCoursesPage extends PageAction {
@@ -29,8 +28,8 @@ public class CompareCoursesPage extends PageAction {
         System.out.println("Shared courses:");
         System.out.println(sharedCourses);
 
-        compareVisualizer.compareWindow(dummyTimetable1.getCourses());
-        compareVisualizer.compareWindow(dummyTimetable2.getCourses());
-        compareVisualizer.compareWindow(sharedCourses);
+        CompareVisualizer.compareWindow(dummyTimetable1.getCourses());
+        CompareVisualizer.compareWindow(dummyTimetable2.getCourses());
+        CompareVisualizer.compareWindow(sharedCourses);
     }
 }

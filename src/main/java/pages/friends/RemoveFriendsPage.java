@@ -1,27 +1,24 @@
-package pages;
+package pages.friends;
 
 import database.Database;
-import entities.FriendsList;
 import entities.User;
+import pages.PageAction;
+import pages.PageSession;
 import useCases.FriendsListManager;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class RemoveFriendsPage extends Page {
-    public RemoveFriendsPage(Router router, PageState pageState) {
-        super(router, pageState, "Remove Friends Page");
-    }
+public class RemoveFriendsPage extends PageAction {
 
     @Override
-    public Page run() {
-        System.out.println("This is a Remove Friends page.");
+    public void run(PageSession pageSession) {
 
         Scanner in = new Scanner(System.in);
 
         ArrayList<User> db = Database.getDatabase();
 
-        User curr_user = this.pageState.getCurrentUser();
+        User curr_user = pageSession.getCurrentUser();
         ArrayList<User> fl = curr_user.getFriends();
 
         while (true) {
@@ -37,8 +34,7 @@ public class RemoveFriendsPage extends Page {
             System.out.printf("Removing %s.\n", friend);
             User curr_friend = FriendsListManager.getFriend(curr_user, friend);
             FriendsListManager.removeFriends(curr_user, curr_friend);
-
-            return router.getManageFriendsPage();
+            break;
         }
     }
 }

@@ -1,16 +1,16 @@
 package presenter;
 
-import entities.Course;
 import entities.Interval;
-import entities.Timetable;
-import useCases.compareInverter;
 import useCases.freeSlotInverter;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class compareVisualizer {
-    public static void compareWindow(ArrayList<Course> courses) {
+public class FreeSlotsVisualizer {
+    // given
+
+    public static void windowVisualizer(ArrayList<Interval> intervals) {
+
         String[][] schedule = new String[24][8]; // setting up a 2d array
         String[] days = {"Time", "Sun", "mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
@@ -22,14 +22,15 @@ public class compareVisualizer {
 
             start += 1;
             end += 1;
-            }
+        }
 
-        compareInverter.timetableToIndex(courses, schedule);
+        freeSlotInverter.timeToIndex(intervals, schedule);
 
         JTable table = new JTable(schedule, days); // visualizing into JTable
-        JFrame frame = new JFrame("UTimetable");
+        JFrame frame = new JFrame("Free Interval Finder");
         frame.add(new JScrollPane(table));
         frame.setSize(1000, 500);
         frame.setVisible(true);
+
     }
 }

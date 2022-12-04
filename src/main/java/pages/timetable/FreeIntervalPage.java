@@ -5,7 +5,7 @@ import entities.Interval;
 import entities.Timetable;
 import pages.PageAction;
 import pages.PageSession;
-import presenter.freeSlotsVisualizer;
+import presenter.FreeSlotsVisualizer;
 import useCases.FreeIntervalComparer;
 
 import java.util.ArrayList;
@@ -13,9 +13,18 @@ import java.util.ArrayList;
 public class FreeIntervalPage extends PageAction {
     @Override
     public void run(PageSession pageSession) {
-        ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
+         ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
+         ArrayList<Interval> freeIntervals = FreeIntervalComparer.findFreeIntervals(dummyTimetables);
 
-        ArrayList<Interval> freeIntervals = FreeIntervalComparer.findFreeIntervals(dummyTimetables);
+//        User currentUser = pageSession.getCurrentUser();
+//        Timetable currentTimetable = currentUser.getTimetable();
+
+        // get timetable for another user
+        // store current user's and another user's timetables in ArrayList<Timetable>
+
+//        ArrayList<Timetable> timetables =
+//
+//        ArrayList<Interval> freeIntervals = FreeIntervalComparer.findFreeIntervals(currentTimetable);
 
         System.out.println("Timetables processed:");
         System.out.println(dummyTimetables);
@@ -23,6 +32,6 @@ public class FreeIntervalPage extends PageAction {
         System.out.println("Free intervals:");
         System.out.println(freeIntervals);
 
-        freeSlotsVisualizer.windowVisualizer(freeIntervals);
+        FreeSlotsVisualizer.windowVisualizer(freeIntervals);
     }
 }

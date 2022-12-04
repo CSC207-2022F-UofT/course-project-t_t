@@ -7,6 +7,7 @@ import pages.PageSession;
 import useCases.SignUp;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class SignUpPage extends PageAction {
@@ -18,21 +19,27 @@ public class SignUpPage extends PageAction {
         Scanner in = new Scanner(System.in);
 
         ArrayList<User> db = Database.getDatabase();
-
-        // show sign in page if the new user is successfully signed up
+        
         while (true) {
             System.out.println("Enter your new username:");
 
             String username = in.next();
 
-            System.out.println("Enter your new password:");
-
-            String password = in.next();
+            if (Objects.equals(username, "Exit") || Objects.equals(username, "exit")) {
+                System.out.println("This username cannot be used. Try another username.");
+                continue;
+            }
 
             if (!signUp.checkNewUsername(db, username)) {
                 System.out.println("Existing username. Try another username.");
                 continue;
             }
+
+            System.out.println("Enter your new password:");
+
+            String password = in.next();
+            ArrayList<User> friends = new ArrayList<>();
+            ArrayList<User> blocked = new ArrayList<>();
 
             System.out.println("Re-enter your password:");
 

@@ -7,9 +7,7 @@ import pages.block.UnblockPage;
 import pages.friends.AddFriendsPage;
 import pages.friends.FriendsListPage;
 import pages.friends.RemoveFriendsPage;
-import pages.timetable.CompareCoursesPage;
-import pages.timetable.FreeIntervalPage;
-import pages.timetable.TimetableViewerPage;
+import pages.timetable.*;
 import pages.user.SignInPage;
 import pages.user.SignUpPage;
 
@@ -52,7 +50,9 @@ public class Client {
         Page compareCoursesPage = pf.buildPage(new CompareCoursesPage(), "Find common courses");
         Page freeIntervalPage = pf.buildPage(new FreeIntervalPage(), "Find common free intervals");
         Page timetableViewerPage = pf.buildPage(new TimetableViewerPage(), "View Timetable");
-
+        Page modifyTimetablePage = pf.buildPage("Modify Timetable");
+        Page addCoursesPage = pf.buildPage(new AddCoursesPage(), "Add courses");
+        Page removeCoursesPage = pf.buildPage(new RemoveCoursesPage(), "Remove courses");
 
         logoutPage.setRoutes(new Page[]{signInPage, signUpPage});
         signUpPage.setRoutes(new Page[]{signInPage});
@@ -70,7 +70,10 @@ public class Client {
         blockPage.setRoutes(new Page[]{manageBlockedPage});
         unblockPage.setRoutes(new Page[]{manageBlockedPage});
 
-        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage, timetableViewerPage});
+        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage, timetableViewerPage,modifyTimetablePage});
+        modifyTimetablePage.setRoutes(new Page[]{timetablePage, addCoursesPage, removeCoursesPage});
+        addCoursesPage.setRoutes(new Page[]{timetablePage});
+        removeCoursesPage.setRoutes(new Page[]{timetablePage});
         compareCoursesPage.setRoutes(new Page[]{timetablePage});
         freeIntervalPage.setRoutes(new Page[]{timetablePage});
         timetableViewerPage.setRoutes(new Page[]{timetablePage});

@@ -1,4 +1,5 @@
 package useCases;
+
 import entities.Interval;
 import java.util.ArrayList;
 public class FreeSlotInverter {

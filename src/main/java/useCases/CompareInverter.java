@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static useCases.FreeSlotInverter.dayHelper;
 
-public class compareInverter {
+public class CompareInverter {
 
     public static void timetableToIndex(ArrayList<Course> courses, String[][] schedule) {
 

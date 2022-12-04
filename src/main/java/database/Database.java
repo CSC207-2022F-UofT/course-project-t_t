@@ -18,7 +18,9 @@ public class Database {
     }
 
     public static User getUser(String username) {
+        System.out.println(username);
         for (User user : db) {
+            System.out.println(user);
             if (Objects.equals(user.getUsername(), username)) {
                 return user;
             }

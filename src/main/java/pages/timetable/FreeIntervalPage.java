@@ -40,7 +40,7 @@ public class FreeIntervalPage extends PageAction {
             }
             System.out.printf("Selected user: %s.\n", friend);
 
-            assert curr_friend != null; // what
+            assert curr_friend != null;
 
             Timetable tt = curr_friend.getTimetable();
 

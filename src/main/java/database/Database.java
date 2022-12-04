@@ -1,10 +1,7 @@
 package database;
 import entities.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 //import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,29 +13,46 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+
+import com.google.gson.*;
 public class Database {
 
     public static void main(String[] args) {
-        JSONParser parser = new JSONParser();
-        try (Reader reader = new FileReader("src/main/java/database/UsersDataBase.json")) {
-
-            JSONObject jsonObject = (JSONObject) ((JSONArray) parser.parse(reader)).get(0);
-            System.out.println(jsonObject);
-            JSONObject f1 = (JSONObject) jsonObject.get("friendsList");
-            JSONArray f2 = (JSONArray) f1.get("friendsList");
-            System.out.println(f2.get(0));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        JSONParser parser = new JSONParser();
+//        try (Reader reader = new FileReader("src/main/java/database/UsersDataBase.json")) {
+//
+//            JSONObject jsonObject = (JSONObject) ((JSONArray) parser.parse(reader)).get(0);
+//            System.out.println(jsonObject);
+//            JSONObject f1 = (JSONObject) jsonObject.get("friendsList");
+//            JSONArray f2 = (JSONArray) f1.get("friendsList");
+//            System.out.println(f2.get(0));
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+        System.out.println(getDatabase().get(0).getTimetable());
 
 
 
     }
     private static final ArrayList<User> db = new ArrayList<User>();
 
+    public static void setDatabase(ArrayList<User> users){
+        File directory = new File("./" + "src\\main\\java\\database\\UsersDataBase.json");
+        try {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            FileWriter writer = new FileWriter(directory.getAbsolutePath());
+            writer.write(gson.toJson(users));
+            writer.flush();
+            writer.close();
+        }
+        catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     public static ArrayList<User> getDatabase() {
         db.add(new User( "Kim", "cydfk123", new ArrayList<>(), new ArrayList<>()));
         db.add(new User("Soomi", "choi7439", new ArrayList<>(), new ArrayList<>()));

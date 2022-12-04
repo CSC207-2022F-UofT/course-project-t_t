@@ -18,22 +18,19 @@ import java.util.Scanner;
 public class FreeIntervalPage extends PageAction {
     @Override
     public void run(PageSession pageSession) {
+
         User currentUser = pageSession.getCurrentUser();
         Timetable myTimetable = currentUser.getTimetable();
-
         FriendsListManager friendsListManager = new FriendsListManager();
-
         Scanner in = new Scanner(System.in);
-
         User curr_user = pageSession.getCurrentUser();
         ArrayList<User> db = Database.getDatabase();
         ArrayList<User> fl = curr_user.getFriends();
-
         ArrayList<Timetable> ourTimetable;
         ArrayList<Interval> freeIntervals;
+
         while (true) {
             System.out.println("Enter your friend's username:");
-
             String friend = in.next();
             User curr_friend = Database.getUser(friend);
 
@@ -41,7 +38,6 @@ public class FreeIntervalPage extends PageAction {
                 System.out.println("User not found. Try again.");
                 continue;
             }
-
             System.out.printf("Selected user: %s.\n", friend);
 
             assert curr_friend != null; // what

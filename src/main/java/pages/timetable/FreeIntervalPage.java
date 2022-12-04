@@ -5,13 +5,13 @@ import entities.Interval;
 import entities.Timetable;
 import pages.PageAction;
 import pages.PageSession;
+import presenter.freeSlotsVisualizer;
 import useCases.FreeIntervalComparer;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
 public class FreeIntervalPage extends PageAction {
-
     @Override
     public void run(PageSession pageSession) {
         ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
@@ -23,5 +23,7 @@ public class FreeIntervalPage extends PageAction {
 
         System.out.println("Free intervals:");
         System.out.println(freeIntervals);
+
+        freeSlotsVisualizer.windowVisualizer(freeIntervals);
     }
 }

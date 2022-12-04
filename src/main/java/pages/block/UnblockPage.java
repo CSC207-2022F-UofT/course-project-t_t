@@ -1,27 +1,25 @@
-package pages;
+package pages.block;
 
 import database.Database;
 import entities.User;
+import pages.PageAction;
+import pages.PageSession;
 import useCases.FriendsListManager;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class UnblockPage extends Page {
-    public UnblockPage(Router router, PageState pageState) {
-        super(router, pageState, "Unblock Friends Page");
-    }
+public class UnblockPage extends PageAction {
 
     @Override
-    public Page run() {
+    public void run(PageSession pageSession) {
 //        FriendsListManager friendsListManager = new FriendsListManager();
-        System.out.println("This is the Unblock User page.");
 
         Scanner in = new Scanner(System.in);
 
         ArrayList<User> db = Database.getDatabase();
 
-        User curr_user = this.pageState.getCurrentUser();
+        User curr_user = pageSession.getCurrentUser();
         ArrayList<User> fl = curr_user.getFriends();
 
         while (true) {
@@ -39,8 +37,7 @@ public class UnblockPage extends Page {
             System.out.printf("Unlocking %s.\n", friend);
             User curr_friend = FriendsListManager.getBlocked(curr_user, friend);
             FriendsListManager.unblockFriends(curr_user, curr_friend);
-
-            return router.getBlockedListPage();
+            break;
         }
     }
 }

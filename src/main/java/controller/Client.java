@@ -6,9 +6,11 @@ import pages.block.BlockedListPage;
 import pages.block.UnblockPage;
 import pages.friends.AddFriendsPage;
 import pages.friends.FriendsListPage;
+import pages.friends.FriendsTimetablePage;
 import pages.friends.RemoveFriendsPage;
 import pages.timetable.CompareCoursesPage;
 import pages.timetable.FreeIntervalPage;
+import pages.timetable.TimetableViewerPage;
 import pages.user.SignInPage;
 import pages.user.SignUpPage;
 
@@ -41,6 +43,7 @@ public class Client {
         Page manageFriendsPage = pf.buildPage("Manage friends");
         Page addFriendsPage = pf.buildPage(new AddFriendsPage(), "Add friends");
         Page removeFriendsPage = pf.buildPage(new RemoveFriendsPage(), "Remove friends");
+        Page friendsTimetablePage = pf.buildPage(new FriendsTimetablePage(), "View friend's timetable");
 
         Page blockedListPage = pf.buildPage(new BlockedListPage(), "Blocked list");
         Page manageBlockedPage = pf.buildPage("Manage blocked");
@@ -50,6 +53,7 @@ public class Client {
         Page timetablePage = pf.buildPage("Timetable");
         Page compareCoursesPage = pf.buildPage(new CompareCoursesPage(), "Find common courses");
         Page freeIntervalPage = pf.buildPage(new FreeIntervalPage(), "Find common free intervals");
+        Page timetableViewerPage = pf.buildPage(new TimetableViewerPage(), "View my timetable");
 
 
         logoutPage.setRoutes(new Page[]{signInPage, signUpPage});
@@ -58,19 +62,21 @@ public class Client {
         homePage.setRoutes(new Page[]{logoutPage, friendsPage, timetablePage});
 
         friendsPage.setRoutes(new Page[]{homePage, manageFriendsPage, friendsListPage, manageBlockedPage, blockedListPage});
-        friendsListPage.setRoutes(new Page[]{friendsPage});
+        friendsListPage.setRoutes(new Page[]{friendsPage, friendsTimetablePage});
         manageFriendsPage.setRoutes(new Page[]{friendsPage, addFriendsPage, removeFriendsPage});
         addFriendsPage.setRoutes(new Page[]{manageFriendsPage});
         removeFriendsPage.setRoutes(new Page[]{manageFriendsPage});
+        friendsTimetablePage.setRoutes(new Page[]{friendsListPage});
 
         blockedListPage.setRoutes(new Page[]{friendsPage});
         manageBlockedPage.setRoutes(new Page[]{friendsPage, blockPage, unblockPage});
         blockPage.setRoutes(new Page[]{manageBlockedPage});
         unblockPage.setRoutes(new Page[]{manageBlockedPage});
 
-        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage});
+        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage, timetableViewerPage});
         compareCoursesPage.setRoutes(new Page[]{timetablePage});
         freeIntervalPage.setRoutes(new Page[]{timetablePage});
+        timetableViewerPage.setRoutes(new Page[]{timetablePage});
 
         return logoutPage;
     }

@@ -11,6 +11,10 @@ public class Timetable {
         this.courses = courses;
     }
 
+    public Timetable() {
+        this.courses = new ArrayList<Course>();
+    }
+
     public ArrayList<Course> getCourses() { return this.courses; }
 
     @Override

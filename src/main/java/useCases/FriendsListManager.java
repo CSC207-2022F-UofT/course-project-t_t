@@ -6,6 +6,9 @@ import entities.User;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * Manages operations on friendslist of users.
+ */
 public class FriendsListManager {
 //    static SignIn signIn = new SignIn();
 //    static FriendsListChecker friendsListChecker = new FriendsListChecker();

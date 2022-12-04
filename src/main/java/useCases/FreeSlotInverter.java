@@ -1,7 +1,7 @@
 package useCases;
 import entities.Interval;
 import java.util.ArrayList;
-public class freeSlotInverter {
+public class FreeSlotInverter {
     public static int dayHelper(Integer inter) {
         if (0 <= inter && inter < 1440) { // sunday
             return 0;

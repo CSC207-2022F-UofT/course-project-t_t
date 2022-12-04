@@ -2,12 +2,10 @@ package useCases;
 
 import entities.Course;
 import entities.Lecture;
-import entities.Timetable;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import static useCases.freeSlotInverter.dayHelper;
+import static useCases.FreeSlotInverter.dayHelper;
 
 public class compareInverter {
 

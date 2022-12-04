@@ -1,10 +1,12 @@
 package pages.friends;
 
 import database.Database;
+import entities.Course;
 import entities.Timetable;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
+import presenter.CompareVisualizer;
 import useCases.FriendsListManager;
 
 import java.util.ArrayList;
@@ -32,10 +34,12 @@ public class FriendsTimetablePage extends PageAction {
                 continue;
             }
 
-//            System.out.printf("Selected user: %s.\n", friend);
+            System.out.printf("Selected user: %s.\n", friend);
 
             Timetable tt = curr_friend.getTimetable();
-            // TODO: Visualize tt
+            ArrayList<Course> courses = tt.getCourses();
+
+            CompareVisualizer.compareWindow(courses);
             break;
         }
     }

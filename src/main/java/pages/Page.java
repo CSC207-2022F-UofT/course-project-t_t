@@ -1,43 +1,46 @@
 package pages;
 
-import entities.User;
-
 import java.util.*;
 
-public abstract class Page {
-    protected Router router;
-    protected PageState pageState;
+public class Page {
+    private Page[] routes;
+    private final PageSession pageSession;
 
     private final String pageName;
     public String getPageName() {
         return this.pageName;
     }
+    private final PageAction pageAction;
 
-    public Page(Router router, PageState pageState, String pageName) {
-        this.router = router;
-        this.pageState = pageState;
+    public Page(PageSession pageSession, String pageName, PageAction pageAction) {
+        this.pageSession = pageSession;
         this.pageName = pageName;
+        this.pageAction = pageAction;
     }
 
-    public abstract Page run();
-
-    protected boolean checkLoggedIn(){
-        return this.pageState.getCurrentUser() == null;
+    public void setRoutes(Page[] routes) {
+        this.routes = routes;
     }
 
-    protected <T> T promptInput(Map<String, T> options) {
+    public void run(){this.pageAction.run(this.pageSession);};
+
+
+    public Page getRedirect(){
+        if (this.routes.length == 0)
+            return null;
+        else if (this.routes.length == 1) {
+            return this.routes[0];
+        }
 
         Scanner in = new Scanner(System.in);
 
-        List<String> optionsIndex = new ArrayList<>(options.keySet());
+        for (int i = 0; i < this.routes.length; i ++)
+            System.out.printf("%s. %s\n", i, this.routes[i].getPageName());
 
-        for (int i = 0; i < optionsIndex.size(); i ++) {
-            System.out.printf("%s. %s\n", i, optionsIndex.get(i));
-        }
         while (!in.hasNextInt()) {
             in.next();
             System.out.println("Invalid input.");
         }
-        return options.get(optionsIndex.get(in.nextInt()));
+        return this.routes[in.nextInt()];
     }
 }

@@ -1,21 +1,19 @@
-package pages;
+package pages.timetable;
 
 import database.Database;
 import entities.Interval;
 import entities.Timetable;
+import pages.PageAction;
+import pages.PageSession;
 import useCases.FreeIntervalComparer;
 
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class FreeIntervalPage extends Page{
-
-    public FreeIntervalPage(Router router, PageState pageState) {
-        super(router, pageState, "Free interval page");
-    }
+public class FreeIntervalPage extends PageAction {
 
     @Override
-    public Page run() {
+    public void run(PageSession pageSession) {
         ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
 
         ArrayList<Interval> freeIntervals = FreeIntervalComparer.findFreeIntervals(dummyTimetables);
@@ -25,8 +23,5 @@ public class FreeIntervalPage extends Page{
 
         System.out.println("Free intervals:");
         System.out.println(freeIntervals);
-
-
-        return router.getTimetablePage();
     }
 }

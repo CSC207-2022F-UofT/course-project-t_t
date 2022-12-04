@@ -24,20 +24,19 @@ public class User {
 
     private Location location;
     private Timetable timetable;
-
-
-    // TODO: add getters & setters for <friends>, <blocked>, and <timetable>
+    private Course course;
 
     public void setUsername(String username) { this.username = username; }
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public User(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.location = new Location("temp");
-        this.friendsList = new FriendsList(friends, blocked);
+        this.friendsList = new FriendsList();
+        this.timetable = new Timetable();
     }
 
 //    protected ArrayList<User> friends;

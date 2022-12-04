@@ -8,13 +8,13 @@ public class Database {
     private static final ArrayList<User> db = new ArrayList<User>();
 
     public static ArrayList<User> getDatabase() {
-        db.add(new User( "Kim", "cydfk123", new ArrayList<>(), new ArrayList<>()));
-        db.add(new User("Soomi", "choi7439", new ArrayList<>(), new ArrayList<>()));
+        db.add(new User( "Kim", "cydfk123"));
+        db.add(new User("Soomi", "choi7439"));
         return db;
     }
 
-    public static void addUser(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
-        db.add(new User(username, password, friends, blocked));
+    public static void addUser(String username, String password) {
+        db.add(new User(username, password));
     }
 
     public static User getUser(String username) {
@@ -30,19 +30,19 @@ public class Database {
         ArrayList<Lecture> dummyLectures1 = new ArrayList<>();
 
         dummyLectures1.add(
-                new Lecture(new Interval(1, 2), new Location("BA 2222"))
+                new Lecture(new Interval(2160, 2220), new Location("BA 2222"))
         );
         dummyLectures1.add(
-                new Lecture(new Interval(4, 5), new Location("BA 2222"))
+                new Lecture(new Interval(6660, 6720), new Location("BA 2222"))
         );
 
         ArrayList<Lecture> dummyLectures2 = new ArrayList<>();
 
         dummyLectures2.add(
-                new Lecture(new Interval(3, 5), new Location("BA 2222"))
+                new Lecture(new Interval(5100, 5220), new Location("BA 2222"))
         );
         dummyLectures2.add(
-                new Lecture(new Interval(4, 5), new Location("BA 2222"))
+                new Lecture(new Interval(3720, 3840), new Location("BA 2222"))
         );
 
 
@@ -52,16 +52,16 @@ public class Database {
                 new Course("KIM101", "LEC 0101", dummyLectures1)
         );
         dummyCourses1.add(
-                new Course("JJJ265", "LEC 0101", dummyLectures1)
+                new Course("JJJ265", "LEC 0101", dummyLectures2)
         );
 
         ArrayList<Course> dummyCourses2 = new ArrayList<>();
 
         dummyCourses2.add(
-                new Course("KIM101", "LEC 0101", dummyLectures2)
+                new Course("KIM101", "LEC 0101", dummyLectures1)
         );
         dummyCourses2.add(
-                new Course("JJJ265", "LEC 0101", dummyLectures1)
+                new Course("JJJ265", "LEC 0101", dummyLectures2)
         );
 
         Timetable dummyTimetable1 = new Timetable(dummyCourses1);

@@ -7,6 +7,10 @@ public class Timetable {
 
     ArrayList<Course> courses;
 
+    public Timetable() {
+        this.courses = new ArrayList<Course>();
+    }
+
     public Timetable(ArrayList<Course> courses) {
         this.courses = courses;
     }

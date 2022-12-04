@@ -1,31 +1,26 @@
-package pages;
+package pages.block;
 
 import database.Database;
 import entities.User;
+import pages.PageAction;
+import pages.PageSession;
 import useCases.FriendsListManager;
-import useCases.SignIn;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
-public class AddFriendsPage extends Page{
-    public AddFriendsPage(Router router, PageState pageState) {
-        super(router, pageState, "Add Friends Page");
-    }
-
+public class BlockPage extends PageAction {
     @Override
-    public Page run() {
+    public void run(PageSession pageSession) {
         FriendsListManager friendsListManager = new FriendsListManager();
-        System.out.println("This is a Add Friends page.");
 
         Scanner in = new Scanner(System.in);
 
         ArrayList<User> db = Database.getDatabase();
-        User curr_user = this.pageState.getCurrentUser();
+        User curr_user = pageSession.getCurrentUser();
 
         while (true) {
-            System.out.println("Enter your friend's username:");
+            System.out.println("Enter username of user to block:");
 
             String friend = in.next();
 
@@ -34,13 +29,10 @@ public class AddFriendsPage extends Page{
                 continue;
             }
 
-            System.out.printf("Adding %s.\n", friend);
+            System.out.printf("Blocking %s.\n", friend);
             User curr_friend = Database.getUser(friend);
-
-            FriendsListManager.addFriends(curr_user, curr_friend);
-
-            return router.getManageFriendsPage();
+            FriendsListManager.blockFriends(curr_user, curr_friend);
+            break;
         }
     }
 }
-

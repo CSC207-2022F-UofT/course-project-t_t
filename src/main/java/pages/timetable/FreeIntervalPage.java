@@ -45,7 +45,6 @@ public class FreeIntervalPage extends PageAction {
             Timetable tt = curr_friend.getTimetable();
 
             ourTimetable = new ArrayList<>();
-
             ourTimetable.add(myTimetable);
             ourTimetable.add(tt);
 

@@ -37,13 +37,6 @@ public class InverterTest {
         Integer number = 50000;
         assertEquals(6, freeSlotInverter.dayHelper(number));
     }
-
-
-
-
-
-
-
 }
 
 

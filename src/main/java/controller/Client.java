@@ -6,6 +6,7 @@ import pages.block.BlockedListPage;
 import pages.block.UnblockPage;
 import pages.friends.AddFriendsPage;
 import pages.friends.FriendsListPage;
+import pages.friends.FriendsTimetablePage;
 import pages.friends.RemoveFriendsPage;
 import pages.timetable.CompareCoursesPage;
 import pages.timetable.FreeIntervalPage;
@@ -41,6 +42,7 @@ public class Client {
         Page manageFriendsPage = pf.buildPage("Manage friends");
         Page addFriendsPage = pf.buildPage(new AddFriendsPage(), "Add friends");
         Page removeFriendsPage = pf.buildPage(new RemoveFriendsPage(), "Remove friends");
+        Page friendsTimetablePage = pf.buildPage(new FriendsTimetablePage(), "View friend's timetable");
 
         Page blockedListPage = pf.buildPage(new BlockedListPage(), "Blocked list");
         Page manageBlockedPage = pf.buildPage("Manage blocked");
@@ -58,10 +60,11 @@ public class Client {
         homePage.setRoutes(new Page[]{logoutPage, friendsPage, timetablePage});
 
         friendsPage.setRoutes(new Page[]{homePage, manageFriendsPage, friendsListPage, manageBlockedPage, blockedListPage});
-        friendsListPage.setRoutes(new Page[]{friendsPage});
+        friendsListPage.setRoutes(new Page[]{friendsPage, friendsTimetablePage});
         manageFriendsPage.setRoutes(new Page[]{friendsPage, addFriendsPage, removeFriendsPage});
         addFriendsPage.setRoutes(new Page[]{manageFriendsPage});
         removeFriendsPage.setRoutes(new Page[]{manageFriendsPage});
+        friendsTimetablePage.setRoutes(new Page[]{friendsListPage});
 
         blockedListPage.setRoutes(new Page[]{friendsPage});
         manageBlockedPage.setRoutes(new Page[]{friendsPage, blockPage, unblockPage});

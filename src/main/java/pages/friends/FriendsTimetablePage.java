@@ -36,10 +36,19 @@ public class FriendsTimetablePage extends PageAction {
 
             System.out.printf("Selected user: %s.\n", friend);
 
+
+            assert curr_friend != null;
             Timetable tt = curr_friend.getTimetable();
             ArrayList<Course> courses = tt.getCourses();
 
             CompareVisualizer.compareWindow(courses);
+            
+//            if (curr_friend.getFriends().contains(curr_user)) {
+//                CompareVisualizer.compareWindow(courses);
+//            } else {
+//                System.out.println("You do not have permission to view this user's timetable.");
+//            }
+
             break;
         }
     }

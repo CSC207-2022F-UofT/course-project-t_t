@@ -14,6 +14,9 @@ public class FriendsListManager {
         if (student1.getBlocked().contains(student2)) {
             System.out.println("This user is blocked.");
         }
+        if (student2.getBlocked().contains(student1)) {
+            System.out.println("Unable to add this user.");
+        }
         if (!student1.getFriends().contains(student2)) {
             if (Database.getDatabase().contains(student2)) {
                 ArrayList<User> friends = student1.getFriends();

@@ -15,7 +15,7 @@ public class FriendsListManager {
             System.out.println("This user is blocked.");
         }
         if (student2.getBlocked().contains(student1)) {
-            System.out.println("Unable to add this user.");
+            System.out.println("You do not have permission to add this user.");
         }
         if (!student1.getFriends().contains(student2)) {
             if (Database.getDatabase().contains(student2)) {
@@ -76,8 +76,8 @@ public class FriendsListManager {
     }
 
     public boolean checkUsername(ArrayList<User> db1, String username1) {
-        for (int i = 0; i < db1.size(); i++) {
-            if (username1.equals(db1.get(i).getUsername())) {
+        for (User user : db1) {
+            if (username1.equals(user.getUsername())) {
                 return true;
             }
         }

@@ -7,11 +7,24 @@ import entities.Lecture;
 
 import java.util.ArrayList;
 import java.time.LocalDateTime;
+
+/**
+ * Class which handles the setting of user locations.
+ */
 public class LocationSetter {
+    /**
+     * A method which sets the user's location to location.
+     * @param user A User.
+     * @param location A Location.
+     */
     public static void manualSetLocation(User user, Location location){
         user.setLocation(location);
     }
 
+    /**
+     * A method which checks
+     * @param user A User.
+     */
     public static void automaticSetLocation(User user){
         LocalDateTime now = LocalDateTime.now().minusHours(5);
         int now_m = 24 * 60 * (now.getDayOfWeek().getValue() - 1) + 60 * now.getHour() + now.getMinute();

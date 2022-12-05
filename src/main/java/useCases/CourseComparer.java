@@ -8,7 +8,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * useCase responsible for finding common busy timeslots and common free timeslots from an ArrayList of User.
+ */
 public class CourseComparer {
+    /**
+     *
+     * @param timetable1 A timetable.
+     * @param timetable2 Another timetable.
+     * @return An ArrayList of Courses contained in both timetable1 and timetable2.
+     */
     public static ArrayList<Course> findCommonCourses(Timetable timetable1, Timetable timetable2) {
 
         HashSet<String> timetable1Lectures = new HashSet<>();
@@ -36,6 +45,12 @@ public class CourseComparer {
         return sharedCourses;
     }
 
+    /**
+     *
+     * @param course
+     * @param lecture
+     * @return
+     */
     private static String getLectureHash(Course course, Lecture lecture){
 
         String delimiter = "__SPLIT__";

@@ -2,7 +2,7 @@ package entities;
 
 import java.util.ArrayList;
 
-public class User {
+public class  User {
     String username;
     String password;
 
@@ -38,6 +38,7 @@ public class User {
         this.password = password;
         this.location = new Location("temp");
         this.friendsList = new FriendsList(friends, blocked);
+        this.timetable = new Timetable();
     }
 
 //    protected ArrayList<User> friends;
@@ -58,19 +59,19 @@ public class User {
     public void setBlocked(ArrayList<User> blocked) {
         this.friendsList.blocked = blocked;
     }
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    private String name;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    private String name;
-
-    public User(String name) {
-        this.name = name;
-    }
+//    public User(String name) {
+//        this.name = name;
+//    }
 
     protected ArrayList<User> friends;
     protected ArrayList<User> blocked;

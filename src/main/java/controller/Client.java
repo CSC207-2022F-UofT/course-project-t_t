@@ -53,7 +53,7 @@ public class Client {
         Page timetablePage = pf.buildPage("Timetable");
         Page compareCoursesPage = pf.buildPage(new CompareCoursesPage(), "Find common courses");
         Page freeIntervalPage = pf.buildPage(new FreeIntervalPage(), "Find common free intervals");
-        Page timetableViewerPage = pf.buildPage(new TimetableViewerPage(), "View Timetable");
+        Page timetableViewerPage = pf.buildPage(new TimetableViewerPage(), "View my timetable");
 
 
         logoutPage.setRoutes(new Page[]{signInPage, signUpPage});

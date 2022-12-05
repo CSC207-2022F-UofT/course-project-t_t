@@ -1,7 +1,5 @@
 package entities;
 
-import useCases.FreeIntervalComparer;
-
 import java.util.ArrayList;
 
 public class User {

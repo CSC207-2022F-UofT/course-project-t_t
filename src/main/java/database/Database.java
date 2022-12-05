@@ -2,18 +2,14 @@ package database;
 import entities.*;
 
 import java.io.*;
-//import java.text.ParseException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.Objects;
 
-//import org.json.simple.parser.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 
 import com.google.gson.*;
 public class Database {
@@ -21,7 +17,7 @@ public class Database {
     public static void main(String[] args) {
         getDatabase();
     }
-    private static final ArrayList<User> db = new ArrayList<User>();
+    private static ArrayList<User> db = new ArrayList<>();
 
     public static void setDatabase(ArrayList<User> users){
         File directory = new File("./" + "src\\main\\java\\database\\UsersDataBase.json");
@@ -38,6 +34,7 @@ public class Database {
     }
     public static ArrayList<User> getDatabase() {
         JSONParser parser = new JSONParser();
+
         ArrayList<User> returnUsers = new ArrayList<>();
         try (Reader reader = new FileReader("src/main/java/database/UsersDataBase.json")) {
 
@@ -97,8 +94,6 @@ public class Database {
                 User newUser = new User(username, password, email, friends, blocked, location, timetable);
                 returnUsers.add(newUser);
                 }
-
-
 
             // add friends
             for (Object m: listOfUsers) {
@@ -162,38 +157,13 @@ public class Database {
                 }
             }
 
-
-
-            for (User u : returnUsers) {
-                System.out.println("users: " + u.getUsername());
-                System.out.println("password: " + u.getPassword());
-                System.out.println("email: " + u.getEmail());
-                System.out.println("location: " + u.getLocation());
-                System.out.println("friends: " + u.getFriends());
-                System.out.println("friends: ");
-                for (User xx : u.getFriends()) {
-                    System.out.println(xx.getUsername());
-                }
-                System.out.println("blocked: " + u.getBlocked());
-                System.out.println("Blocked: ");
-                for (User yy : u.getBlocked()) {
-                    System.out.println(yy.getUsername());
-                }
-                System.out.println("timetable: " + u.getTimetable());
-                System.out.println("\n");
-
-            }
-
+            db = returnUsers;
             return db;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         return db;
     }
-
-//    public static void addUser(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
-//        db.add(new User(username, password, friends, blocked));
-//    }
 
     public static void addUser(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
         db.add(new User(username, password, friends, blocked));

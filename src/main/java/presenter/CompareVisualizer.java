@@ -1,7 +1,7 @@
 package presenter;
 
 import entities.Course;
-import useCases.compareInverter;
+import useCases.CompareInverter;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class CompareVisualizer {
             end += 1;
             }
 
-        compareInverter.timetableToIndex(courses, schedule);
+        CompareInverter.timetableToIndex(courses, schedule);
 
         JTable table = new JTable(schedule, days); // visualizing into JTable
         JFrame frame = new JFrame("UTimetable");

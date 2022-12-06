@@ -17,7 +17,6 @@ public class BlockPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = DatabaseGateway.getDatabase();
         User curr_user = pageSession.getCurrentUser();
 
         while (true) {
@@ -33,7 +32,7 @@ public class BlockPage extends PageAction {
                 break;
             }
 
-            if (!friendsListManager.checkUsername(db, friend)) {
+            if (!friendsListManager.checkUsername(friend)) {
                 System.out.println("User not found. Try again.");
                 continue;
             }

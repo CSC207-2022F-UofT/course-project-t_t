@@ -20,7 +20,6 @@ public class FriendsTimetablePage extends PageAction {
         Scanner in = new Scanner(System.in);
 
         User curr_user = pagesession.getCurrentUser();
-        ArrayList<User> db = DatabaseGateway.getDatabase();
         ArrayList<User> fl = curr_user.getFriends();
 
         while (true) {
@@ -29,7 +28,7 @@ public class FriendsTimetablePage extends PageAction {
             String friend = in.next();
             User curr_friend = DatabaseGateway.getUser(friend);
 
-            if (!friendsListManager.checkUsername(db, friend) || !fl.contains(curr_friend)) {
+            if (!friendsListManager.checkUsername(friend) || !fl.contains(curr_friend)) {
                 System.out.println("User not found. Try again.");
                 continue;
             }

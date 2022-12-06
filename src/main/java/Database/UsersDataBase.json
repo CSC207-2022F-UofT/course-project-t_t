@@ -181,5 +181,29 @@
         "section": "LEC5202"
       }
     ]
+  },
+  {
+    "password": "cydfk123",
+    "friendsList": [],
+    "blockedList": [],
+    "location": "temp",
+    "username": "Kim",
+    "timetable": []
+  },
+  {
+    "password": "choi7439",
+    "friendsList": [],
+    "blockedList": [],
+    "location": "temp",
+    "username": "Soomi",
+    "timetable": []
+  },
+  {
+    "password": "1111",
+    "friendsList": [],
+    "blockedList": [],
+    "location": "temp",
+    "username": "Ashley",
+    "timetable": []
   }
 ]

@@ -12,7 +12,6 @@ import java.util.Objects;
 public class FriendsListManager {
 //    static SignIn signIn = new SignIn();
 //    static FriendsListChecker friendsListChecker = new FriendsListChecker();
-    static ArrayList<User> db = DatabaseGateway.getDatabase();
     public static void addFriends(User student1, User student2) {
         if (student1.getBlocked().contains(student2)) {
             System.out.println("This user is blocked.");
@@ -22,10 +21,11 @@ public class FriendsListManager {
         }
         if ((!student1.getFriends().contains(student2)) & (!student1.getBlocked().contains(student2)) &
                 (!student2.getBlocked().contains(student1))) {
-            if (DatabaseGateway.getDatabase().contains(student2)) {
+            if (DatabaseGateway.contains(student2.getUsername())) {
                 ArrayList<User> friends = student1.getFriends();
                 friends.add(student2);
                 student1.setFriends(friends);
+                System.out.println("ASD");
             }
         }
     }
@@ -79,40 +79,7 @@ public class FriendsListManager {
         return student1;
     }
 
-    public boolean checkUsername(ArrayList<User> db1, String username1) {
-        for (User user : db1) {
-            if (username1.equals(user.getUsername())) {
-                return true;
-            }
+    public boolean checkUsername(String username1) {
+            return DatabaseGateway.getUser(username1) != null;
         }
-        return false;
-
-//    public ArrayList<String> sortFriendList(User student1) {
-//        ArrayList<User> friends = student1.getFriends();
-//        ArrayList<String> friendNames = new ArrayList<>();
-//        for (User friend : friends) {
-//            for (int i = 0; i < friends.size(); i++) {
-//                friendNames.add(friend.getName());
-//            }
-//        }
-//        Collections.sort(friendNames);
-//        return friendNames;
-
-    }
-    //    public void starFriends(User student1, User student2) {
-    //        if (student1.getFriends().contains(student2)) {
-    //            ArrayList<User> starred = student1.getFriends();
-    //            starred.add(0, student2);
-    //            student1.setFriends(starred);
-    //        }
-    //    }
-    //
-    //    public void unstarFriends(User student1, User student2) {
-    //        if (student1.getFriends().contains(student2)) {
-    //            ArrayList<User> starred = student1.getFriends();
-    //            starred.remove(student2);
-    //            starred.add(student2);
-    //            student1.setFriends(starred);
-    //        }
-    //    }
 }

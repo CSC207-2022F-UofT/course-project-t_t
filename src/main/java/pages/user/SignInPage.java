@@ -16,7 +16,6 @@ public class SignInPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = DatabaseGateway.getDatabase();
 
         // show home page if username and password matches
         while (true) {
@@ -30,12 +29,12 @@ public class SignInPage extends PageAction {
             ArrayList<User> friends = new ArrayList<>();
             ArrayList<User> blocked = new ArrayList<>();
 
-            if (!signIn.checkUsername(db, username)) {
+            if (!signIn.checkUsername(username)) {
                 System.out.println("User not found. Try again.");
                 continue;
             }
 
-            if (!signIn.checkPassword(db, username, password)) {
+            if (!signIn.checkPassword(username, password)) {
                 System.out.println("Password does not match. Try again.");
                 continue;
             }

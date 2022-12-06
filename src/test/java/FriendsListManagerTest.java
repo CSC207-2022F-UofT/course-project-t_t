@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import useCases.FriendsListManager;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
@@ -17,7 +18,8 @@ public class FriendsListManagerTest {
     public void setUp() {
         fl = new FriendsList(new ArrayList<>(), new ArrayList<>());
         bl = new FriendsList(new ArrayList<>(), new ArrayList<>());
-        DatabaseGateway.getDatabase();
+        DatabaseGateway.addUser(new User( "Kim", "cydfk123", new ArrayList<>(), new ArrayList<>()));
+        DatabaseGateway.addUser(new User("Soomi", "choi7439", new ArrayList<>(), new ArrayList<>()));
     }
 
     @Test(timeout = 50)
@@ -72,7 +74,7 @@ public class FriendsListManagerTest {
     @Test(timeout = 50)
     public void testBlockedCaseA(){
         User soomi = new User("Soomi", "3333", new ArrayList<>(), new ArrayList<>());
-        User Kim = Database.getUser("Kim");
+        User Kim = DatabaseGateway.getUser("Kim");
         FriendsListManager.blockFriends(soomi, Kim); // soomi has blocked Kim
         bl.getBlocked().add(Kim);
         FriendsListManager.addFriends(soomi, Kim); // soomi tries to add blocked user Kim

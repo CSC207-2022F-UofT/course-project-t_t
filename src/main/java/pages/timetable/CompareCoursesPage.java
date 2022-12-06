@@ -21,7 +21,6 @@ public class CompareCoursesPage extends PageAction {
         FriendsListManager friendsListManager = new FriendsListManager();
         Scanner in = new Scanner(System.in);
         User curr_user = pageSession.getCurrentUser();
-        ArrayList<User> db = DatabaseGateway.getDatabase();
         ArrayList<User> fl = curr_user.getFriends();
         Timetable tt;
         ArrayList<Course> sharedCourses;
@@ -33,7 +32,7 @@ public class CompareCoursesPage extends PageAction {
             String friend = in.next();
             User curr_friend = DatabaseGateway.getUser(friend);
 
-            if (!friendsListManager.checkUsername(db, friend) || !fl.contains(curr_friend)) {
+            if (!friendsListManager.checkUsername(friend) || !fl.contains(curr_friend)) {
                 System.out.println("User not found. Try again.");
                 continue;
             }

@@ -17,7 +17,6 @@ public class RemoveCoursesPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = DatabaseGateway.getDatabase();
         User currentUser = pageSession.getCurrentUser();
         Timetable timetable = currentUser.getTimetable();
 

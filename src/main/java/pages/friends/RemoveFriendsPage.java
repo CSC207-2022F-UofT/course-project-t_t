@@ -17,8 +17,6 @@ public class RemoveFriendsPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = DatabaseGateway.getDatabase();
-
         User curr_user = pageSession.getCurrentUser();
         ArrayList<User> fl = curr_user.getFriends();
 

@@ -20,7 +20,6 @@ public class AddCoursesPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = DatabaseGateway.getDatabase();
         User currentUser = pageSession.getCurrentUser();
 
         while (true) {

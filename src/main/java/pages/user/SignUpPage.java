@@ -18,7 +18,6 @@ public class SignUpPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = DatabaseGateway.getDatabase();
 
         // show sign in page if the new user is successfully signed up
 
@@ -32,7 +31,7 @@ public class SignUpPage extends PageAction {
                 continue;
             }
 
-            if (!signUp.checkNewUsername(db, username)) {
+            if (!signUp.checkNewUsername(username)) {
                 System.out.println("Existing username. Try another username.");
                 continue;
             }
@@ -53,8 +52,7 @@ public class SignUpPage extends PageAction {
             }
 
 
-            DatabaseGateway.addUser(username, password, friends, blocked);
-
+            DatabaseGateway.addUser(new User(username, password, friends, blocked));
 
             System.out.printf("New account created for %s. \n", username);
             break;

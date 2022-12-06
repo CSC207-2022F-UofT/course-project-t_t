@@ -84,13 +84,40 @@ public class FriendsListManagerTest {
 
     @Test(timeout = 50)
     public void testBlockedCaseB(){
-        User clarence = new User("Clarence", "5678", new ArrayList<>(), new ArrayList<>());
         User tina = new User("Tina", "4321", new ArrayList<>(), new ArrayList<>());
-        FriendsListManager.blockFriends(tina, clarence); // tina has blocked clarence
-        bl.getBlocked().add(clarence);
-        FriendsListManager.addFriends(clarence, tina); // blocked user clarence tries to add tina
-        assertEquals(fl.getFriends(), clarence.getFriends()); // fl should be empty
+        User Kim = Database.getUser("Kim");
+        FriendsListManager.blockFriends(tina, Kim); // tina has blocked jeff
+        bl.getBlocked().add(Kim);
+        FriendsListManager.addFriends(Kim, tina); // blocked user Kim tries to add tina
+        assertEquals(fl.getFriends(), Kim.getFriends()); // fl should be empty
         assertEquals(bl.getBlocked(), tina.getBlocked()); // blocked user should be in bl
 
     }
+    @Test(timeout = 50)
+    public void testSortFriends() {
+        User tina = new User("Tina", "4321", new ArrayList<>(), new ArrayList<>());
+        User Kim = Database.getUser("Kim");
+        User Soomi = Database.getUser("Soomi");
+
+        FriendsListManager.addFriends(tina, Soomi);
+        FriendsListManager.addFriends(tina, Kim);
+        fl.getFriends().add(Kim);
+        fl.getFriends().add(Soomi);
+        assertEquals(fl.getFriends(), tina.getFriends()); // fl order should be Kim, Soomi
+    }
+
+    @Test(timeout = 50)
+    public void testSortBlocked() {
+        User tina = new User("Tina", "4321", new ArrayList<>(), new ArrayList<>());
+        User Kim = Database.getUser("Kim");
+        User Soomi = Database.getUser("Soomi");
+        bl.getBlocked().remove(Kim);
+
+        FriendsListManager.blockFriends(tina, Soomi);
+        FriendsListManager.blockFriends(tina, Kim);
+        bl.getBlocked().add(Kim);
+        bl.getBlocked().add(Soomi);
+        assertEquals(bl.getBlocked(), tina.getBlocked()); // bl order should be Kim, Soomi
+    }
+
 }

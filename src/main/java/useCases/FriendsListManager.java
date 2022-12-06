@@ -5,6 +5,8 @@ import entities.User;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Collections;
+
 
 /**
  * Manages operations on friendslist of users.
@@ -26,6 +28,8 @@ public class FriendsListManager {
                 ArrayList<User> friends = student1.getFriends();
                 friends.add(student2);
                 student1.setFriends(friends);
+                ArrayList<User> sorted = FriendsListManager.sortFriendList(student1);
+                student1.setFriends(sorted);
             }
         }
     }
@@ -47,6 +51,8 @@ public class FriendsListManager {
             ArrayList<User> blocked = student1.getBlocked();
             blocked.add(student2);
             student1.setBlocked(blocked);
+            ArrayList<User> sorted = FriendsListManager.sortBlockedList(student1);
+            student1.setBlocked(sorted);
         }
     }
 
@@ -86,19 +92,38 @@ public class FriendsListManager {
             }
         }
         return false;
-
-//    public ArrayList<String> sortFriendList(User student1) {
-//        ArrayList<User> friends = student1.getFriends();
-//        ArrayList<String> friendNames = new ArrayList<>();
-//        for (User friend : friends) {
-//            for (int i = 0; i < friends.size(); i++) {
-//                friendNames.add(friend.getName());
-//            }
-//        }
-//        Collections.sort(friendNames);
-//        return friendNames;
-
     }
+
+    public static ArrayList<User> sortFriendList(User student1) {
+        ArrayList<User> friends = student1.getFriends();
+        ArrayList<String> friendNames = new ArrayList<>();
+        for (User friend : friends) {
+            friendNames.add(friend.getUsername());
+        }
+        Collections.sort(friendNames);
+        ArrayList<User> new_friends = new ArrayList<>();
+        for (String friendName: friendNames) {
+            User user = Database.getUser(friendName);
+            new_friends.add(user);
+        }
+        return new_friends;
+    }
+
+    public static ArrayList<User> sortBlockedList(User student1) {
+        ArrayList<User> blocked = student1.getBlocked();
+        ArrayList<String> blockedNames = new ArrayList<>();
+        for (User block : blocked) {
+            blockedNames.add(block.getUsername());
+        }
+        Collections.sort(blockedNames);
+        ArrayList<User> new_blocked = new ArrayList<>();
+        for (String blockedName: blockedNames) {
+            User user = Database.getUser(blockedName);
+            new_blocked.add(user);
+        }
+        return new_blocked;
+    }
+
     //    public void starFriends(User student1, User student2) {
     //        if (student1.getFriends().contains(student2)) {
     //            ArrayList<User> starred = student1.getFriends();

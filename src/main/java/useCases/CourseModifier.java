@@ -73,7 +73,7 @@ public class CourseModifier {
         days.add("SAT");
         days.add("SUN");
 
-        return days.contains(day);
+        return days.contains(day.toUpperCase());
     }
 
     public boolean checkTime(String time) {

@@ -85,7 +85,7 @@ public class CourseModifierTest {
         assertTrue(courseModifier.checkDay("MON"));
         assertTrue(courseModifier.checkDay("mon"));
         assertFalse(courseModifier.checkDay("non"));
-        assertTrue(courseModifier.checkDay("on"));
+        assertFalse(courseModifier.checkDay("on"));
         assertTrue(courseModifier.checkDay("Mon"));
     }
 

@@ -2,8 +2,8 @@ import entities.Interval;
 import entities.Timetable;
 import org.junit.Before;
 import org.junit.Test;
-import useCases.compareInverter;
-import useCases.freeSlotInverter;
+import useCases.CompareInverter;
+import useCases.FreeSlotInverter;
 
 import java.util.ArrayList;
 
@@ -23,19 +23,19 @@ public class InverterTest {
     @Test(timeout = 50)
     public void testWednesday() {
         Integer number = 5000;
-        assertEquals(3, freeSlotInverter.dayHelper(number));
+        assertEquals(3, FreeSlotInverter.dayHelper(number));
     }
 
     @Test(timeout = 50)
     public void testSunday() {
         Integer number = 0;
-        assertEquals(0, freeSlotInverter.dayHelper(number));
+        assertEquals(0, FreeSlotInverter.dayHelper(number));
     }
 
     @Test(timeout = 50)
     public void testMax() {
         Integer number = 50000;
-        assertEquals(6, freeSlotInverter.dayHelper(number));
+        assertEquals(6, FreeSlotInverter.dayHelper(number));
     }
 }
 

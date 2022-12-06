@@ -1,6 +1,6 @@
 package pages.user;
 
-import Database.DatabaseGateway;
+import Database.Database;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
@@ -16,7 +16,7 @@ public class SignInPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = DatabaseGateway.getDatabase();
+        ArrayList<User> db = Database.getDatabase();
 
         // show home page if username and password matches
         while (true) {

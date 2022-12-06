@@ -1,6 +1,6 @@
 package pages.timetable;
 
-import Database.DatabaseGateway;
+import Database.Database;
 import entities.*;
 import pages.PageAction;
 import pages.PageSession;
@@ -33,7 +33,7 @@ public class CompareCoursesPage extends PageAction {
     public void run(PageSession pageSession) {
         assert pageSession.checkLoggedIn();
 
-        ArrayList<Timetable> dummyTimetables = DatabaseGateway.getDummyTimetablesTemp();
+        ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
         Timetable dummyTimetable1 = dummyTimetables.get(0);
         Timetable dummyTimetable2 = dummyTimetables.get(1);
 

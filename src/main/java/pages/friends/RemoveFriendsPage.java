@@ -1,6 +1,6 @@
 package pages.friends;
 
-import Database.DatabaseGateway;
+import Database.Database;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
@@ -16,7 +16,7 @@ public class RemoveFriendsPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = DatabaseGateway.getDatabase();
+        ArrayList<User> db = Database.getDatabase();
 
         User curr_user = pageSession.getCurrentUser();
         ArrayList<User> fl = curr_user.getFriends();

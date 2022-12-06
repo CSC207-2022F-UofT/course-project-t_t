@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import com.google.gson.Gson;
 
-public class DatabaseGateway {
+public class Database {
     public static void main(String[] args) {
         setDatabase(getDatabase());
         System.out.println(db);

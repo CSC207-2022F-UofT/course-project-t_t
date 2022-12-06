@@ -1,6 +1,6 @@
 package pages.friends;
 
-import Database.DatabaseGateway;
+import Database.Database;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
@@ -17,7 +17,7 @@ public class AddFriendsPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = DatabaseGateway.getDatabase();
+        ArrayList<User> db = Database.getDatabase();
         User curr_user = pageSession.getCurrentUser();
 
         while (true) {
@@ -31,7 +31,7 @@ public class AddFriendsPage extends PageAction {
             }
 
             System.out.printf("Adding %s.\n", friend);
-            User curr_friend = DatabaseGateway.getUser(friend);
+            User curr_friend = Database.getUser(friend);
 
             FriendsListManager.addFriends(curr_user, curr_friend);
             break;

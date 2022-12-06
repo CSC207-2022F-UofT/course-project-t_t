@@ -6,7 +6,17 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 
+/**
+ * Class which compares the free time intervals from a list of timetables.
+ */
 public class FreeIntervalComparer {
+    /**
+     * Algorithm which returns an ArrayList of intervals which represent the timeslots where every timetable in
+     * timetables are free.
+     *
+     * @param timetables An ArrayList of Timetables
+     * @return
+     */
     public static ArrayList<Interval> findFreeIntervals(ArrayList<Timetable> timetables) {
 
         ArrayList<Integer> diff = new ArrayList<>();

@@ -1,4 +1,4 @@
-import Database.Database;
+import Gateway.DatabaseGateway;
 import entities.FriendsList;
 import entities.User;
 import org.junit.Before;
@@ -17,13 +17,13 @@ public class FriendsListManagerTest {
     public void setUp() {
         fl = new FriendsList(new ArrayList<>(), new ArrayList<>());
         bl = new FriendsList(new ArrayList<>(), new ArrayList<>());
-        Database.getDatabase();
+        DatabaseGateway.getDatabase();
     }
 
     @Test(timeout = 50)
     public void testAddFriends(){
         User ashley = new User("Ashley", "1111", new ArrayList<>(), new ArrayList<>());
-        User Kim = Database.getUser("Kim");
+        User Kim = DatabaseGateway.getUser("Kim");
         FriendsListManager.addFriends(ashley, Kim);
         fl.getFriends().add(Kim);                           // Adding user who exists in db
         assertEquals(fl.getFriends(), ashley.getFriends()); // added user should be in fl
@@ -38,7 +38,7 @@ public class FriendsListManagerTest {
     @Test(timeout = 50)
     public void testRemoveFriends(){
         User narae = new User("Narae", "1234", new ArrayList<>(), new ArrayList<>());
-        User Kim = Database.getUser("Kim");
+        User Kim = DatabaseGateway.getUser("Kim");
         FriendsListManager.addFriends(narae, Kim);
         FriendsListManager.removeFriends(narae, Kim); // Removing user who exists in fl
         assertEquals(fl.getFriends(), narae.getFriends()); // fl should be empty
@@ -47,7 +47,7 @@ public class FriendsListManagerTest {
     @Test(timeout = 50)
     public void testBlockFriends(){
         User jeff = new User("Jeff", "0101", new ArrayList<>(), new ArrayList<>());
-        User Kim = Database.getUser("Kim");
+        User Kim = DatabaseGateway.getUser("Kim");
         FriendsListManager.addFriends(jeff, Kim); // Add user from db
         FriendsListManager.blockFriends(jeff, Kim); // Add user from fl to bl and remove from fl
         bl.getBlocked().add(Kim);
@@ -58,7 +58,7 @@ public class FriendsListManagerTest {
     @Test(timeout = 50)
     public void testUnblockFriends(){
         User jeff = new User("Jeff", "0101", new ArrayList<>(), new ArrayList<>());
-        User Kim = Database.getUser("Kim");
+        User Kim = DatabaseGateway.getUser("Kim");
         FriendsListManager.addFriends(jeff, Kim); // Add user from db
         FriendsListManager.blockFriends(jeff, Kim); // Block friend in fl
         bl.getBlocked().add(Kim);

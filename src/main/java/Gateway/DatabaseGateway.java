@@ -1,4 +1,4 @@
-package Database;
+package Gateway;
 import com.google.gson.GsonBuilder;
 import entities.*;
 import java.io.*;
@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import com.google.gson.Gson;
 
-public class Database {
+public class DatabaseGateway {
     public static void main(String[] args) {
         setDatabase(getDatabase());
         System.out.println(db);

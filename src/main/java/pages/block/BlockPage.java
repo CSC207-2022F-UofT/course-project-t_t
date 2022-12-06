@@ -1,6 +1,6 @@
 package pages.block;
 
-import Database.Database;
+import Gateway.DatabaseGateway;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
@@ -16,7 +16,7 @@ public class BlockPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = Database.getDatabase();
+        ArrayList<User> db = DatabaseGateway.getDatabase();
         User curr_user = pageSession.getCurrentUser();
 
         while (true) {
@@ -30,7 +30,7 @@ public class BlockPage extends PageAction {
             }
 
             System.out.printf("Blocking %s.\n", friend);
-            User curr_friend = Database.getUser(friend);
+            User curr_friend = DatabaseGateway.getUser(friend);
             FriendsListManager.blockFriends(curr_user, curr_friend);
             break;
         }

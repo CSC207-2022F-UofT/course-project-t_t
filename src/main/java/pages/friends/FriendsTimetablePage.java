@@ -7,7 +7,7 @@ import entities.User;
 import pages.PageAction;
 import pages.PageSession;
 import presenter.CompareVisualizer;
-import useCases.FriendsListManager;
+import useCases.RelationsManager;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class FriendsTimetablePage extends PageAction {
     @Override
     public void run(PageSession pagesession) {
-        FriendsListManager friendsListManager = new FriendsListManager();
+        RelationsManager relationsManager = new RelationsManager();
 
         Scanner in = new Scanner(System.in);
 
@@ -28,7 +28,7 @@ public class FriendsTimetablePage extends PageAction {
             String friend = in.next();
             User curr_friend = DatabaseGateway.getUser(friend);
 
-            if (!friendsListManager.checkUsername(friend) || !fl.contains(curr_friend.getUsername())) {
+            if (!relationsManager.checkUsername(friend) || !fl.contains(curr_friend.getUsername())) {
                 System.out.println("User not found. Try again.");
                 continue;
             }

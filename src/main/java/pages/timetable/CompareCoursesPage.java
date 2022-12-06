@@ -6,7 +6,7 @@ import pages.PageAction;
 import pages.PageSession;
 import presenter.CompareVisualizer;
 import useCases.CourseComparer;
-import useCases.FriendsListManager;
+import useCases.RelationsManager;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -18,7 +18,7 @@ public class CompareCoursesPage extends PageAction {
         assert pageSession.checkLoggedIn();
         User currentUser = pageSession.getCurrentUser();
         Timetable myTimetable = currentUser.getTimetable();
-        FriendsListManager friendsListManager = new FriendsListManager();
+        RelationsManager relationsManager = new RelationsManager();
         Scanner in = new Scanner(System.in);
         User curr_user = pageSession.getCurrentUser();
         ArrayList<String> fl = curr_user.getFriends();
@@ -32,7 +32,7 @@ public class CompareCoursesPage extends PageAction {
             String friend = in.next();
             User curr_friend = DatabaseGateway.getUser(friend);
 
-            if (!friendsListManager.checkUsername(friend) || !fl.contains(curr_friend.getUsername())) {
+            if (!relationsManager.checkUsername(friend) || !fl.contains(curr_friend.getUsername())) {
                 System.out.println("User not found. Try again.");
                 continue;
             }

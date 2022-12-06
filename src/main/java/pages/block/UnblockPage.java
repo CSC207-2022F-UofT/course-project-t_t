@@ -3,7 +3,7 @@ package pages.block;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
-import useCases.FriendsListManager;
+import useCases.RelationsManager;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -32,13 +32,13 @@ public class UnblockPage extends PageAction {
             }
 
             //If input is myself?
-            if (FriendsListManager.getBlocked(curr_user, friend) == curr_user) {
+            if (RelationsManager.getBlocked(curr_user, friend) == curr_user) {
                 System.out.println("User not found. Try again.");
                 continue;
             }
             System.out.printf("Unlocking %s.\n", friend);
-            User curr_friend = FriendsListManager.getBlocked(curr_user, friend);
-            FriendsListManager.unblockUser(curr_user, curr_friend);
+            User curr_friend = RelationsManager.getBlocked(curr_user, friend);
+            RelationsManager.unblockUser(curr_user, curr_friend);
             break;
         }
     }

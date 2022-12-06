@@ -2,18 +2,15 @@ package pages.timetable;
 
 
 import Gateway.DatabaseGateway;
-import entities.Course;
 import entities.Interval;
 import entities.Timetable;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
-import presenter.CompareVisualizer;
 import presenter.FreeSlotsVisualizer;
 import useCases.FreeIntervalComparer;
-import useCases.FriendsListManager;
+import useCases.RelationsManager;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,7 +20,7 @@ public class FreeIntervalPage extends PageAction {
 
         User currentUser = pageSession.getCurrentUser();
         Timetable myTimetable = currentUser.getTimetable();
-        FriendsListManager friendsListManager = new FriendsListManager();
+        RelationsManager relationsManager = new RelationsManager();
         Scanner in = new Scanner(System.in);
         User curr_user = pageSession.getCurrentUser();
         ArrayList<String> fl = curr_user.getFriends();
@@ -35,7 +32,7 @@ public class FreeIntervalPage extends PageAction {
             String friend = in.next();
             User curr_friend = DatabaseGateway.getUser(friend);
 
-            if (!friendsListManager.checkUsername(friend) || !fl.contains(curr_friend.getUsername())) {
+            if (!relationsManager.checkUsername(friend) || !fl.contains(curr_friend.getUsername())) {
                 System.out.println("User not found. Try again.");
                 continue;
             }

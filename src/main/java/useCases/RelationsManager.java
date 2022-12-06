@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Manages operations on friendslist of users.
  */
-public class FriendsListManager {
+public class RelationsManager {
     public static void addFriends(User student1, User student2) {
         //If they are blocked
         if (student1.getBlocked().contains(student2.getUsername())) {

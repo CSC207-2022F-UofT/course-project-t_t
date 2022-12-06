@@ -4,7 +4,7 @@ import Gateway.DatabaseGateway;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
-import useCases.FriendsListManager;
+import useCases.RelationsManager;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class BlockPage extends PageAction {
     @Override
     public void run(PageSession pageSession) {
-        FriendsListManager friendsListManager = new FriendsListManager();
+        RelationsManager relationsManager = new RelationsManager();
 
         Scanner in = new Scanner(System.in);
 
@@ -31,14 +31,14 @@ public class BlockPage extends PageAction {
                 break;
             }
 
-            if (!friendsListManager.checkUsername(friend)) {
+            if (!relationsManager.checkUsername(friend)) {
                 System.out.println("User not found. Try again.");
                 continue;
             }
 
             System.out.printf("Blocking %s.\n", friend);
             User curr_friend = DatabaseGateway.getUser(friend);
-            FriendsListManager.blockUser(curr_user, curr_friend);
+            RelationsManager.blockUser(curr_user, curr_friend);
             break;
         }
     }

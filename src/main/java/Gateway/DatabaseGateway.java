@@ -11,7 +11,6 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import useCases.FriendsListManager;
 
 public class DatabaseGateway {
 
@@ -26,6 +25,7 @@ public class DatabaseGateway {
         System.out.print(contains("user one"));
     }
 
+    @SuppressWarnings("unchecked")
     private static JSONObject toJsonObject(User user){
         JSONObject juser = new JSONObject();
         juser.put("username", user.getUsername());
@@ -70,13 +70,10 @@ public class DatabaseGateway {
         return juser;
     }
     public static void addUser(User user){
-
-        if(contains(user.getUsername())){
-            return;
+        if(!contains(user.getUsername())){
+            Document doc = Document.parse(toJsonObject(user).toString());
+            collection.insertOne(doc);
         }
-
-        Document doc = Document.parse(toJsonObject(user).toString());
-        collection.insertOne(doc);
     }
 
     public static User getUser(String username1) {

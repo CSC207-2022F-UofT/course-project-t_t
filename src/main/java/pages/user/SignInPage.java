@@ -22,12 +22,13 @@ public class SignInPage extends PageAction {
             System.out.println("Enter your username:");
 
             String username = in.next();
+            System.out.println(username);
 
             System.out.println("Enter your password:");
 
             String password = in.next();
-            ArrayList<User> friends = new ArrayList<>();
-            ArrayList<User> blocked = new ArrayList<>();
+            ArrayList<String> friends = new ArrayList<>();
+            ArrayList<String> blocked = new ArrayList<>();
 
             if (!signIn.checkUsername(username)) {
                 System.out.println("User not found. Try again.");

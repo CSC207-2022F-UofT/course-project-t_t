@@ -7,23 +7,23 @@ public class User {
     private String password;
     private Location location;
     private Timetable timetable;
-    private FriendsList friendsList;
-    protected ArrayList<User> friends;
-    protected ArrayList<User> blocked;
+    private Relations relations;
+    protected ArrayList<String> friends;
+    protected ArrayList<String> blocked;
     public User(){}
-    public User(String username, String password, ArrayList<User> friends,
-                ArrayList<User> blocked, Location location, Timetable timetable) {
+    public User(String username, String password, ArrayList<String> friends,
+                ArrayList<String> blocked, Location location, Timetable timetable) {
         this.username = username;
         this.password = password;
-        this.friendsList = new FriendsList(friends, blocked);
+        this.relations = new Relations(friends, blocked);
         this.location = location;
         this.timetable = timetable;
     }
-    public User(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
+    public User(String username, String password, ArrayList<String> friends, ArrayList<String> blocked) {
         this.username = username;
         this.password = password;
         this.location = new Location("temp");
-        this.friendsList = new FriendsList(friends, blocked);
+        this.relations = new Relations(friends, blocked);
         this.timetable = new Timetable();
     }
 
@@ -33,28 +33,28 @@ public class User {
     public String getPassword() {
         return password;
     }
-    public ArrayList<User> getFriends() {
-        return this.friendsList.friends;
+    public ArrayList<String> getFriends() {
+        return this.relations.friends;
     }
-    public ArrayList<User> getBlocked() {return this.friendsList.blocked;}
+    public ArrayList<String> getBlocked() {return this.relations.blocked;}
     public Location getLocation(){return this.location;}
     public Timetable getTimetable() {return timetable;}
     public void setUsername(String username) { this.username = username; }
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setFriends(ArrayList<User> friends) {
-        this.friendsList.friends = friends;
+    public void setFriends(ArrayList<String> friends) {
+        this.relations.friends = friends;
     }
-    public void setBlocked(ArrayList<User> blocked) {
-        this.friendsList.blocked = blocked;
+    public void setBlocked(ArrayList<String> blocked) {
+        this.relations.blocked = blocked;
     }
     public void setLocation(Location location) {this.location = location;}
     public void setTimetable(Timetable timetable) {this.timetable = timetable;}
-    public void addFriend(User u) {
-        this.friendsList.friends.add(u);
+    public void addFriend(String u) {
+        this.relations.friends.add(u);
     }
-    public void addBlocked(User u) {
-        this.friendsList.blocked.add(u);
+    public void addBlocked(String u) {
+        this.relations.blocked.add(u);
     }
 }

@@ -1,7 +1,8 @@
 package Gateway;
 import entities.*;
 import java.util.ArrayList;
-import java.util.List;
+
+import org.bson.conversions.Bson;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,19 +11,22 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import useCases.FriendsListManager;
 
 public class DatabaseGateway {
+
+    static String connectionString = "mongodb+srv://admin:admin@cluster0.1jn32wd.mongodb.net/test";
+    static String databaseName = "csc207";
+    static String collectionName = "db";
+    static MongoClient client = MongoClients.create(connectionString);
+    static MongoDatabase mongoDatabase = client.getDatabase(databaseName);
+    static MongoCollection<Document> collection = mongoDatabase.getCollection(collectionName);
+
     public static void main(String[] args) {
-        getUser("user one");
-        System.out.println(getUser("user one").getFriends());
+        System.out.print(contains("user one"));
     }
 
-    public static void addUser(User user){
-
-        if(contains(user.getUsername())){
-            return;
-        }
-
+    private static JSONObject toJsonObject(User user){
         JSONObject juser = new JSONObject();
         juser.put("username", user.getUsername());
         juser.put("password", user.getPassword());
@@ -32,11 +36,11 @@ public class DatabaseGateway {
         ArrayList<String> blocked = new ArrayList<>();
 
         //Adding friends & blocked to <friends> and <blocked>
-        for (User f : user.getFriends()) {
-            friends.add(f.getUsername());
+        for (String f : user.getFriends()) {
+            friends.add(f);
         }
-        for (User b : user.getBlocked()) {
-            blocked.add(b.getUsername());
+        for (String b : user.getBlocked()) {
+            blocked.add(b);
         }
 
         juser.put("friendsList", friends);
@@ -63,21 +67,20 @@ public class DatabaseGateway {
             timetable.add(course);
         }
         juser.put("timetable", timetable);
+        return juser;
+    }
+    public static void addUser(User user){
 
-        MongoClient client = MongoClients.create("mongodb+srv://admin:admin@cluster0.mcz4www.mongodb.net/test");
-        MongoDatabase mongoDatabase = client.getDatabase("csc207db");
-        MongoCollection<Document> collection = mongoDatabase.getCollection("db");
-        Document doc = Document.parse( juser.toString() );
+        if(contains(user.getUsername())){
+            return;
+        }
 
+        Document doc = Document.parse(toJsonObject(user).toString());
         collection.insertOne(doc);
     }
 
     public static User getUser(String username1) {
-        MongoClient client = MongoClients.create("mongodb+srv://admin:admin@cluster0.mcz4www.mongodb.net/test");
-        MongoDatabase mongoDatabase = client.getDatabase("csc207db");
-        MongoCollection<Document> collection = mongoDatabase.getCollection("db");
-
-        Document search = (Document) collection.find(new Document("username", username1)).first();
+        Document search = collection.find(new Document("username", username1)).first();
 
         if (search == null){
             return null;
@@ -94,8 +97,8 @@ public class DatabaseGateway {
             Location location = new Location((String) user.get("location"));
 
             // empty friendsList
-            ArrayList<User> friends = new ArrayList<>();
-            ArrayList<User> blocked = new ArrayList<>();
+            ArrayList<String> friends = new ArrayList<>();
+            ArrayList<String> blocked = new ArrayList<>();
 
             // timetable Object
             ArrayList<Course> courses = new ArrayList<>();
@@ -128,34 +131,38 @@ public class DatabaseGateway {
                 courses.add(newCourse);
             }
             Timetable timetable = new Timetable(courses);
-            User newUser = new User(username, password, friends, blocked, location, timetable);
 
-           //TODO
             JSONArray friendsList = (JSONArray) user.get("friendsList");
+            JSONArray blockedList = (JSONArray) user.get("blockedList");
             for (Object o : friendsList){
                 String f = (String) o;
-                if (contains(f)){
-
-                }
+                friends.add(f);
             }
-
+            for (Object o : blockedList){
+                String b = (String) o;
+                friends.add(b);
+            }
+            User newUser = new User(username, password, friends, blocked, location, timetable);
             return newUser;
         }
         catch(Exception e){
             e.printStackTrace();
         }
-        User user = new User();
-        return user;
+        return null;
     }
 
     public static boolean contains(String username){
-        MongoClient client = MongoClients.create("mongodb+srv://admin:admin@cluster0.mcz4www.mongodb.net/test");
-        MongoDatabase mongoDatabase = client.getDatabase("csc207db");
-        MongoCollection<Document> collection = mongoDatabase.getCollection("db");
         Document search = collection.find(new Document("username", username)).first();
-        if (search == null){
-            return false;
+        return search != null;
+    }
+
+    public static void update(User user){
+        Document found = collection.find(new Document("username", user.getUsername())).first();
+        if (found == null){
+            return;
         }
-        return true;
+        Bson updatedvalue = Document.parse(toJsonObject(user).toString());
+        Bson updateoperation = new Document("$set", updatedvalue);
+        collection.updateOne(found, updateoperation);
     }
 }

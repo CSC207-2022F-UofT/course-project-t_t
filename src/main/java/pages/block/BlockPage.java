@@ -6,7 +6,6 @@ import pages.PageAction;
 import pages.PageSession;
 import useCases.FriendsListManager;
 
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -39,7 +38,7 @@ public class BlockPage extends PageAction {
 
             System.out.printf("Blocking %s.\n", friend);
             User curr_friend = DatabaseGateway.getUser(friend);
-            FriendsListManager.blockFriends(curr_user, curr_friend);
+            FriendsListManager.blockUser(curr_user, curr_friend);
             break;
         }
     }

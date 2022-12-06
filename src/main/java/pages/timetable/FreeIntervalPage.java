@@ -26,7 +26,7 @@ public class FreeIntervalPage extends PageAction {
         FriendsListManager friendsListManager = new FriendsListManager();
         Scanner in = new Scanner(System.in);
         User curr_user = pageSession.getCurrentUser();
-        ArrayList<User> fl = curr_user.getFriends();
+        ArrayList<String> fl = curr_user.getFriends();
         ArrayList<Timetable> ourTimetable;
         ArrayList<Interval> freeIntervals;
 
@@ -35,7 +35,7 @@ public class FreeIntervalPage extends PageAction {
             String friend = in.next();
             User curr_friend = DatabaseGateway.getUser(friend);
 
-            if (!friendsListManager.checkUsername(friend) || !fl.contains(curr_friend)) {
+            if (!friendsListManager.checkUsername(friend) || !fl.contains(curr_friend.getUsername())) {
                 System.out.println("User not found. Try again.");
                 continue;
             }

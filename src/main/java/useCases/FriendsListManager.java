@@ -10,70 +10,80 @@ import java.util.Objects;
  * Manages operations on friendslist of users.
  */
 public class FriendsListManager {
-//    static SignIn signIn = new SignIn();
-//    static FriendsListChecker friendsListChecker = new FriendsListChecker();
     public static void addFriends(User student1, User student2) {
-        if (student1.getBlocked().contains(student2)) {
+        //If they are blocked
+        if (student1.getBlocked().contains(student2.getUsername())) {
             System.out.println("This user is blocked.");
+            return;
         }
-        if (student2.getBlocked().contains(student1)) {
+        //If you are blocked
+        if (student2.getBlocked().contains(student1.getUsername())) {
             System.out.println("You do not have permission to add this user.");
+            return;
         }
-        if ((!student1.getFriends().contains(student2)) & (!student1.getBlocked().contains(student2)) &
-                (!student2.getBlocked().contains(student1))) {
+        //If They are not already your friend
+        if ((!student1.getFriends().contains(student2.getUsername()))) {
+            //If they exist on the database
             if (DatabaseGateway.contains(student2.getUsername())) {
-                ArrayList<User> friends = student1.getFriends();
-                friends.add(student2);
+                ArrayList<String> friends = student1.getFriends();
+                friends.add(student2.getUsername());
                 student1.setFriends(friends);
-                System.out.println("ASD");
+                DatabaseGateway.update(student1);
             }
         }
     }
 
     public static void removeFriends(User student1, User student2) {
-        if (student1.getFriends().contains(student2)) {
-            ArrayList<User> friends = student1.getFriends();
-            friends.remove(student2);
+        //If you have them added
+        if (student1.getFriends().contains(student2.getUsername())) {
+            ArrayList<String> friends = student1.getFriends();
+            friends.remove(student2.getUsername());
             student1.setFriends(friends);
+            DatabaseGateway.update(student1);
         }
     }
 
 
-    public static void blockFriends(User student1, User student2) {
-        if (student1.getFriends().contains(student2)) {
+    public static void blockUser(User student1, User student2) {
+        //If they were your friend
+        if (student1.getFriends().contains(student2.getUsername())) {
             removeFriends(student1, student2);
         }
-        if (!student1.getBlocked().contains(student2)) {
-            ArrayList<User> blocked = student1.getBlocked();
-            blocked.add(student2);
+        //If they are not already blocked
+        if (!student1.getBlocked().contains(student2.getUsername())) {
+            ArrayList<String> blocked = student1.getBlocked();
+            blocked.add(student2.getUsername());
             student1.setBlocked(blocked);
         }
+        DatabaseGateway.update(student1);
     }
 
-    public static void unblockFriends(User student1, User student2) {
-        if (student1.getBlocked().contains(student2)) {
-            ArrayList<User> blocked = student1.getBlocked();
-            blocked.remove(student2);
+    public static void unblockUser(User student1, User student2) {
+        //If they are blocked
+        if (student1.getBlocked().contains(student2.getUsername())) {
+            ArrayList<String> blocked = student1.getBlocked();
+            blocked.remove(student2.getUsername());
             student1.setBlocked(blocked);
+            DatabaseGateway.update(student1);
         }
     }
 
 
     public static User getFriend(User student1, String username) {
-        ArrayList<User> friends = student1.getFriends();
-        for (User friend : friends) {
-            if (Objects.equals(friend.getUsername(), username)) {
-                return friend;
+        ArrayList<String> friends = student1.getFriends();
+        for (String friend : friends) {
+            if (Objects.equals(friend, username)) {
+                return DatabaseGateway.getUser(friend);
             }
         }
         return student1;
     }
 
     public static User getBlocked(User student1, String username) {
-        ArrayList<User> blocked = student1.getBlocked();
-        for (User user : blocked) {
-            if (Objects.equals(user.getUsername(), username)) {
-                return user;
+        ArrayList<String> blocked = student1.getBlocked();
+        for (String user : blocked) {
+            if (Objects.equals(user, username)) {
+                return DatabaseGateway.getUser(username);
             }
         }
         return student1;

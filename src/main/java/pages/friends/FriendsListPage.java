@@ -12,11 +12,10 @@ public class FriendsListPage extends PageAction {
 
         User curr_user = pageSession.getCurrentUser();
 
-        ArrayList<User> fl = curr_user.getFriends();
+        ArrayList<String> fl = curr_user.getFriends();
 
-        for (User user : fl) {
-            String curr = user.getUsername();
-            System.out.println(curr);
+        for (String user : fl) {
+            System.out.println(user);
         }
     }
 }

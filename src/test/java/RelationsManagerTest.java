@@ -1,23 +1,22 @@
 import Gateway.DatabaseGateway;
-import entities.FriendsList;
+import entities.Relations;
 import entities.User;
 import org.junit.Before;
 import org.junit.Test;
 import useCases.FriendsListManager;
 
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
-public class FriendsListManagerTest {
-    FriendsList fl;
-    FriendsList bl;
+public class RelationsManagerTest {
+    Relations fl;
+    Relations bl;
 
     @Before
     public void setUp() {
-        fl = new FriendsList(new ArrayList<>(), new ArrayList<>());
-        bl = new FriendsList(new ArrayList<>(), new ArrayList<>());
+        fl = new Relations(new ArrayList<>(), new ArrayList<>());
+        bl = new Relations(new ArrayList<>(), new ArrayList<>());
         DatabaseGateway.addUser(new User( "Kim", "cydfk123", new ArrayList<>(), new ArrayList<>()));
         DatabaseGateway.addUser(new User("Soomi", "choi7439", new ArrayList<>(), new ArrayList<>()));
     }
@@ -51,7 +50,7 @@ public class FriendsListManagerTest {
         User jeff = new User("Jeff", "0101", new ArrayList<>(), new ArrayList<>());
         User Kim = DatabaseGateway.getUser("Kim");
         FriendsListManager.addFriends(jeff, Kim); // Add user from db
-        FriendsListManager.blockFriends(jeff, Kim); // Add user from fl to bl and remove from fl
+        FriendsListManager.blockUser(jeff, Kim); // Add user from fl to bl and remove from fl
         bl.getBlocked().add(Kim);
         assertEquals(fl.getFriends(), jeff.getFriends()); // fl should be empty
         assertEquals(bl.getBlocked(), jeff.getBlocked()); // blocked user should be in bl
@@ -62,9 +61,9 @@ public class FriendsListManagerTest {
         User jeff = new User("Jeff", "0101", new ArrayList<>(), new ArrayList<>());
         User Kim = DatabaseGateway.getUser("Kim");
         FriendsListManager.addFriends(jeff, Kim); // Add user from db
-        FriendsListManager.blockFriends(jeff, Kim); // Block friend in fl
+        FriendsListManager.blockUser(jeff, Kim); // Block friend in fl
         bl.getBlocked().add(Kim);
-        FriendsListManager.unblockFriends(jeff, Kim); // Unblock user from bl
+        FriendsListManager.unblockUser(jeff, Kim); // Unblock user from bl
         bl.getBlocked().remove(Kim);
         assertEquals(fl.getFriends(), jeff.getFriends()); // fl should be empty
         assertEquals(bl.getBlocked(), jeff.getBlocked()); // bl should be empty
@@ -75,7 +74,7 @@ public class FriendsListManagerTest {
     public void testBlockedCaseA(){
         User soomi = new User("Soomi", "3333", new ArrayList<>(), new ArrayList<>());
         User Kim = DatabaseGateway.getUser("Kim");
-        FriendsListManager.blockFriends(soomi, Kim); // soomi has blocked Kim
+        FriendsListManager.blockUser(soomi, Kim); // soomi has blocked Kim
         bl.getBlocked().add(Kim);
         FriendsListManager.addFriends(soomi, Kim); // soomi tries to add blocked user Kim
         assertEquals(fl.getFriends(), soomi.getFriends()); // fl should be empty
@@ -88,7 +87,7 @@ public class FriendsListManagerTest {
     public void testBlockedCaseB(){
         User clarence = new User("Clarence", "5678", new ArrayList<>(), new ArrayList<>());
         User tina = new User("Tina", "4321", new ArrayList<>(), new ArrayList<>());
-        FriendsListManager.blockFriends(tina, clarence); // tina has blocked clarence
+        FriendsListManager.blockUser(tina, clarence); // tina has blocked clarence
         bl.getBlocked().add(clarence);
         FriendsListManager.addFriends(clarence, tina); // blocked user clarence tries to add tina
         assertEquals(fl.getFriends(), clarence.getFriends()); // fl should be empty

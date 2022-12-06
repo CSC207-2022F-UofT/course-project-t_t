@@ -18,7 +18,7 @@ public class RemoveFriendsPage extends PageAction {
         Scanner in = new Scanner(System.in);
 
         User curr_user = pageSession.getCurrentUser();
-        ArrayList<User> fl = curr_user.getFriends();
+        ArrayList<String > fl = curr_user.getFriends();
 
         while (true) {
             System.out.println("Enter your friend's username OR enter Exit to go back:");

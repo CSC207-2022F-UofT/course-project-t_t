@@ -39,8 +39,8 @@ public class SignUpPage extends PageAction {
             System.out.println("Enter your new password:");
 
             String password = in.next();
-            ArrayList<User> friends = new ArrayList<>();
-            ArrayList<User> blocked = new ArrayList<>();
+            ArrayList<String> friends = new ArrayList<>();
+            ArrayList<String> blocked = new ArrayList<>();
 
             System.out.println("Re-enter your password:");
 

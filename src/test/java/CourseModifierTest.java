@@ -98,4 +98,27 @@ public class CourseModifierTest {
         assertFalse(courseModifier.checkTime("2.6"));
         assertFalse(courseModifier.checkTime("2.0"));
     }
+
+    @Test(timeout = 50)
+    public void testCheckStartEndTime() {
+        assertTrue(courseModifier.checkStartEndTime("12", "14"));
+        assertTrue(courseModifier.checkStartEndTime("0", "1"));
+        assertFalse(courseModifier.checkStartEndTime("2", "1"));
+    }
+
+    @Test(timeout = 50)
+    public void testCheckCourseExists() {
+        Interval i1 = new Interval(2160, 2220);
+        Location loca1 = new Location("BA 2222");
+        Lecture l1 = new Lecture(i1, loca1);
+        ArrayList<Lecture> lectures1 = new ArrayList<>();
+        lectures1.add(l1);
+        Course c1 = new Course("STA237", "LEC 0302", lectures1);
+        ArrayList<Course> courses1 = new ArrayList<>();
+        courses1.add(c1);
+        Timetable t1 = new Timetable(courses1);
+
+        assertTrue(courseModifier.checkCourseExists(t1, "STA237"));
+        assertFalse(courseModifier.checkCourseExists(t1, "CSC207"));
+    }
 }

@@ -12,6 +12,7 @@ import presenter.FreeSlotsVisualizer;
 import useCases.FreeIntervalComparer;
 import useCases.FriendsListManager;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 

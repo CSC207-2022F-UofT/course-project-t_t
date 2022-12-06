@@ -1,7 +1,7 @@
 package presenter;
 
 import entities.Interval;
-import useCases.freeSlotInverter;
+import useCases.FreeSlotInverter;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class FreeSlotsVisualizer {
             end += 1;
         }
 
-        freeSlotInverter.timeToIndex(intervals, schedule);
+        FreeSlotInverter.timeToIndex(intervals, schedule);
 
         JTable table = new JTable(schedule, days); // visualizing into JTable
         JFrame frame = new JFrame("Free Interval Finder");

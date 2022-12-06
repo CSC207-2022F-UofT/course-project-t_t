@@ -1,4 +1,4 @@
 /**
- * Collection of all the useCases.
+ * Business Logic of our software.
  */
 package useCases;

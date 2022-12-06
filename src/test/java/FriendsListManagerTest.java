@@ -68,4 +68,29 @@ public class FriendsListManagerTest {
         assertEquals(bl.getBlocked(), jeff.getBlocked()); // bl should be empty
 
     }
+
+    @Test(timeout = 50)
+    public void testBlockedCaseA(){
+        User soomi = new User("Soomi", "3333", new ArrayList<>(), new ArrayList<>());
+        User Kim = Database.getUser("Kim");
+        FriendsListManager.blockFriends(soomi, Kim); // soomi has blocked Kim
+        bl.getBlocked().add(Kim);
+        FriendsListManager.addFriends(soomi, Kim); // soomi tries to add blocked user Kim
+        assertEquals(fl.getFriends(), soomi.getFriends()); // fl should be empty
+        assertEquals(bl.getBlocked(), soomi.getBlocked()); // blocked user should be in bl
+        bl.getBlocked().remove(Kim);
+
+    }
+
+    @Test(timeout = 50)
+    public void testBlockedCaseB(){
+        User clarence = new User("Clarence", "5678", new ArrayList<>(), new ArrayList<>());
+        User tina = new User("Tina", "4321", new ArrayList<>(), new ArrayList<>());
+        FriendsListManager.blockFriends(tina, clarence); // tina has blocked clarence
+        bl.getBlocked().add(clarence);
+        FriendsListManager.addFriends(clarence, tina); // blocked user clarence tries to add tina
+        assertEquals(fl.getFriends(), clarence.getFriends()); // fl should be empty
+        assertEquals(bl.getBlocked(), tina.getBlocked()); // blocked user should be in bl
+
+    }
 }

@@ -51,7 +51,7 @@ public class Client {
         Page timetablePage = pf.buildPage("Timetable");
         Page compareCoursesPage = pf.buildPage(new CompareCoursesPage(), "Find common courses");
         Page freeIntervalPage = pf.buildPage(new FreeIntervalPage(), "Find common free intervals");
-        Page timetableViewerPage = pf.buildPage(new TimetableViewerPage(), "View Timetable");
+        Page timetableViewerPage = pf.buildPage(new TimetableViewerPage(), "View my timetable");
         Page modifyTimetablePage = pf.buildPage("Modify Timetable");
         Page addCoursesPage = pf.buildPage(new AddCoursesPage(), "Add courses");
         Page removeCoursesPage = pf.buildPage(new RemoveCoursesPage(), "Remove courses");
@@ -73,8 +73,7 @@ public class Client {
         blockPage.setRoutes(new Page[]{manageBlockedPage});
         unblockPage.setRoutes(new Page[]{manageBlockedPage});
 
-        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage, timetableViewerPage,
-                modifyTimetablePage});
+        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage, timetableViewerPage, modifyTimetablePage});
         modifyTimetablePage.setRoutes(new Page[]{timetablePage, addCoursesPage, removeCoursesPage});
         addCoursesPage.setRoutes(new Page[]{timetablePage});
         removeCoursesPage.setRoutes(new Page[]{timetablePage});

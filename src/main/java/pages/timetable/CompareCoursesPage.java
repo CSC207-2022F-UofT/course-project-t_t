@@ -1,6 +1,6 @@
 package pages.timetable;
 
-import Gateway.DatabaseGateway;
+import Database.DatabaseGateway;
 import entities.*;
 import pages.PageAction;
 import pages.PageSession;

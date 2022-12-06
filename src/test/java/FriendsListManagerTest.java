@@ -1,4 +1,4 @@
-import Gateway.DatabaseGateway;
+import Database.DatabaseGateway;
 import entities.FriendsList;
 import entities.User;
 import org.junit.Before;

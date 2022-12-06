@@ -1,6 +1,6 @@
 package pages.user;
 
-import Gateway.DatabaseGateway;
+import Database.DatabaseGateway;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;

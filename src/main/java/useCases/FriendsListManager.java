@@ -1,6 +1,6 @@
 package useCases;
 
-import Gateway.DatabaseGateway;
+import Database.DatabaseGateway;
 import entities.User;
 
 import java.util.ArrayList;

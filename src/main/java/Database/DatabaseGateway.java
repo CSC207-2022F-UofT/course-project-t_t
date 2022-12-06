@@ -1,4 +1,4 @@
-package Gateway;
+package Database;
 import com.google.gson.GsonBuilder;
 import entities.*;
 import java.io.*;
@@ -19,7 +19,7 @@ public class DatabaseGateway {
     //were added to java. This is an issue with json.simple, not us.
     @SuppressWarnings("unchecked")
     public static void setDatabase(ArrayList<User> users){
-        try (Writer writer = new FileWriter("src/main/java/UsersDataBase.json")) {
+        try (Writer writer = new FileWriter("src/main/java/Database/UsersDataBase.json")) {
             JSONArray jsonArray = new JSONArray();
             for (User user : users) {
 
@@ -82,7 +82,7 @@ public class DatabaseGateway {
         JSONParser parser = new JSONParser();
 
         ArrayList<User> returnUsers = new ArrayList<>();
-        try (Reader reader = new FileReader("src/main/java/UsersDataBase.json")) {
+        try (Reader reader = new FileReader("src/main/java/Database/UsersDataBase.json")) {
 
             JSONArray listOfUsers = (JSONArray) parser.parse(reader);
 

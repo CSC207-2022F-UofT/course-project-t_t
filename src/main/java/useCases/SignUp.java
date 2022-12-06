@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class SignUp {
     public boolean checkNewUsername(ArrayList<User> db3, String newUsername1) {
-        for (int i = 0; i < db3.size(); i++) {
+        for (User user : db3) {
             // return false if the username already exists
-            if (newUsername1.equals(db3.get(i).getUsername())) {
+            if (newUsername1.equals(user.getUsername())) {
                 return false;
             }
         }

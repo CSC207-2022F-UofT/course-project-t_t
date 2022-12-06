@@ -16,12 +16,20 @@ public class CourseModifier {
 
     public boolean checkCourseCodeAlpha(String courseCode2) {
         // check if the first 3 chars of the course code are alphabets
-        return courseCode2.substring(0, 3).matches("[a-zA-Z]+");
+        if (courseCode2.length() == 0) {
+            return false;
+        } else {
+            return courseCode2.substring(0, 3).matches("[a-zA-Z]+");
+        }
     }
 
     public boolean checkCourseCodeNum(String courseCode3) {
         // check if the last 3 chars of the course code are natural nums
-        return courseCode3.substring(3, 6).matches("[0-9]+");
+        if (courseCode3.length() == 0) {
+            return false;
+        } else {
+            return courseCode3.substring(3, 6).matches("[0-9]+");
+        }
     }
 
     public boolean checkSectionCodeLength(String sectionCode1) {
@@ -31,16 +39,28 @@ public class CourseModifier {
 
     public boolean checkSectionCodeAlpha(String sectionCode2) {
         // check if the first 3 chars of the section code are alphabets
-        return sectionCode2.substring(0, 3).matches("[a-zA-Z]+");
+        if (sectionCode2.length() == 0) {
+            return false;
+        } else {
+            return sectionCode2.substring(0, 3).matches("[a-zA-Z]+");
+        }
     }
 
     public boolean checkSectionCodeNum(String sectionCode3) {
         // check if the last 4 chars of the course code are natural nums
-        return sectionCode3.substring(4, 8).matches("[0-9]+");
+        if (sectionCode3.length() == 0) {
+            return false;
+        } else {
+            return sectionCode3.substring(4, 8).matches("[0-9]+");
+        }
     }
 
     public boolean checkLocation(String location) {
-        return location.substring(0, 2).matches("[a-zA-z]+");
+        if (location.length() == 0) {
+            return false;
+        } else {
+            return location.substring(0, 2).matches("[a-zA-z]+");
+        }
     }
 
     public boolean checkDay(String day) {
@@ -78,14 +98,5 @@ public class CourseModifier {
 
     public boolean checkCourseExists(Timetable timetable, String courseCode4) {
         return timetable.getCourses().contains(timetable.getCourse(courseCode4));
-    }
-
-    public boolean checkIntervalExists(ArrayList<Lecture> lectures, Interval interval) {
-        for (Lecture lec : lectures) {
-            if (interval.equals(lec.getInterval())) {
-                return true;
-            }
-        }
-        return false;
     }
 }

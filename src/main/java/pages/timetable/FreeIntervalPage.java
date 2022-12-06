@@ -1,6 +1,6 @@
 package pages.timetable;
 
-import database.Database;
+import Gateway.DatabaseGateway;
 import entities.Interval;
 import entities.Timetable;
 import pages.PageAction;
@@ -43,7 +43,7 @@ public class FreeIntervalPage extends PageAction {
 
     @Override
     public void run(PageSession pageSession) {
-        ArrayList<Timetable> dummyTimetables = Database.getDummyTimetablesTemp();
+        ArrayList<Timetable> dummyTimetables = DatabaseGateway.getDummyTimetablesTemp();
 
         ArrayList<Interval> freeIntervals = FreeIntervalComparer.findFreeIntervals(dummyTimetables);
 

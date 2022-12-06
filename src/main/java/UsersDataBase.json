@@ -1,0 +1,185 @@
+[
+  {
+    "password": "useronepassword",
+    "friendsList": [
+      "user two",
+      "user four"
+    ],
+    "blockedList": [
+      "user three"
+    ],
+    "location": "Bahen",
+    "username": "user one",
+    "timetable": [
+      {
+        "courseCode": "CSC207",
+        "lectures": [
+          {
+            "start": 0,
+            "end": 2,
+            "location": "Bahen"
+          },
+          {
+            "start": 5,
+            "end": 7,
+            "location": "MyHall"
+          }
+        ],
+        "section": "LEC5201"
+      },
+      {
+        "courseCode": "CSC236",
+        "lectures": [
+          {
+            "start": 10,
+            "end": 12,
+            "location": "Bahen"
+          },
+          {
+            "start": 15,
+            "end": 17,
+            "location": "Bahen"
+          }
+        ],
+        "section": "LEC5202"
+      }
+    ]
+  },
+  {
+    "password": "usertwopassword",
+    "friendsList": [
+      "user one",
+      "user four"
+    ],
+    "blockedList": [
+      "user three"
+    ],
+    "location": "Robarts",
+    "username": "user two",
+    "timetable": [
+      {
+        "courseCode": "CSC207",
+        "lectures": [
+          {
+            "start": 0,
+            "end": 2,
+            "location": "Bahen"
+          },
+          {
+            "start": 7,
+            "end": 9,
+            "location": "MyHall"
+          }
+        ],
+        "section": "LEC5203"
+      },
+      {
+        "courseCode": "CSC236",
+        "lectures": [
+          {
+            "start": 9,
+            "end": 11,
+            "location": "Bahen"
+          },
+          {
+            "start": 15,
+            "end": 17,
+            "location": "Bahen"
+          }
+        ],
+        "section": "LEC5204"
+      }
+    ]
+  },
+  {
+    "password": "userthreepassword",
+    "friendsList": [
+      "user four"
+    ],
+    "blockedList": [
+      "user one",
+      "user two"
+    ],
+    "location": "Bahen",
+    "username": "user three",
+    "timetable": [
+      {
+        "courseCode": "ABC123",
+        "lectures": [
+          {
+            "start": 0,
+            "end": 2,
+            "location": "Bahen"
+          },
+          {
+            "start": 7,
+            "end": 9,
+            "location": "MyHall"
+          }
+        ],
+        "section": "LEC0000"
+      },
+      {
+        "courseCode": "XYZ890",
+        "lectures": [
+          {
+            "start": 9,
+            "end": 11,
+            "location": "Bahen"
+          },
+          {
+            "start": 15,
+            "end": 17,
+            "location": "Bahen"
+          }
+        ],
+        "section": "LEC1111"
+      }
+    ]
+  },
+  {
+    "password": "userfourpasssword",
+    "friendsList": [
+      "user one",
+      "user two",
+      "user three"
+    ],
+    "blockedList": [],
+    "location": "Goldring Center",
+    "username": "user four",
+    "timetable": [
+      {
+        "courseCode": "CSC207",
+        "lectures": [
+          {
+            "start": 0,
+            "end": 2,
+            "location": "Bahen"
+          },
+          {
+            "start": 5,
+            "end": 7,
+            "location": "MyHall"
+          }
+        ],
+        "section": "LEC5201"
+      },
+      {
+        "courseCode": "CSC236",
+        "lectures": [
+          {
+            "start": 10,
+            "end": 12,
+            "location": "Bahen"
+          },
+          {
+            "start": 15,
+            "end": 17,
+            "location": "Bahen"
+          }
+        ],
+        "section": "LEC5202"
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 package pages.user;
 
-import database.Database;
+import Gateway.DatabaseGateway;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
@@ -18,7 +18,7 @@ public class SignUpPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = Database.getDatabase();
+        ArrayList<User> db = DatabaseGateway.getDatabase();
 
         // show sign in page if the new user is successfully signed up
         while (true) {
@@ -54,7 +54,7 @@ public class SignUpPage extends PageAction {
             // Database.getDatabase().add(new User(username, password, friends, blocked));
             // db.add(new User(username, password, friends, blocked));
             // Database.setDatabase(db);
-            Database.addUser(username, password, friends, blocked);
+            DatabaseGateway.addUser(username, password, friends, blocked);
 
             System.out.printf("New account created for %s. \n", username);
             break;

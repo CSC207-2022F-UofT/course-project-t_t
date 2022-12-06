@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class User {
     private String username;
     private String password;
-    private String email;
     private Location location;
     private Timetable timetable;
     private FriendsList friendsList;
@@ -18,11 +17,10 @@ public class User {
         this.friendsList = new FriendsList(friends, blocked);
     }
 
-    public User(String username, String password, String email, ArrayList<User> friends,
+    public User(String username, String password, ArrayList<User> friends,
                 ArrayList<User> blocked, Location location, Timetable timetable) {
         this.username = username;
         this.password = password;
-        this.email = email;
         this.friendsList = new FriendsList(friends, blocked);
         this.location = location;
         this.timetable = timetable;
@@ -67,13 +65,6 @@ public class User {
         this.friendsList.blocked = blocked;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public void addFriend(User u) {
         this.friendsList.friends.add(u);

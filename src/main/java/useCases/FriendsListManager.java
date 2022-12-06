@@ -1,6 +1,6 @@
 package useCases;
 
-import database.Database;
+import Gateway.DatabaseGateway;
 import entities.User;
 
 import java.util.ArrayList;
@@ -9,13 +9,13 @@ import java.util.Objects;
 public class FriendsListManager {
 //    static SignIn signIn = new SignIn();
 //    static FriendsListChecker friendsListChecker = new FriendsListChecker();
-    static ArrayList<User> db = Database.getDatabase();
+    static ArrayList<User> db = DatabaseGateway.getDatabase();
     public static void addFriends(User student1, User student2) {
         if (student1.getBlocked().contains(student2)) {
             System.out.println("This user is blocked.");
         }
         if (!student1.getFriends().contains(student2)) {
-            if (Database.getDatabase().contains(student2)) {
+            if (DatabaseGateway.getDatabase().contains(student2)) {
                 ArrayList<User> friends = student1.getFriends();
                 friends.add(student2);
                 student1.setFriends(friends);

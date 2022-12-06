@@ -1,6 +1,5 @@
 package useCases;
 
-import database.Database;
 import entities.User;
 
 import java.util.ArrayList;

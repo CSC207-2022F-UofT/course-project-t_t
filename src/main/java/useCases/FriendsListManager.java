@@ -20,7 +20,8 @@ public class FriendsListManager {
         if (student2.getBlocked().contains(student1)) {
             System.out.println("You do not have permission to add this user.");
         }
-        if (!student1.getFriends().contains(student2)) {
+        if ((!student1.getFriends().contains(student2)) & (!student1.getBlocked().contains(student2)) &
+                (!student2.getBlocked().contains(student1))) {
             if (Database.getDatabase().contains(student2)) {
                 ArrayList<User> friends = student1.getFriends();
                 friends.add(student2);

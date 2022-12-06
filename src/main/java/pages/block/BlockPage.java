@@ -7,6 +7,7 @@ import pages.PageSession;
 import useCases.FriendsListManager;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class BlockPage extends PageAction {
@@ -20,9 +21,17 @@ public class BlockPage extends PageAction {
         User curr_user = pageSession.getCurrentUser();
 
         while (true) {
-            System.out.println("Enter username of user to block:");
+            System.out.println("Enter username of user to block OR enter Exit to go back:");
 
             String friend = in.next();
+
+            if (Objects.equals(friend, "Exit")){
+                break;
+            }
+
+            if (Objects.equals(friend, "exit")){
+                break;
+            }
 
             if (!friendsListManager.checkUsername(db, friend)) {
                 System.out.println("User not found. Try again.");

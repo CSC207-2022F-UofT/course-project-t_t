@@ -7,6 +7,7 @@ import pages.PageSession;
 import useCases.FriendsListManager;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class UnblockPage extends PageAction {
@@ -23,9 +24,17 @@ public class UnblockPage extends PageAction {
         ArrayList<User> fl = curr_user.getFriends();
 
         while (true) {
-            System.out.println("Enter username of user to unblock:");
+            System.out.println("Enter username of user to unblock OR enter Exit to go back:");
 
             String friend = in.next();
+
+            if (Objects.equals(friend, "Exit")){
+                break;
+            }
+
+            if (Objects.equals(friend, "exit")){
+                break;
+            }
 
             if (FriendsListManager.getBlocked(curr_user, friend) == curr_user) {
                 System.out.println("User not found. Try again.");

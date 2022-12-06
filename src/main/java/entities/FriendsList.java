@@ -13,6 +13,11 @@ public class FriendsList{
         this.blocked = blocked;
     }
 
+    public FriendsList() {
+        this.friends = new ArrayList<User>();
+        this.blocked = new ArrayList<User>();
+    }
+
     public ArrayList<User> getFriends() {
         return this.friends;
 

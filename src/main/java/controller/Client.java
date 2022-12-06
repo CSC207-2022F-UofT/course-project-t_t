@@ -70,7 +70,8 @@ public class Client {
         blockPage.setRoutes(new Page[]{manageBlockedPage});
         unblockPage.setRoutes(new Page[]{manageBlockedPage});
 
-        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage, timetableViewerPage,modifyTimetablePage});
+        timetablePage.setRoutes(new Page[]{homePage, compareCoursesPage, freeIntervalPage, timetableViewerPage,
+                modifyTimetablePage});
         modifyTimetablePage.setRoutes(new Page[]{timetablePage, addCoursesPage, removeCoursesPage});
         addCoursesPage.setRoutes(new Page[]{timetablePage});
         removeCoursesPage.setRoutes(new Page[]{timetablePage});

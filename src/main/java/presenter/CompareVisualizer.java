@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class CompareVisualizer {
     public static void compareWindow(ArrayList<Course> courses) {
         String[][] schedule = new String[24][8]; // setting up a 2d array
-        String[] days = {"Time", "Sun", "mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+        String[] days = {"Time", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
 
         int start = 0;
         int end = 1;

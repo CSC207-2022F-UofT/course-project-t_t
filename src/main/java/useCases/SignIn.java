@@ -1,6 +1,5 @@
 package useCases;
 
-import database.Database;
 import entities.User;
 
 import java.util.ArrayList;
@@ -8,8 +7,8 @@ import java.util.ArrayList;
 public class SignIn {
     // return true if the given username exists in the given database
     public boolean checkUsername(ArrayList<User> db1, String username1) {
-        for (int i = 0; i < db1.size(); i++) {
-            if (username1.equals(db1.get(i).getUsername())) {
+        for (User user : db1) {
+            if (username1.equals(user.getUsername())) {
                 return true;
             }
         }

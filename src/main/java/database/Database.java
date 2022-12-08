@@ -8,7 +8,19 @@ public class Database {
     private static final ArrayList<User> db = new ArrayList<User>();
 
     public static ArrayList<User> getDatabase() {
-        db.add(new User( "Kim", "cydfk123", new ArrayList<>(), new ArrayList<>()));
+        // db.add(new User( "Kim", "cydfk123", new ArrayList<>(), new ArrayList<>()));
+        Timetable timetableKim = new Timetable();
+        Interval i1 = new Interval(2160, 2220);
+        Location location1 = new Location("BA 2222");
+        Lecture l1 = new Lecture(i1, location1);
+        ArrayList<Lecture> lectures1 = new ArrayList<>();
+        lectures1.add(l1);
+        Course c1 = new Course("KIM101", "LEC 0101", lectures1);
+        timetableKim.getCourses().add(c1);
+        User kim = new User("Kim", "cydfk123", new ArrayList<>(), new ArrayList<>());
+        kim.setTimetable(timetableKim);
+        db.add(kim);
+
         db.add(new User("Soomi", "choi7439", new ArrayList<>(), new ArrayList<>()));
         return db;
     }

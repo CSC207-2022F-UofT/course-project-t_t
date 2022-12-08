@@ -8,8 +8,9 @@ import java.util.ArrayList;
 import static useCases.FreeSlotInverter.dayHelper;
 
 public class CompareInverter {
-
     public static void timetableToIndex(ArrayList<Course> courses, String[][] schedule) {
+        // Given the input courses, converts each interval into the corresponding
+        // index in the format of day and time
 
         for (Course myCourse : courses) {
             ArrayList<Lecture> myLectures = myCourse.getLectures();

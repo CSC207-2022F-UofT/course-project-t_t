@@ -4,6 +4,9 @@ import entities.Interval;
 import java.util.ArrayList;
 public class FreeSlotInverter {
     public static int dayHelper(Integer inter) {
+        // based on the interval, returns an index
+        // integer which indicates the day
+
         if (0 <= inter && inter < 1440) { // sunday
             return 0;
         } else if (1440 <= inter && inter < 2880) { //monday
@@ -24,6 +27,9 @@ public class FreeSlotInverter {
     }
 
     public static void timeToIndex(ArrayList<Interval> intervals, String[][] schedule) {
+        // Given the input courses, converts each interval into the corresponding
+        // index in the format of day and time
+
         for (Interval inter : intervals) {
             int startTime = inter.getStart();
             int endTime = inter.getEnd();

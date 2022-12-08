@@ -1,18 +1,14 @@
 package pages.timetable;
 
 import database.Database;
-import entities.Course;
 import entities.Interval;
 import entities.Timetable;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
-import presenter.CompareVisualizer;
 import presenter.FreeSlotsVisualizer;
 import useCases.FreeIntervalComparer;
 import useCases.FriendsListManager;
-
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 

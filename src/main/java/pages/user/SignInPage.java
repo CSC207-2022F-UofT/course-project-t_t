@@ -1,6 +1,6 @@
 package pages.user;
 
-import database.Database;
+import Gateway.DatabaseGateway;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
@@ -16,26 +16,26 @@ public class SignInPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = Database.getDatabase();
 
         // show home page if username and password matches
         while (true) {
             System.out.println("Enter your username:");
 
             String username = in.next();
+            System.out.println(username);
 
             System.out.println("Enter your password:");
 
             String password = in.next();
-            ArrayList<User> friends = new ArrayList<>();
-            ArrayList<User> blocked = new ArrayList<>();
+            ArrayList<String> friends = new ArrayList<>();
+            ArrayList<String> blocked = new ArrayList<>();
 
-            if (!signIn.checkUsername(db, username)) {
+            if (!signIn.checkUsername(username)) {
                 System.out.println("User not found. Try again.");
                 continue;
             }
 
-            if (!signIn.checkPassword(db, username, password)) {
+            if (!signIn.checkPassword(username, password)) {
                 System.out.println("Password does not match. Try again.");
                 continue;
             }

@@ -12,11 +12,10 @@ public class BlockedListPage extends PageAction {
 
         User curr_user = pageSession.getCurrentUser();
 
-        ArrayList<User> bl = curr_user.getBlocked();
+        ArrayList<String> bl = curr_user.getBlocked();
 
-        for (User user : bl) {
-            String curr = user.getUsername();
-            System.out.println(curr);
+        for (String user : bl) {
+            System.out.println(user);
         }
     }
 }

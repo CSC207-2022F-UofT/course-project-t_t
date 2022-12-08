@@ -2,6 +2,8 @@ package Gateway;
 import entities.*;
 import java.util.ArrayList;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.bson.conversions.Bson;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
@@ -22,7 +24,7 @@ public class DatabaseGateway {
     static MongoCollection<Document> collection = mongoDatabase.getCollection(collectionName);
 
     public static void main(String[] args) {
-        System.out.print(contains("user one"));
+        getUser("Kim");
     }
 
     @SuppressWarnings("unchecked")

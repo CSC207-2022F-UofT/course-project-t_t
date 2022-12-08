@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class SignUp {
 
-    public boolean checkNewUsername(String newUsername1) {
+    public static boolean checkNewUsername(String newUsername1) {
     /**
      * Iterates over the list of existing users and
      * checks if the given new username is equal to any of the existing usernames.

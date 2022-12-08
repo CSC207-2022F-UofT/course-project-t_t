@@ -15,7 +15,7 @@ public class SignIn {
      *
      * @return True if the given username is in the database. False otherwise.
      */
-    public boolean checkUsername(String username1) {
+    public static boolean checkUsername(String username1) {
         return DatabaseGateway.contains(username1);
     }
 
@@ -31,7 +31,7 @@ public class SignIn {
      * @return True if the given username exists in the database and the password matches
      * the password of the user with the given username. False otherwise.
      */
-    public boolean checkPassword(String username2, String password1) {
+    public static boolean checkPassword(String username2, String password1) {
         return Objects.equals(DatabaseGateway.getUser(username2).getPassword(), password1);
     }
 

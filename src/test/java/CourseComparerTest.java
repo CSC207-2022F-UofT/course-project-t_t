@@ -20,7 +20,7 @@ public class CourseComparerTest {
         dummyTimetable2 = dummyTimetables.get(1);
     }
 
-    @Test(timeout = 50)
+    @Test(timeout = 1000)
     public void testFindCommonCourses() {
 
         ArrayList<Course> output = getTestOutput();

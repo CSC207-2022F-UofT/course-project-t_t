@@ -1,6 +1,6 @@
 package pages.timetable;
 
-import database.Database;
+import Gateway.DatabaseGateway;
 import entities.Interval;
 import entities.Location;
 import entities.User;
@@ -20,7 +20,6 @@ public class AddCoursesPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = Database.getDatabase();
         User currentUser = pageSession.getCurrentUser();
 
         while (true) {
@@ -93,6 +92,7 @@ public class AddCoursesPage extends PageAction {
             Interval interval = new Interval(calStartTime, calEndTime);
             Location courseLocation = new Location(location.toUpperCase());
             currentUser.getTimetable().addCourse(courseCode.toUpperCase(), sectionCode.toUpperCase(), interval, courseLocation);
+            DatabaseGateway.update(currentUser);
             break;
         }
     }

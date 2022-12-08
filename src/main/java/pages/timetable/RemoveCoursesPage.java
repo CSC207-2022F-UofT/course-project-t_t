@@ -1,6 +1,6 @@
 package pages.timetable;
 
-import database.Database;
+import Gateway.DatabaseGateway;
 import entities.Timetable;
 import entities.User;
 import pages.PageAction;
@@ -17,7 +17,6 @@ public class RemoveCoursesPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = Database.getDatabase();
         User currentUser = pageSession.getCurrentUser();
         Timetable timetable = currentUser.getTimetable();
 
@@ -35,6 +34,7 @@ public class RemoveCoursesPage extends PageAction {
 
             System.out.printf("Removing %s. \n", courseCode);
             currentUser.getTimetable().removeCourse(courseCode);
+            DatabaseGateway.update(currentUser);
             break;
         }
     }

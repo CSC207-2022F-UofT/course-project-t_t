@@ -25,7 +25,8 @@ public class AddCoursesPage extends PageAction {
         while (true) {
             System.out.println("Enter course code in a format of \"ABC123\":");
 
-            String courseCode = in.nextLine();
+            String courseCode1 = in.nextLine();
+            String courseCode = courseCode1.toUpperCase();
 
             if (!(courseModifier.checkCourseCodeLength(courseCode) && courseModifier.checkCourseCodeAlpha(courseCode)
                     && courseModifier.checkCourseCodeNum(courseCode))) {
@@ -35,7 +36,8 @@ public class AddCoursesPage extends PageAction {
 
             System.out.println("Enter section code in a format of \"LEC 0101\":");
 
-            String sectionCode = in.nextLine();
+            String sectionCode1 = in.nextLine();
+            String sectionCode = sectionCode1.toUpperCase();
 
             if (!(courseModifier.checkSectionCodeLength(sectionCode) && courseModifier.checkSectionCodeAlpha(sectionCode)
                     && courseModifier.checkSectionCodeNum(sectionCode))) {
@@ -54,7 +56,8 @@ public class AddCoursesPage extends PageAction {
 
             System.out.println("Enter the day in a format of \"Mon\", \"Tue\", etc.:");
 
-            String day = in.nextLine();
+            String day1 = in.nextLine();
+            String day = day1.toUpperCase();
 
             if (!courseModifier.checkDay(day)) {
                 System.out.println("Enter the day in an appropriate format.");

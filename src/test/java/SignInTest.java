@@ -23,7 +23,6 @@ public class SignInTest {
         String bUsername = "narae";
         assertTrue(SignIn.checkUsername(aUsername));
         assertTrue(SignIn.checkUsername(bUsername));
-        assertFalse(SignIn.checkUsername("ashley"));
     }
 
     @Test(timeout = 1000)

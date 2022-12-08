@@ -1,7 +1,15 @@
 package useCases;
 
 public class TimeConverter {
-    // convert the given time into minutes
+    /**
+     * Converts a given time and day into the equivalent time in minutes.
+     *
+     * @param day given day.
+     *
+     * @param time given time in a military time format.
+     *
+     * @return the time in minutes as an integer.
+     */
     public Integer convertMinutes(String day, Integer time) {
         switch (day) {
             case "MON":

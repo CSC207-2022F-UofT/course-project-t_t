@@ -6,6 +6,8 @@ import com.mongodb.client.MongoDatabase;
 import entities.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
+
 import org.json.simple.JSONObject;
 
 import org.json.simple.parser.JSONParser;
@@ -13,6 +15,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import org.bson.Document;
+
+import javax.xml.crypto.Data;
 
 import static org.junit.Assert.*;
 
@@ -63,8 +67,12 @@ public class DatabaseGatewayTest {
         assertTrue(DatabaseGateway.contains("donald"));
     }
 
-    @Test(timeout = 1000)
+    @Test(timeout = 3000)
     public void testUpdate() {
-        // not sure how to test this!!
+        User user1 = new User("adam", "eve", new ArrayList<>(), new ArrayList<>());
+        DatabaseGateway.addUser(user1);
+        User user2 = new User("adam", "canada", new ArrayList<>(), new ArrayList<>());
+        DatabaseGateway.update(user2);
+        assertEquals("canada", Objects.requireNonNull(DatabaseGateway.getUser("adam")).getPassword());
     }
 }

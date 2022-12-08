@@ -3,9 +3,16 @@ package useCases;
 import entities.Interval;
 import java.util.ArrayList;
 public class FreeSlotInverter {
+
+    /**
+     *
+     * based on the interval, returns an index
+     *         integer which indicates the day.
+     *
+     * @param inter an integer which indicates each interval
+     * @return the index of each day for JTable
+     */
     public static int dayHelper(Integer inter) {
-        // based on the interval, returns an index
-        // integer which indicates the day.
 
         if (0 <= inter && inter < 1440) { // sunday
             return 0;

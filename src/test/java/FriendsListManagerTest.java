@@ -53,6 +53,7 @@ public class FriendsListManagerTest {
         bl.getBlocked().add(Kim);
         assertEquals(fl.getFriends(), jeff.getFriends()); // fl should be empty
         assertEquals(bl.getBlocked(), jeff.getBlocked()); // blocked user should be in bl
+        bl.getBlocked().remove(Kim);
     }
 
     @Test(timeout = 50)

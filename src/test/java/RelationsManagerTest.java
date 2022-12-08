@@ -49,7 +49,7 @@ public class RelationsManagerTest {
         assert narae.getFriends().isEmpty();
     }
 
-    @Test(timeout = 1000)
+    @Test(timeout = 10000)
     public void testBlockUsers(){
         DatabaseGateway.addUser(new User("Jeff", "0101", new ArrayList<>(), new ArrayList<>()));
         User Kim = DatabaseGateway.getUser("Kim");

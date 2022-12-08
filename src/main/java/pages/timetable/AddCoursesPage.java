@@ -92,6 +92,7 @@ public class AddCoursesPage extends PageAction {
             Interval interval = new Interval(calStartTime, calEndTime);
             Location courseLocation = new Location(location.toUpperCase());
             currentUser.getTimetable().addCourse(courseCode.toUpperCase(), sectionCode.toUpperCase(), interval, courseLocation);
+            DatabaseGateway.update(currentUser);
             break;
         }
     }

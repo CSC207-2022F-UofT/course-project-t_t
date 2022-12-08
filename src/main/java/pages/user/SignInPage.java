@@ -41,7 +41,8 @@ public class SignInPage extends PageAction {
             }
 
             System.out.printf("Signing in as %s.\n", username);
-            pageSession.setCurrentUser(new User(username, password, friends, blocked));
+            User currUser = DatabaseGateway.getUser(username);
+            pageSession.setCurrentUser(currUser);
             break;
         }
     }

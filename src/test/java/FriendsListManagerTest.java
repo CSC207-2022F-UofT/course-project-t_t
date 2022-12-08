@@ -45,7 +45,7 @@ public class FriendsListManagerTest {
     }
 
     @Test(timeout = 50)
-    public void testBlockFriends(){
+    public void testBlockFriendsA(){
         User jeff = new User("Jeff", "0101", new ArrayList<>(), new ArrayList<>());
         User Kim = Database.getUser("Kim");
         FriendsListManager.addFriends(jeff, Kim); // Add user from db
@@ -53,6 +53,7 @@ public class FriendsListManagerTest {
         bl.getBlocked().add(Kim);
         assertEquals(fl.getFriends(), jeff.getFriends()); // fl should be empty
         assertEquals(bl.getBlocked(), jeff.getBlocked()); // blocked user should be in bl
+        bl.getBlocked().remove(Kim);
     }
 
     @Test(timeout = 50)

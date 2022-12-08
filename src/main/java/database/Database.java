@@ -10,6 +10,7 @@ public class Database {
     public static ArrayList<User> getDatabase() {
         db.add(new User( "Kim", "cydfk123", new ArrayList<>(), new ArrayList<>()));
         db.add(new User("Soomi", "choi7439", new ArrayList<>(), new ArrayList<>()));
+        db.add(new User( "Ashley", "ash0103", new ArrayList<>(), new ArrayList<>()));
         return db;
     }
 

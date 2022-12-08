@@ -1,6 +1,6 @@
 package pages.timetable;
 
-import database.Database;
+import Gateway.DatabaseGateway;
 import entities.Timetable;
 import entities.User;
 import pages.PageAction;
@@ -17,18 +17,18 @@ public class RemoveCoursesPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = Database.getDatabase();
         User currentUser = pageSession.getCurrentUser();
         Timetable timetable = currentUser.getTimetable();
 
         while (true) {
             System.out.println("Enter course code in a format of \"ABC123\":");
 
-            String courseCode = in.nextLine();
+            String courseCode1 = in.nextLine();
+            String courseCode = courseCode1.toUpperCase();
 
             if (!(courseModifier.checkCourseCodeLength(courseCode) && courseModifier.checkCourseCodeAlpha(courseCode)
                     && courseModifier.checkCourseCodeNum(courseCode) && courseModifier.checkCourseExists(timetable, courseCode))) {
-                System.out.println("Enter again in \"ABC123\" format.");
+                System.out.println("Enter the existing course in \"ABC123\" format.");
                 continue;
             }
 

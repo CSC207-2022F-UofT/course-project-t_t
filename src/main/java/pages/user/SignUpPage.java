@@ -1,6 +1,6 @@
 package pages.user;
 
-import database.Database;
+import Gateway.DatabaseGateway;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
@@ -18,8 +18,9 @@ public class SignUpPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = Database.getDatabase();
-        
+
+        // show sign in page if the new user is successfully signed up
+
         while (true) {
             System.out.println("Enter your new username:");
 
@@ -30,7 +31,7 @@ public class SignUpPage extends PageAction {
                 continue;
             }
 
-            if (!signUp.checkNewUsername(db, username)) {
+            if (!signUp.checkNewUsername(username)) {
                 System.out.println("Existing username. Try another username.");
                 continue;
             }
@@ -38,8 +39,8 @@ public class SignUpPage extends PageAction {
             System.out.println("Enter your new password:");
 
             String password = in.next();
-            ArrayList<User> friends = new ArrayList<>();
-            ArrayList<User> blocked = new ArrayList<>();
+            ArrayList<String> friends = new ArrayList<>();
+            ArrayList<String> blocked = new ArrayList<>();
 
             System.out.println("Re-enter your password:");
 
@@ -50,10 +51,8 @@ public class SignUpPage extends PageAction {
                 continue;
             }
 
-            // Database.getDatabase().add(new User(username, password, friends, blocked));
-            // db.add(new User(username, password, friends, blocked));
-            // Database.setDatabase(db);
-            Database.addUser(username, password);
+
+            DatabaseGateway.addUser(new User(username, password, friends, blocked));
 
             System.out.printf("New account created for %s. \n", username);
             break;

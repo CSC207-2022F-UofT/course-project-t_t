@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class FreeSlotInverter {
     public static int dayHelper(Integer inter) {
         // based on the interval, returns an index
-        // integer which indicates the day
+        // integer which indicates the day.
 
         if (0 <= inter && inter < 1440) { // sunday
             return 0;

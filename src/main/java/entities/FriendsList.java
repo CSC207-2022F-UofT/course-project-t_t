@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import entities.User;
 
-public class FriendsList{
+public class FriendsList {
     ArrayList<User> friends;
     ArrayList<User> blocked;
 

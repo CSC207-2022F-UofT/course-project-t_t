@@ -3,8 +3,29 @@ package entities;
 import java.util.ArrayList;
 
 public class User {
-    String username;
-    String password;
+    private String username;
+    private String password;
+    private Location location;
+    private Timetable timetable;
+    private Relations relations;
+    protected ArrayList<String> friends;
+    protected ArrayList<String> blocked;
+    public User(){}
+    public User(String username, String password, ArrayList<String> friends,
+                ArrayList<String> blocked, Location location, Timetable timetable) {
+        this.username = username;
+        this.password = password;
+        this.relations = new Relations(friends, blocked);
+        this.location = location;
+        this.timetable = timetable;
+    }
+    public User(String username, String password, ArrayList<String> friends, ArrayList<String> blocked) {
+        this.username = username;
+        this.password = password;
+        this.location = new Location("temp");
+        this.relations = new Relations(friends, blocked);
+        this.timetable = new Timetable();
+    }
 
     public String getUsername() {
         return username;
@@ -12,79 +33,28 @@ public class User {
     public String getPassword() {
         return password;
     }
-
-    public void setTimetable(Timetable timetable) {this.timetable = timetable;}
-
-    public void setLocation(Location location) {this.location = location;}
-
+    public ArrayList<String> getFriends() {
+        return this.relations.friends;
+    }
+    public ArrayList<String> getBlocked() {return this.relations.blocked;}
     public Location getLocation(){return this.location;}
-
     public Timetable getTimetable() {return timetable;}
-
-
-    private Location location;
-    private Timetable timetable;
-
-
-    // TODO: add getters & setters for <friends>, <blocked>, and <timetable>
-
     public void setUsername(String username) { this.username = username; }
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public User(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
-        this.username = username;
-        this.password = password;
-        this.location = new Location("temp");
-        this.friendsList = new FriendsList(friends, blocked);
+    public void setFriends(ArrayList<String> friends) {
+        this.relations.friends = friends;
     }
-
-//    protected ArrayList<User> friends;
-    private FriendsList friendsList;
-//    protected ArrayList<User> blocked;
-
-    public ArrayList<User> getFriends() {
-//        System.out.println(friendsList.friends);
-//        # --> Source of Error (friends has not been initialized)
-        return this.friendsList.friends;
+    public void setBlocked(ArrayList<String> blocked) {
+        this.relations.blocked = blocked;
     }
-    public ArrayList<User> getBlocked() {
-        return this.friendsList.blocked;
+    public void setLocation(Location location) {this.location = location;}
+    public void setTimetable(Timetable timetable) {this.timetable = timetable;}
+    public void addFriend(String u) {
+        this.relations.friends.add(u);
     }
-    public void setFriends(ArrayList<User> friends) {
-        this.friendsList.friends = friends;
+    public void addBlocked(String u) {
+        this.relations.blocked.add(u);
     }
-    public void setBlocked(ArrayList<User> blocked) {
-        this.friendsList.blocked = blocked;
-    }
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    private String name;
-
-    public User(String name) {
-        this.name = name;
-    }
-
-    protected ArrayList<User> friends;
-    protected ArrayList<User> blocked;
-
-//    public ArrayList<User> getFriends() {
-//        return friends;
-//    }
-//    public ArrayList<User> getBlocked() {
-//        return blocked;
-//    }
-//    public void setFriends(ArrayList<User> friends) {
-//        this.friends = friends;
-//    }
-//    public void setBlocked(ArrayList<User> blocked) {
-//        this.blocked = blocked;
-//    }
 }

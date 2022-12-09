@@ -1,34 +1,43 @@
-package database;
 import entities.*;
+import org.junit.Before;
+import org.junit.Test;
+import useCases.CourseComparer;
+import useCases.FreeIntervalComparer;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-public class Database {
-    private static final ArrayList<User> db = new ArrayList<User>();
+import static org.junit.Assert.assertEquals;
 
-    public static ArrayList<User> getDatabase() {
-        db.add(new User( "Kim", "cydfk123", new ArrayList<>(), new ArrayList<>()));
-        db.add(new User("Soomi", "choi7439", new ArrayList<>(), new ArrayList<>()));
-        return db;
+public class CourseComparerTest {
+
+    Timetable dummyTimetable1;
+    Timetable dummyTimetable2;
+
+    @Before
+    public void setUp() {
+        ArrayList<Timetable> dummyTimetables = getDummyTimetables();
+        dummyTimetable1 = dummyTimetables.get(0);
+        dummyTimetable2 = dummyTimetables.get(1);
     }
 
-    public static void addUser(String username, String password, ArrayList<User> friends, ArrayList<User> blocked) {
-        db.add(new User(username, password, friends, blocked));
+    @Test(timeout = 1000)
+    public void testFindCommonCourses() {
+
+        ArrayList<Course> output = getTestOutput();
+        String expected = "[KIM101-LEC 0101:\n" +
+                "    {[2160, 2220), BA 2222}\n" +
+                "    {[6660, 6720), BA 2222}\n" +
+                ", JJJ265-LEC 0101:\n" +
+                "    {[2160, 2220), BA 2222}\n" +
+                "    {[3720, 3840), BA 2222}\n" +
+                "]";
+        assertEquals(expected, output.toString());
     }
 
-    public static User getUser(String username) {
-        System.out.println(username);
-        for (User user : db) {
-            System.out.println(user);
-            if (Objects.equals(user.getUsername(), username)) {
-                return user;
-            }
-        }
-        return null;
+    private ArrayList<Course> getTestOutput() {
+        return CourseComparer.findCommonCourses(dummyTimetable1, dummyTimetable2);
     }
-
-    public static ArrayList<Timetable> getDummyTimetablesTemp() {
+    private static ArrayList<Timetable> getDummyTimetables() {
         ArrayList<Lecture> dummyLectures1 = new ArrayList<>();
 
         dummyLectures1.add(
@@ -75,5 +84,4 @@ public class Database {
 
         return timetables;
     }
-
 }

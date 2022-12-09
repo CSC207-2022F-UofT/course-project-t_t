@@ -1,10 +1,9 @@
 package pages.friends;
 
-import database.Database;
 import entities.User;
 import pages.PageAction;
 import pages.PageSession;
-import useCases.FriendsListManager;
+import useCases.RelationsManager;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -17,10 +16,8 @@ public class RemoveFriendsPage extends PageAction {
 
         Scanner in = new Scanner(System.in);
 
-        ArrayList<User> db = Database.getDatabase();
-
         User curr_user = pageSession.getCurrentUser();
-        ArrayList<User> fl = curr_user.getFriends();
+        ArrayList<String > fl = curr_user.getFriends();
 
         while (true) {
             System.out.println("Enter your friend's username OR enter Exit to go back:");
@@ -35,14 +32,14 @@ public class RemoveFriendsPage extends PageAction {
                 break;
             }
 
-            if (FriendsListManager.getFriend(curr_user, friend) == curr_user) {
+            if (RelationsManager.getFriend(curr_user, friend) == curr_user) {
                 System.out.println("User not found. Try again.");
                 continue;
             }
 
             System.out.printf("Removing %s.\n", friend);
-            User curr_friend = FriendsListManager.getFriend(curr_user, friend);
-            FriendsListManager.removeFriends(curr_user, curr_friend);
+            User curr_friend = RelationsManager.getFriend(curr_user, friend);
+            RelationsManager.removeFriends(curr_user, curr_friend);
             break;
         }
     }

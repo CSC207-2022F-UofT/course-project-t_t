@@ -19,6 +19,31 @@ public class FreeIntervalComparer {
      */
     public static ArrayList<Interval> findFreeIntervals(ArrayList<Timetable> timetables) {
 
+        ArrayList<Integer> diff = getDifferenceArray(timetables);
+
+        int curr = 0;
+        int prev;
+        int buff = 0;
+        ArrayList<Interval> free = new ArrayList<>();
+
+        for (int d : diff) {
+            int ad = Math.abs(d);
+            prev = curr;
+            if (d == 0)
+                curr += 1;
+            else
+                curr += d / ad;
+            if ((prev > 0) && (curr == 0))
+                buff = ad;
+            else if ((prev == 0) && (curr > 0))
+                free.add(new Interval(buff, ad));
+        }
+        free.add(new Interval(buff, Integer.MAX_VALUE));
+
+        return free;
+    }
+
+    private static ArrayList<Integer> getDifferenceArray(ArrayList<Timetable> timetables) {
         ArrayList<Integer> diff = new ArrayList<>();
 
         for (Timetable t : timetables)
@@ -31,22 +56,7 @@ public class FreeIntervalComparer {
 
         diff.sort(Comparator.comparingInt(Math::abs));
 
-        int curr = 0;
-        int prev;
-        int buff = 0;
-        ArrayList<Interval> free = new ArrayList<>();
-
-        for (int d : diff) {
-            int ad = Math.abs(d);
-            prev = curr;
-            curr += d / ad;
-            if ((prev > 0) && (curr == 0))
-                buff = ad;
-            else if ((prev == 0) && (curr > 0))
-                free.add(new Interval(buff, ad));
-        }
-        free.add(new Interval(buff, Integer.MAX_VALUE));
-
-        return free;
+        return diff;
     }
+
 }

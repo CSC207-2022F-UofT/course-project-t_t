@@ -6,6 +6,9 @@ import entities.User;
 import java.util.ArrayList;
 import java.util.Objects;
 
+/**
+ * useCase that checks the username and password given by the user to sign in the user.
+ */
 public class SignIn {
     /**
      * Iterates over the list of existing users and

@@ -4,6 +4,9 @@ import entities.Timetable;
 
 import java.util.ArrayList;
 
+/**
+ * useCase that validates different aspects of a Course object.
+ */
 public class CourseModifier {
     /**
      * Checks if the length of a given course code is 6.

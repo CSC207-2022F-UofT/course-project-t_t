@@ -34,6 +34,7 @@ public class RemoveCoursesPage extends PageAction {
 
             System.out.printf("Removing %s. \n", courseCode);
             currentUser.getTimetable().removeCourse(courseCode);
+            DatabaseGateway.update(currentUser);
             break;
         }
     }

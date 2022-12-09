@@ -3,6 +3,12 @@ package useCases;
 import entities.Interval;
 import java.util.ArrayList;
 public class FreeSlotInverter {
+    /**
+     * Based on the interval, returns an index integer which indicates the day.
+     *
+     * @param inter an integer which indicates each interval.
+     * @return the index of each day for JTable.
+     */
     public static int dayHelper(Integer inter) {
         if (0 <= inter && inter < 1440) { // sunday
             return 0;
@@ -23,6 +29,12 @@ public class FreeSlotInverter {
         }
     }
 
+    /**
+     * Given the input courses, converts each interval into the corresponding index in the format of day and time.
+     *
+     * @param intervals arraylist of intervals.
+     * @param schedule a variable indicating a free slot.
+     */
     public static void timeToIndex(ArrayList<Interval> intervals, String[][] schedule) {
         for (Interval inter : intervals) {
             int startTime = inter.getStart();

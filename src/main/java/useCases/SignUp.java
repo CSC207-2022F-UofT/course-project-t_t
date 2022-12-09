@@ -5,6 +5,9 @@ import entities.User;
 
 import java.util.ArrayList;
 
+/**
+ * useCase that takes user's username and password to create a new user.
+ */
 public class SignUp {
 
     public static boolean checkNewUsername(String newUsername1) {

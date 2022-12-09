@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import static useCases.FreeSlotInverter.dayHelper;
 
+/**
+ * useCase that converts a set of Course objects into a 2D array of strings representing a timetable.
+ */
 public class CompareInverter {
     /**
      * Given the input courses, converts each interval into the corresponding index in the format of day and time.

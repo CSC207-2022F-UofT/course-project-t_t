@@ -7,8 +7,11 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class FreeSlotsVisualizer {
-    // given
-
+    /**
+     * Creates a window that shows free intervals of time in a given week.
+     *
+     * @param intervals converted into a 2D array of strings representing the free time slots.
+     */
     public static void windowVisualizer(ArrayList<Interval> intervals) {
         String[][] schedule = new String[24][8];
         String[] days = {"Time", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};

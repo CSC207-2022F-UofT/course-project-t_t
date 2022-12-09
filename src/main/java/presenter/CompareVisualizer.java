@@ -7,6 +7,11 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class CompareVisualizer {
+    /**
+     * Creates a window that shows a timetable for a set of courses.
+     *
+     * @param courses are converted into a 2D array of strings representing the timetable.
+     */
     public static void compareWindow(ArrayList<Course> courses) {
         String[][] schedule = new String[24][8]; // setting up a 2d array
         String[] days = {"Time", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};

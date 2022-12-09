@@ -2,6 +2,10 @@ package useCases;
 
 import entities.Interval;
 import java.util.ArrayList;
+
+/**
+ * useCase that converts a set of Interval objects into a 2D array of strings representing free time slots in a timetable.
+ */
 public class FreeSlotInverter {
     /**
      * Based on the interval, returns an index integer which indicates the day.

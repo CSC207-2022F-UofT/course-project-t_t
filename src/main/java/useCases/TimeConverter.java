@@ -1,5 +1,8 @@
 package useCases;
 
+/**
+ * useCase that takes the time in hours and the day to convert into minutes.
+ */
 public class TimeConverter {
     /**
      * Converts a given time and day into the equivalent time in minutes.

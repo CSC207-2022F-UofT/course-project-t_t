@@ -1,7 +1,8 @@
 unnamed package
 controller
-database
+Database
 entities
+Gateway
 pages
 pages.block
 pages.friends

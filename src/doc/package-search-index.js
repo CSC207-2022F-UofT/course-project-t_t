@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"controller"},{"l":"database"},{"l":"entities"},{"l":"pages"},{"l":"pages.block"},{"l":"pages.friends"},{"l":"pages.timetable"},{"l":"pages.user"},{"l":"presenter"},{"l":"useCases"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"controller"},{"l":"Database"},{"l":"entities"},{"l":"Gateway"},{"l":"pages"},{"l":"pages.block"},{"l":"pages.friends"},{"l":"pages.timetable"},{"l":"pages.user"},{"l":"presenter"},{"l":"useCases"}];updateSearchResults();

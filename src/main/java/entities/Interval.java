@@ -1,5 +1,8 @@
 package entities;
 
+/**
+ * The interval entity which represents the time lectures are held.
+ */
 public class Interval{
     int start;
     int end;

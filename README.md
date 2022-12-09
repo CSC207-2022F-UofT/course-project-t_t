@@ -1,39 +1,34 @@
-# Project Template
+# UTimetable: The Timetable Comparer For UofT Students 
 
-This is a template repository for CSC 207 projects. 
-This repository contains starter code for a gradle project.
-It also contains workflow documents that give instructions on how to manage your Github repository and how to use Github Projects for efficient collaboration.
+# Overview
+The main purpose of this program is to allow University of Toronto students to compare timetables with their friends in 
+order to find mutual free timeslots. This project idea came to mind because as students ourselves, we always found it 
+trivial to make plans with large friend groups where everyone has different schedules. This program allows us to find
+time to study together, or make a meeting for clubs, etc.
 
-## Checklist For Your Project
-- [ ] Verify the correct settings for your project repository
-- [ ] Set up Github Projects
-- [ ] Create the implementation plan using issues and Github Projects
-- [ ] Create deveopment branches for your features
-- [ ] Use pull requests to merge finished features into main branch
-- [ ] Conduct code reviews
+# How to install the program
+To install this program, import this project into your Intellij editor.
 
-**If your team has trouble with any of these steps, please ask on Piazza. For example, with how GitHub Classroom works, your team *may* not have permissions to do some of the first few steps, in which case we'll post alternative instructions as needed.**
+# How to run the program
+- To start the program, run the client page and wait until the sign in and sign up page pops up. 
 
-## Workflow Documents
+- To log in, either sign up for an account or log in with an existing account. This will lead you to the home page that contains friends page and timetable page.
 
-* Github Workflow: Please refer to the workflow that was introduced in the first lab. You should follow this when working on your code. The following document provides additional details too.
+- To add/remove friends, go to friends page, then to manage friends page, and then add or remove friends.
 
-* [Project Planning and Development Guide](project_plan_dev.md): This document helps you to understand how to create and maintain a project plan for your class project. **This document helps you to complete the Implementation Plan Milestone.**
+- To block/unblock friends, go to friends page, then to manage blocked page, and then block or unblock user.
 
-## Gradle Project
-Import this project into your Intellij editor. It should automatically recognise this as a gradle repository.
-The starter code was built using SDK version 11.0.1. Ensure that you are using this version for this project. (You can, of course, change the SDK version as per your requirement if your team has all agreed to use a different version)
+- To find common courses and common free intervals between friends, go to the timetable page.
 
-You have been provided with two starter files for demonstration: HelloWorld and HelloWorldTest.
+- To view and modify my timetable, go to the timetable page. In the modify my timetable page, you can add and remove courses manually.
 
-You will find HelloWorld in `src/main/java/tutorial` directory. Right click on the HelloWorld file and click on `Run HelloWorld.main()`.
-This should run the program and print on your console.
+- To view my friend's timetable, go to the friends list page and view friend's timetable. 
 
-You will find HelloWorldTest in `src/test/java/tutorial` directory. Right click on the HelloWorldTest file and click on `Run HelloWorldTest`.
-All tests should pass. Your team can remove this sample of how testing works once you start adding your project code to the repo.
+# Credits
 
-Moving forward, we expect you to maintain this project structure. You *should* use Gradle as the build environment, but it is fine if your team prefers to use something else -- just remove the gradle files and push your preferred project setup. Assuming you stick with Gradle, your source code should go into `src/main/java` (you can keep creating more subdirectories as per your project requirement). Every source class can auto-generate a test file for you. For example, open HelloWorld.java file and click on the `HelloWorld` variable as shown in the image below. You should see an option `Generate` and on clicking this your should see an option `Test`. Clicking on this will generate a JUnit test file for `HelloWorld` class. This was used to generate the `HelloWorldTest`.
+Ashley Oh, Soomi Choi, Tina Kim, Darren Kim, Clarence Chau, Narae Lee, Jeff Huang 
 
-![image](https://user-images.githubusercontent.com/5333020/196066655-d3c97bf4-fdbd-46b0-b6ae-aeb8dbcf351d.png)
 
-You can create another simple class and try generating a test for this class.
+
+
+

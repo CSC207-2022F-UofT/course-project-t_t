@@ -2,8 +2,6 @@ package Gateway;
 import entities.*;
 import java.util.ArrayList;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.bson.conversions.Bson;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.JSONArray;
@@ -141,8 +139,7 @@ public class DatabaseGateway {
                 String b = (String) o;
                 friends.add(b);
             }
-            User newUser = new User(username, password, friends, blocked, location, timetable);
-            return newUser;
+            return new User(username, password, friends, blocked, location, timetable);
         }
         catch(Exception e){
             e.printStackTrace();

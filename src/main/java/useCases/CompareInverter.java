@@ -15,7 +15,7 @@ public class CompareInverter {
      * @param schedule a 2d array with empty values.
      */
     public static void timetableToIndex(ArrayList<Course> courses, String[][] schedule) {
-
+        System.out.println(schedule);
         for (Course myCourse : courses) {
             ArrayList<Lecture> myLectures = myCourse.getLectures();
             String courseName = myCourse.getCourseCode();
